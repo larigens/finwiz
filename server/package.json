@@ -1,0 +1,42 @@
+{
+  "name": "finwiz",
+  "version": "1.0.0",
+  "description": "Financial Wizard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon",
+    "seed": "node seeders/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larigens/finwiz.git"
+  },
+  "keywords": [
+    "react",
+    "mongodb",
+    "mongoose",
+    "graphql",
+    "apollo",
+    "server",
+    "nodejs",
+    "expressjs"
+  ],
+  "author": "Larissa Guilherme",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^3.6.2",
+    "bcrypt": "^5.0.0",
+    "express": "^4.17.2",
+    "graphql": "^16.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "bugs": {
+    "url": "https://github.com/larigens/finwiz/issues"
+  },
+  "homepage": "https://github.com/larigens/finwiz#readme"
+}
