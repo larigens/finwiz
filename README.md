@@ -1,71 +1,155 @@
-# Getting Started with Create React App
+<h1 align="center"> FinWiz </h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+    <img src="./client/public/images/logo.png" alt="logo" width="120px" height="120px" />
+  <br><br>
+  <i> Factoring software designed to
+    <br> simplify the management of accounts receivables and payables </i>
+  <br>
+</p>
 
+<p align="center">
+  <a href="/"><strong> FinWiz Official Site </strong></a>
+  <br>
+</p>
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+<div align="center">
 
-### `npm start`
+![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-ff69b4.svg)
+![Contributors](https://img.shields.io/github/contributors/larigens/finwiz?style=plastic&color=ff69b4)
+![Forks](https://img.shields.io/github/forks/larigens/finwiz?style=plastic&color=ff69b4)
+![Stars](https://img.shields.io/github/stars/larigens/finwiz?style=plastic&color=ff69b4)
+![Licence](https://img.shields.io/static/v1?label=License&message=Apache-2.0&color=ff69b4)
+![Issues](https://img.shields.io/github/issues/larigens/finwiz?style=plastic&color=ff69b4)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+</div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Description
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+FinWiz is a web-based factoring software designed specifically for transportation companies to help them manage their cash flow more efficiently. With FinWiz, transportation companies can easily convert their accounts receivable into immediate cash, enabling them to meet their daily expenses, pay their drivers and vendors, and grow their business. The software streamlines the factoring process, allowing businesses to upload their invoices, track their payments, and manage their cash flow in real-time.
 
-### `npm run build`
+FinWiz provides a user-friendly interface and powerful reporting tools that allow businesses to gain valuable insights into their financial health and make informed decisions. With its advanced security features and customizable settings, FinWiz ensures that all data is protected and managed securely. Whether you are a small business owner or a large transportation company, FinWiz is the perfect solution to help you manage your finances and grow your business.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Table of Contents
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Description](#description)
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+  - [Cloning the Repository](#cloning-the-repository)
+  - [Setting Up](#setting-up)
+- [Mock-Up](#mock-up)
+- [Usage](#usage)
+- [Questions](#questions)
+- [Contributing](#contributing)
+  - [Contributing Guidelines](#contributing-guidelines)
+  - [Code of Conduct](#code-of-conduct)
+- [Credits](#credits)
+  - [Authors](#authors)
+  - [Acknowledgements](#acknowledgements)
+  - [Links](#links)
+- [License](#license)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+### Cloning the Repository
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Click `<> code` - the green button. After clicking, in the local tab, copy the SSH key. Open the terminal in your Macbook or [git bash](https://git-scm.com/downloads), if you have Windows/Linux, and type:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone [paste ssh key]
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Setting Up
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Open the project in VS Code and make sure you are in the directory of this application before installing the dependencies. To install it, type the commands below on your terminal:
 
-## Learn More
+```bash
+npm i
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Once you run this, npm will begin the installation process of all of the current project's dependencies.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Mock-Up
 
-### Code Splitting
+The following images shows the web application's appearance:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<div align="center">
 
-### Analyzing the Bundle Size
+<img src="./client/public/images/demo1.png" alt="App Screenshot" width="530px" height="280px" />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<img src="./client/public/images/demo2.png" alt="App Screenshot" width="530px" height="280px" />
 
-### Making a Progressive Web App
+<img src="./client/public/images/demo3.png" alt="App Screenshot" width="530px" height="280px" />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<img src="./client/public/images/demo4.png" alt="App Screenshot" width="530px" height="280px" />
 
-### Advanced Configuration
+</div>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Usage
 
-### Deployment
+Launch the application by entering the command below on your terminal:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm start
+```
+<!-- Explain more  -->
 
-### `npm run build` fails to minify
+## Questions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For questions and support feel free to contact me via:
+
+<a href="mailto:larigens@gmail.com">📧 Email </a>
+
+<a href="https://github.com/larigens">🐈‍⬛ GitHub </a>
+
+## Contributing
+
+### Contributing Guidelines
+
+Want to report a bug, contribute some code, request a new feature, or improve the documentation? You can submit an issue and we will gladly review it, but before submitting an issue, please search the issue tracker, as it may already exist!
+
+### Code of Conduct
+
+Our Code of Conduct follows the same principles as the [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct/), version 2.1.
+
+## Credits
+
+### Authors
+
+👩🏻‍💻 <a href="https://github.com/larigens"> Larissa Guilherme </a>
+
+### Acknowledgements
+
+- [W3 Schools](https://www.w3schools.com)
+- [MDN](https://developer.mozilla.org/en-US/)
+- [Node.js](https://nodejs.org/en/)
+- [NPM](https://www.npmjs.com/)
+- [Express.js](https://expressjs.com/en/4x/api.html)
+- [Stack Overflow](https://stackoverflow.com/)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
+- [MongoDB](https://www.mongodb.com/docs/manual/tutorial/getting-started/)
+- [Mongo Compass](https://www.mongodb.com/products/compass)
+- [Mongoose](https://mongoosejs.com/docs/guide.html)
+- [Regex Wizardry](https://gist.github.com/larigens/9b34ff870691a19bc4f9e28952bd8188)
+- [MDN Web Docs for Regular Expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+- [React](https://react.dev/learn)
+- [GraphQL](https://graphql.org/learn/)
+- [Apollo GraphQL Studio](https://studio.apollographql.com/sandbox/explorer)
+- [Proxying API Requests in Development](https://create-react-app.dev/docs/proxying-api-requests-in-development/)
+- [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
+- [Apollo Client](https://www.apollographql.com/docs/react/)
+- [JSON Web Tokens](https://jwt.io/)
+
+### Links
+
+[![Portfolio](https://img.shields.io/badge/my_portfolio-000?style=flat&logo=ko-fi&logoColor=white)](https://larigens.github.io/reactfolio/)
+[![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lari-gui/)
+
+## License
+
+Please refer to the [LICENSE](https://choosealicense.com/licenses/apache-2.0/) in the repo.
