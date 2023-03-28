@@ -19,10 +19,18 @@
 
 ![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-ff69b4.svg)
 ![Contributors](https://img.shields.io/github/contributors/larigens/finwiz?style=plastic&color=ff69b4)
-![Forks](https://img.shields.io/github/forks/larigens/finwiz?style=plastic&color=ff69b4)
-![Stars](https://img.shields.io/github/stars/larigens/finwiz?style=plastic&color=ff69b4)
 ![Licence](https://img.shields.io/static/v1?label=License&message=Apache-2.0&color=ff69b4)
-![Issues](https://img.shields.io/github/issues/larigens/finwiz?style=plastic&color=ff69b4)
+
+</div>
+
+<div align="center">
+
+![GraphQL](https://img.shields.io/badge/GraphQL-E10098?logo=graphql)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?logo=express&logoColor=white)
+![JSON Web Token](https://img.shields.io/badge/JSON%20Web%20Token-000000?logo=json-web-tokens)
 
 </div>
 
