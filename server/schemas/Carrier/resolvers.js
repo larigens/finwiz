@@ -31,8 +31,8 @@ const resolvers = {
     Mutation: {
         addCarrier: async (_, { input }) => {
             try {
-                const { company, mcNumber, firstName, lastName, email, username, password, phoneNumber } = input;
-                const carrier = await Carrier.create({ company, mcNumber, firstName, lastName, email, username, password, phoneNumber });
+                const { company, mcNumber, firstName, lastName, email, phoneNumber } = input;
+                const carrier = await Carrier.create({ company, mcNumber, firstName, lastName, email, phoneNumber });
                 return carrier;
             } catch (err) {
                 console.log(err);
@@ -41,10 +41,10 @@ const resolvers = {
         },
         updateCarrier: async (_, { carrierId, input }) => {
             try {
-                const { company, mcNumber, firstName, lastName, email, username, password, phoneNumber } = input;
+                const { company, mcNumber, firstName, lastName, email, phoneNumber } = input;
                 const carrier = await Carrier.findOneAndUpdate(
                     { _id: carrierId },
-                    { $set: company, mcNumber, firstName, lastName, email, username, password, phoneNumber },
+                    { $set: company, mcNumber, firstName, lastName, email, phoneNumber },
                     { new: true, runValidators: true }
                 );
                 if (!carrier) {

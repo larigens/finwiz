@@ -7,8 +7,6 @@ input CarrierInput {
   firstName: String!,
   lastName: String!,
   email: String!,
-  username: String!,
-  password: String!,
   phoneNumber: String!
 }
 
@@ -19,8 +17,6 @@ type Carrier {
   firstName: String!
   lastName: String!
   email: String!
-  username: String!
-  password: String!
   phoneNumber: String!
   brokers: [Broker]
   invoices: [Invoice]

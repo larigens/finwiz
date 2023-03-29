@@ -1,0 +1,52 @@
+[
+    {
+        "company": "ABC Trucking",
+        "mcNumber": 12345,
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "johndoe@example.com",
+        "phoneNumber": "(123)456-7890",
+        "brokers": [],
+        "invoices": []
+    },
+    {
+        "company": "XYZ Transport",
+        "mcNumber": 67890,
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "email": "janesmith@example.com",
+        "phoneNumber": "(234)567-8901",
+        "brokers": [],
+        "invoices": []
+    },
+    {
+        "company": "LMN Shipping",
+        "mcNumber": 24680,
+        "firstName": "Bob",
+        "lastName": "Johnson",
+        "email": "bobjohnson@example.com",
+        "phoneNumber": "(345)678-9012",
+        "brokers": [],
+        "invoices": []
+    },
+    {
+        "company": "PQR Logistics",
+        "mcNumber": 13579,
+        "firstName": "Amy",
+        "lastName": "Lee",
+        "email": "amylee@example.com",
+        "phoneNumber": "(456)789-0123",
+        "brokers": [],
+        "invoices": []
+    },
+    {
+        "company": "GHI Express",
+        "mcNumber": 98765,
+        "firstName": "Chris",
+        "lastName": "Brown",
+        "email": "chrisbrown@example.com",
+        "phoneNumber": "(567)890-1234",
+        "brokers": [],
+        "invoices": []
+    }
+]
