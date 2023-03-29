@@ -22,6 +22,13 @@ const resolvers = {
                 throw new Error('Failed to fetch employees.');
             }
         },
+        // By adding context to our query, we can retrieve the logged in user without specifically searching for them
+        me: async (_, args, context) => {
+            if (context.user) {
+                return Employee.findOne({ _id: context.user._id });
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
     },
     Mutation: {
         addEmployee: async (_, { input }) => {

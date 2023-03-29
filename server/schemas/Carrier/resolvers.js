@@ -1,4 +1,5 @@
 const { Carrier, Broker } = require('../../models');
+const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
     Query: {
@@ -27,56 +28,68 @@ const resolvers = {
         },
     },
     Mutation: {
-        addCarrier: async (_, { input }) => {
-            try {
-                const { company, mcNumber, firstName, lastName, email, phoneNumber } = input;
-                const carrier = await Carrier.create({ company, mcNumber, firstName, lastName, email, phoneNumber });
-                return carrier;
-            } catch (err) {
-                console.log(err);
-                throw new Error('Failed to create carrier.');
-            }
-        },
-        updateCarrier: async (_, { carrierId, input }) => {
-            try {
-                const { company, mcNumber, firstName, lastName, email, phoneNumber } = input;
-                const carrier = await Carrier.findOneAndUpdate(
-                    { _id: carrierId },
-                    { $set: company, mcNumber, firstName, lastName, email, phoneNumber },
-                    { new: true, runValidators: true }
-                );
-                if (!carrier) {
-                    throw new Error('Carrier not found');
+        // Add a third argument to the resolver to access data in our `context`
+        addCarrier: async (_, { input }, context) => {
+            // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
+            if (context.user) {
+                try {
+                    const { company, mcNumber, firstName, lastName, email, phoneNumber } = input;
+                    const carrier = await Carrier.create({ company, mcNumber, firstName, lastName, email, phoneNumber });
+                    return carrier;
+                } catch (err) {
+                    console.log(err);
+                    throw new Error('Failed to create carrier.');
                 }
-                return carrier;
-            } catch (err) {
-                console.log(err);
-                throw new Error('Failed to update carrier.');
             }
+            // If user attempts to execute this mutation and isn't logged in, throw an error
+            throw new AuthenticationError('You need to be logged in!');
         },
-        addCarrierBroker: async (_, { carrierId, brokerId }) => {
-            try {
-                const carrier = await Carrier.findOneAndUpdate(
-                    { _id: carrierId },
-                    { $addToSet: { brokers: brokerId } }, // will add the broker only if it is not already in the array
-                    { new: true, runValidators: true }
-                )
-                // Add the carrier to the broker collection.
-                const broker = await Broker.findOneAndUpdate(
-                    { _id: brokerId },
-                    { $addToSet: { carriers: carrierId } },
-                    { new: true }
-                );
-                if (!broker) {
-                    throw new Error('Broker not found');
+        updateCarrier: async (_, { carrierId, input }, context) => {
+            if (context.user) {
+                try {
+                    const { company, mcNumber, firstName, lastName, email, phoneNumber } = input;
+                    const carrier = await Carrier.findOneAndUpdate(
+                        { _id: carrierId },
+                        { $set: company, mcNumber, firstName, lastName, email, phoneNumber },
+                        { new: true, runValidators: true }
+                    );
+                    if (!carrier) {
+                        throw new Error('Carrier not found');
+                    }
+                    return carrier;
+                } catch (err) {
+                    console.log(err);
+                    throw new Error('Failed to update carrier.');
                 }
-                // Populate the broker field in the carrier and return it
-                const result = await carrier.populate('brokers')
-                return result;
-            } catch (error) {
-                console.error(error);
-                throw new Error('Failed to add broker');
             }
+            throw new AuthenticationError('You need to be logged in!');
+        },
+        addCarrierBroker: async (_, { carrierId, brokerId }, context) => {
+            if (context.user) {
+                try {
+                    const carrier = await Carrier.findOneAndUpdate(
+                        { _id: carrierId },
+                        { $addToSet: { brokers: brokerId } }, // will add the broker only if it is not already in the array
+                        { new: true, runValidators: true }
+                    )
+                    // Add the carrier to the broker collection.
+                    const broker = await Broker.findOneAndUpdate(
+                        { _id: brokerId },
+                        { $addToSet: { carriers: carrierId } },
+                        { new: true }
+                    );
+                    if (!broker) {
+                        throw new Error('Broker not found');
+                    }
+                    // Populate the broker field in the carrier and return it
+                    const result = await carrier.populate('brokers')
+                    return result;
+                } catch (error) {
+                    console.error(error);
+                    throw new Error('Failed to add broker');
+                }
+            }
+            throw new AuthenticationError('You need to be logged in!');
         }
     },
 };
