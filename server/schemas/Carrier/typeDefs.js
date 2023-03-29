@@ -25,8 +25,6 @@ type Carrier {
   brokers: [Broker]
   invoices: [Invoice]
   fullName: String!
-  createdAt: Date!
-  updatedAt: Date!
 }
 
 type Query {
@@ -36,8 +34,9 @@ type Query {
 
 type Mutation {
     addCarrier(input: CarrierInput!): Carrier!
-    updateCarrier(carrierId: ID!, input: CarrierInput): Carrier!
+    updateCarrier(carrierId: ID!, input: CarrierInput!): Carrier!
     addCarrierBroker(carrierId: ID!, brokerId: ID!): Carrier!
+}
 `;
 
 module.exports = typeDefs;

@@ -32,5 +32,9 @@
   "bugs": {
     "url": "https://github.com/larigens/finwiz/issues"
   },
-  "homepage": "https://github.com/larigens/finwiz#readme"
+  "homepage": "https://github.com/larigens/finwiz#readme",
+  "dependencies": {
+    "@graphql-tools/merge": "^8.4.0",
+    "graphql": "^16.6.0"
+  }
 }

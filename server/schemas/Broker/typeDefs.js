@@ -20,8 +20,6 @@ type Broker {
     buy: Boolean!
     carriers: [Carrier]
     invoices: [Invoice]
-    createdAt: Date!
-    updatedAt: Date!
 }
 
 type Query {
@@ -33,6 +31,7 @@ type Mutation {
     addBroker(input: BrokerInput!): Broker!
     updateBroker(brokerId: ID!, input: BrokerInput!): Broker!
     addBrokerCarrier(brokerId: ID!, carrierId: ID!): Broker!
+}
 `;
 
 module.exports = typeDefs;

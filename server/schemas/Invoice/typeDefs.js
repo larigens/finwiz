@@ -7,8 +7,8 @@ input InvoiceInput {
   amount: Int!
   paid: Boolean!
   shortPaid: Boolean!
-  carrier: Carrier!
-  broker: Broker!
+  carrier: ID!
+  broker: ID!
 }
 
 type Invoice {
