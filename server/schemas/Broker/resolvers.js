@@ -8,7 +8,6 @@ const resolvers = {
                     .select('-__v')
                     .populate('carriers')
                     .populate('invoices')
-                    .execPopulate();
                 return broker;
             } catch (error) {
                 console.error(error);
@@ -20,7 +19,6 @@ const resolvers = {
                 const brokers = await Broker.find()
                     .populate('carriers')
                     .populate('invoices')
-                    .execPopulate();
                 return brokers;
             } catch (error) {
                 console.error(error);
@@ -73,7 +71,7 @@ const resolvers = {
                     throw new Error('Carrier not found');
                 }
                 // Populate the carrier field in the broker and return it
-                const result = await broker.populate('carriers').execPopulate();
+                const result = await broker.populate('carriers')
                 return result;
             } catch (error) {
                 console.error(error);

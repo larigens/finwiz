@@ -58,7 +58,6 @@ FinWiz provides a user-friendly interface and powerful reporting tools that allo
 - [Credits](#credits)
   - [Authors](#authors)
   - [Acknowledgements](#acknowledgements)
-  - [Links](#links)
 - [License](#license)
 
 ## Installation
@@ -114,13 +113,9 @@ For questions and support feel free to contact us via:
 
 <a href="mailto:larigens@gmail.com">📧 Email </a>
 
-<a href="https://github.com/larigens">🐈‍⬛ GitHub </a>
-
 **Anastasia Marvova**
 
 <a href="mailto:anastasia19markova@gmail.com">📧 Email </a>
-
-<a href="https://github.com/mriya20">🐈‍⬛ GitHub </a>
 
 ## Contributing
 
@@ -136,9 +131,17 @@ Our Code of Conduct follows the same principles as the [Contributor Covenant](ht
 
 ### Authors
 
-👩🏻‍💻 <a href="https://github.com/larigens"> Larissa Guilherme </a>
+👩🏻‍💻 **Larissa Guilherme**
 
-👩🏻‍💻 <a href="https://github.com/mriya20"> Anastasia Marvova </a>
+[![GitHub](https://img.shields.io/badge/GitHub-000?style=flat&logo=github)](https://github.com/larigens)
+[![Portfolio](https://img.shields.io/badge/portfolio-000?style=flat&logo=ko-fi&logoColor=white)](https://larigens.github.io/reactfolio/)
+[![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lari-gui/)
+
+👩🏻‍💻 **Anastasia Marvova**
+
+[![GitHub](https://img.shields.io/badge/GitHub-000?style=flat&logo=github)](https://github.com/mriya20)
+[![Portfolio](https://img.shields.io/badge/portfolio-000?style=flat&logo=ko-fi&logoColor=white)](https://mriya20.github.io/portfolio/)
+[![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anastasiia-markova200/)
 
 ### Acknowledgements
 
@@ -163,18 +166,6 @@ Our Code of Conduct follows the same principles as the [Contributor Covenant](ht
 - [Apollo Client](https://www.apollographql.com/docs/react/)
 - [JSON Web Tokens](https://jwt.io/)
 - [The Guild - GraphQL Tools](https://the-guild.dev/graphql/tools/docs/schema-merging)
-
-### Links
-
-**Larissa Guilherme**
-
-[![Portfolio](https://img.shields.io/badge/portfolio-000?style=flat&logo=ko-fi&logoColor=white)](https://larigens.github.io/reactfolio/)
-[![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lari-gui/)
-
-**Anastasia Marvova**
-
-[![Portfolio](https://img.shields.io/badge/portfolio-000?style=flat&logo=ko-fi&logoColor=white)](https://mriya20.github.io/portfolio/)
-[![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anastasiia-markova200/)
 
 ## License
 

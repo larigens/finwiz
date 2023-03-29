@@ -22,6 +22,7 @@ type Invoice {
   dueDate: String!
   carrier: Carrier!
   broker: Broker!
+  invoiceCount: Int
 }
 
 type Query {

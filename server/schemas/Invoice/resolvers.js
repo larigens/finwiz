@@ -8,7 +8,6 @@ const resolvers = {
                     .select('-__v')
                     .populate('carrier')
                     .populate('broker')
-                    .execPopulate();
                 return invoice;
             } catch (err) {
                 console.log(err);
@@ -20,13 +19,15 @@ const resolvers = {
                 const invoices = await Invoice.find()
                     .populate('carrier')
                     .populate('broker')
-                    .execPopulate();
                 return invoices;
             } catch (err) {
                 console.log(err);
                 throw new Error('Failed to fetch invoices.');
             }
         },
+    },
+    Invoice: {
+        invoiceCount: (invoice) => invoice.invoices.length,
     },
     Mutation: {
         addInvoice: async (_, { input }) => {
@@ -58,7 +59,7 @@ const resolvers = {
                 await Promise.all([updateCarrier, updateBroker]);
 
                 // Populate the carrier and broker fields in the invoice and return it
-                const populatedInvoice = await invoice.populate('carrier').populate('broker').execPopulate();
+                const populatedInvoice = await invoice.populate('carrier').populate('broker')
                 return populatedInvoice;
             } catch (err) {
                 console.log(err);
@@ -121,7 +122,15 @@ const resolvers = {
                 console.error(error);
                 throw new Error('Failed to update invoice');
             }
-        }
+        },
+        removeInvoice: async (_, { invoiceId }) => {
+            try {
+                return Invoice.findOneAndDelete({ _id: invoiceId });
+            } catch (err) {
+                console.log(err);
+                throw new Error('Failed to remove invoice.');
+            }
+        },
     }
 }
 

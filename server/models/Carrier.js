@@ -29,7 +29,7 @@ const carrierSchema = new Schema({
         unique: true,
         lowercase: true,
         trim: true,
-        match: emailRegex
+        match: [emailRegex, 'Must match an email address!'],
     },
     phoneNumber: {
         type: String,
