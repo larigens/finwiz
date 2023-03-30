@@ -33,6 +33,7 @@ type Mutation {
     addBroker(input: BrokerInput!): Broker!
     updateBroker(brokerId: ID!, input: BrokerInput!): Broker!
     addBrokerCarrier(brokerId: ID!, carrierId: ID!): Broker!
+}
 `;
 
 module.exports = typeDefs;
