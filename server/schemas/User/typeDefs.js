@@ -1,43 +1,52 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-input EmployeeInput {
+input UserInput {
     firstName: String!
     lastName: String!
     email: String!
     username: String!
     password: String!
+    role: String!
   }
 
-  type Employee {
+  type User {
     _id: ID!
     firstName: String!
     lastName: String!
     email: String!
     username: String!
     password: String!
+    role: String!
     fullName: String
+    employeeProperty: EmployeeProperty
   }
 
+  type EmployeeProperty {
+    user: User
+    carriers: [Carrier]
+  }
+  
   # Set up an Auth type to handle returning data from an user sign up or login.
   type Auth {
     token: ID!
-    employee: Employee
+    user: User
   }
 
   type Query {
-    employee(employeeId: ID!): Employee
-    employees: [Employee]
+    user(userId: ID!): User
+    users: [User]
     # Because we have the context functionality in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
-    me: Employee
+    me: User
   }
 
   type Mutation {
-    # Set up mutations to handle adding an employee or logging into a profile and return Auth type
-    addEmployee(input: EmployeeInput!): Auth
+    # Set up mutations to handle adding an User or logging into a profile and return Auth type
+    addUser(input: UserInput!): Auth
     login(username: String!, password: String!): Auth
-    updateEmployee(employeeId: ID!, input: EmployeeInput!): Employee!
-    removeEmployee(employeeId: ID!): Employee!
+    addUserCarrier(userId: ID!, carrierId: ID!): EmployeeProperty
+    updateUser(userId: ID!, input: UserInput!): User!
+    removeUser(userId: ID!): User!
   }
 `;
 

@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 const { emailRegex, usernameRegex, passwordRegex } = require('../utils/validators');
 
-const employeeSchema = new Schema({
+const userSchema = new Schema({
     firstName: {
         type: String,
         required: true,
@@ -29,14 +29,26 @@ const employeeSchema = new Schema({
         trim: true,
         match: usernameRegex,
         minlength: [6, 'Username must be at least 6 characters long.'],
-        maxlength: [20, 'Username must be no more than 20 characters long.'],
+        maxlength: [40, 'Username must be no more than 40 characters long.'],
     },
     password: {
         type: String,
         required: [true, 'Password is required!'],
         match: [passwordRegex, 'Must contain at least 1 digit, 1 lowercase letter, 1 uppercase letter, and 1 special character!'],
         minlength: [8, 'Password must be at least 8 characters long.'],
-        maxlength: [30, 'Password must be no more than 30 characters long.'],
+    },
+    role: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+    employeeProperty: {
+        carriers: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Carrier'
+            }
+        ]
     }
 }, {
     toJSON: { virtuals: true },
@@ -44,12 +56,20 @@ const employeeSchema = new Schema({
     timestamps: true,
 });
 
-employeeSchema.virtual('fullName').get(function () {
+userSchema.virtual('fullName').get(function () {
     return `${this.firstName} ${this.lastName}`;
 });
 
-// Defines pre-save middleware to hash the employee's password before saving it to the database.
-employeeSchema.pre('save', async function (next) {
+// Virtual property to check if the role is employee to return the employeeProperty property.
+userSchema.virtual('isEmployee').get(function () {
+    if (this.role === 'Employee') {
+        return this.employeeProperty;
+    }
+    return undefined; // Return undefined if the user is not an employee
+});
+
+// Defines pre-save middleware to hash the user's password before saving it to the database.
+userSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
@@ -59,10 +79,10 @@ employeeSchema.pre('save', async function (next) {
 });
 
 // Method to compare an incoming password with the hashed password.
-employeeSchema.methods.validatePassword = async function (password) {
+userSchema.methods.validatePassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
 
-const Employee = model('Employee', employeeSchema);
+const User = model('User', userSchema);
 
-module.exports = Employee;
+module.exports = User;

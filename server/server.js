@@ -1,7 +1,7 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express'); // Used to create a GraphQL server and the ApolloServer class, which we will use to instantiate our server.
 const path = require('path');
-const { authMiddleware } = require('./utils/authentication');
+const { authMiddleware } = require('./utils/auth');
 
 const { typeDefs, resolvers } = require('./schemas'); // Imports the type definitions and resolvers for our GraphQL API.
 const db = require('./config/connection'); // Imports the database connection object.

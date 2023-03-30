@@ -7,11 +7,11 @@ const brokerTypeDefs = require('./Broker/typeDefs');
 const brokerResolvers = require('./Broker/resolvers');
 const invoiceTypeDefs = require('./Invoice/typeDefs');
 const invoiceResolvers = require('./Invoice/resolvers');
-const employeeTypeDefs = require('./Employee/typeDefs');
-const employeeResolvers = require('./Employee/resolvers');
+const userTypeDefs = require('./User/typeDefs');
+const userResolvers = require('./User/resolvers');
 
 // Merge typeDefs and resolvers
-const mergedResolvers = mergeResolvers([carrierResolvers, brokerResolvers, invoiceResolvers, employeeResolvers])
-const mergedTypeDefs = mergeTypeDefs([carrierTypeDefs, brokerTypeDefs, invoiceTypeDefs, employeeTypeDefs])
+const mergedResolvers = mergeResolvers([carrierResolvers, brokerResolvers, invoiceResolvers, userResolvers])
+const mergedTypeDefs = mergeTypeDefs([carrierTypeDefs, brokerTypeDefs, invoiceTypeDefs, userTypeDefs])
 
 module.exports = { resolvers: mergedResolvers, typeDefs: mergedTypeDefs }

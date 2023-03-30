@@ -30,8 +30,8 @@ module.exports = {
         // Return the request object so it can be passed to the resolver as `context`
         return req;
     },
-    signToken: function ({ email, username, _id }) { // Takes in an object with user data.
-        const payload = { email, username, _id };
+    signToken: function ({ email, username, _id, role }) { // Takes in an object with user data.
+        const payload = { email, username, _id, role };
         return jwt.sign({ data: payload }, secret, { expiresIn: expiration }); // Returns a new JWT that includes that data in the payload. 
     },
     // The function uses the jwt.sign method from the jsonwebtoken library to create the token with a data property that includes the user data object, 
