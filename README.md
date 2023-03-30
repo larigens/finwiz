@@ -58,7 +58,6 @@ FinWiz provides a user-friendly interface and powerful reporting tools that allo
 - [Credits](#credits)
   - [Authors](#authors)
   - [Acknowledgements](#acknowledgements)
-  - [Links](#links)
 - [License](#license)
 
 ## Installation
@@ -108,11 +107,15 @@ npm start
 
 ## Questions
 
-For questions and support feel free to contact me via:
+For questions and support feel free to contact us via:
+
+**Larissa Guilherme**
 
 <a href="mailto:larigens@gmail.com">📧 Email </a>
 
-<a href="https://github.com/larigens">🐈‍⬛ GitHub </a>
+**Anastasia Marvova**
+
+<a href="mailto:anastasia19markova@gmail.com">📧 Email </a>
 
 ## Contributing
 
@@ -128,7 +131,17 @@ Our Code of Conduct follows the same principles as the [Contributor Covenant](ht
 
 ### Authors
 
-👩🏻‍💻 <a href="https://github.com/larigens"> Larissa Guilherme </a>
+👩🏻‍💻 **Larissa Guilherme**
+
+[![GitHub](https://img.shields.io/badge/GitHub-000?style=flat&logo=github)](https://github.com/larigens)
+[![Portfolio](https://img.shields.io/badge/portfolio-000?style=flat&logo=ko-fi&logoColor=white)](https://larigens.github.io/reactfolio/)
+[![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lari-gui/)
+
+👩🏻‍💻 **Anastasia Marvova**
+
+[![GitHub](https://img.shields.io/badge/GitHub-000?style=flat&logo=github)](https://github.com/mriya20)
+[![Portfolio](https://img.shields.io/badge/portfolio-000?style=flat&logo=ko-fi&logoColor=white)](https://mriya20.github.io/portfolio/)
+[![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anastasiia-markova200/)
 
 ### Acknowledgements
 
@@ -152,11 +165,7 @@ Our Code of Conduct follows the same principles as the [Contributor Covenant](ht
 - [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
 - [Apollo Client](https://www.apollographql.com/docs/react/)
 - [JSON Web Tokens](https://jwt.io/)
-
-### Links
-
-[![Portfolio](https://img.shields.io/badge/my_portfolio-000?style=flat&logo=ko-fi&logoColor=white)](https://larigens.github.io/reactfolio/)
-[![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lari-gui/)
+- [The Guild - GraphQL Tools](https://the-guild.dev/graphql/tools/docs/schema-merging)
 
 ## License
 

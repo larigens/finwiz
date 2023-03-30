@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const { emailRegex, usernameRegex, passwordRegex, phoneNumberRegex } = require('../utils/validators');
+const { emailRegex, phoneNumberRegex } = require('../utils/validators');
 
 const carrierSchema = new Schema({
     company: {
@@ -29,24 +29,7 @@ const carrierSchema = new Schema({
         unique: true,
         lowercase: true,
         trim: true,
-        match: emailRegex
-    },
-    username: {
-        type: String,
-        required: [true, 'Username is required!'],
-        unique: true,
-        lowercase: true,
-        trim: true,
-        match: usernameRegex,
-        minlength: [6, 'Username must be at least 6 characters long.'],
-        maxlength: [20, 'Username must be no more than 20 characters long.'],
-    },
-    password: {
-        type: String,
-        required: [true, 'Password is required!'],
-        match: passwordRegex,
-        minlength: [8, 'Password must be at least 8 characters long.'],
-        maxlength: [30, 'Password must be no more than 30 characters long.'],
+        match: [emailRegex, 'Must match an email address!'],
     },
     phoneNumber: {
         type: String,

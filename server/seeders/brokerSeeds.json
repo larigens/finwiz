@@ -1,0 +1,52 @@
+[
+    {
+        "name": "ABC Logistics",
+        "mcNumber": 12345,
+        "email": "abclogistics@gmail.com",
+        "phoneNumber": "123-456-7890",
+        "creditScore": 80,
+        "buy": true,
+        "carriers": [],
+        "invoices": []
+    },
+    {
+        "name": "Bestway Freight",
+        "mcNumber": 54321,
+        "email": "bestwayfreight@gmail.com",
+        "phoneNumber": "098-765-4321",
+        "creditScore": 90,
+        "buy": false,
+        "carriers": [],
+        "invoices": []
+    },
+    {
+        "name": "Transit Group",
+        "mcNumber": 98765,
+        "email": "transitgroup@gmail.com",
+        "phoneNumber": "456-789-0123",
+        "creditScore": 75,
+        "buy": true,
+        "carriers": [],
+        "invoices": []
+    },
+    {
+        "name": "J&R Logistics",
+        "mcNumber": 45678,
+        "email": "jrlogistics@gmail.com",
+        "phoneNumber": "321-654-0987",
+        "creditScore": 85,
+        "buy": true,
+        "carriers": [],
+        "invoices": []
+    },
+    {
+        "name": "Xpress Transport",
+        "mcNumber": 87654,
+        "email": "xpresstransport@gmail.com",
+        "phoneNumber": "789-012-3456",
+        "creditScore": 95,
+        "buy": false,
+        "carriers": [],
+        "invoices": []
+    }
+]

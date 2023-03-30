@@ -20,8 +20,6 @@ type Broker {
     buy: Boolean!
     carriers: [Carrier]
     invoices: [Invoice]
-    createdAt: Date!
-    updatedAt: Date!
 }
 
 type Query {

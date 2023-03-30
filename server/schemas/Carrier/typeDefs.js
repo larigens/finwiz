@@ -7,8 +7,6 @@ input CarrierInput {
   firstName: String!,
   lastName: String!,
   email: String!,
-  username: String!,
-  password: String!,
   phoneNumber: String!
 }
 
@@ -19,14 +17,10 @@ type Carrier {
   firstName: String!
   lastName: String!
   email: String!
-  username: String!
-  password: String!
   phoneNumber: String!
   brokers: [Broker]
   invoices: [Invoice]
   fullName: String!
-  createdAt: Date!
-  updatedAt: Date!
 }
 
 type Query {
@@ -36,7 +30,7 @@ type Query {
 
 type Mutation {
     addCarrier(input: CarrierInput!): Carrier!
-    updateCarrier(carrierId: ID!, input: CarrierInput): Carrier!
+    updateCarrier(carrierId: ID!, input: CarrierInput!): Carrier!
     addCarrierBroker(carrierId: ID!, brokerId: ID!): Carrier!
 }
 `;

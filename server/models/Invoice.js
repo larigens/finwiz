@@ -58,8 +58,16 @@ const invoiceSchema = new Schema(
             ref: 'Broker',
             required: true,
         },
-    }
+    }, {
+    toJSON: { virtuals: true },
+    id: false,
+    timestamps: true,
+}
 );
+
+invoiceSchema.virtual('invoiceCount').get(function () {
+    return this.length;
+});
 
 const Invoice = model('Invoice', invoiceSchema);
 

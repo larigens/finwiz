@@ -7,8 +7,8 @@ input InvoiceInput {
   amount: Int!
   paid: Boolean!
   shortPaid: Boolean!
-  carrier: Carrier!
-  broker: Broker!
+  carrier: ID!
+  broker: ID!
 }
 
 type Invoice {
@@ -22,6 +22,7 @@ type Invoice {
   dueDate: String!
   carrier: Carrier!
   broker: Broker!
+  invoiceCount: Int
 }
 
 type Query {

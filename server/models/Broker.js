@@ -19,7 +19,7 @@ const brokerSchema = new Schema({
         required: [true, 'Email is required!'],
         lowercase: true,
         trim: true,
-        match: emailRegex
+        match: [emailRegex, 'Must match an email address!'],
     },
     phoneNumber: {
         type: String,
