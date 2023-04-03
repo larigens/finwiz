@@ -1,9 +1,7 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
-const Home = () => {
+function Home() {
     return (
         <main>
             <Container className="justify-content-start mt-5 pt-5 mb-5 pb-4">
@@ -11,7 +9,7 @@ const Home = () => {
                     <Col md={12} className="ms-5 ps-4">
                         <Row className="justify-content-center align-items-center">
                             <Col md={3} className="text-end">
-                                <img src={avatar} alt="female smiling" className="img-fluid" />
+                                {/* <img src={avatar} alt="finwiz" className="img-fluid" /> */}
                             </Col>
                             <Col md={9} className="align-items-center">
                                 <Row className="me-5">
@@ -25,9 +23,9 @@ const Home = () => {
                                     </p>
                                 </Row>
                                 <Row className="justify-content-start text-justify w-75 mt-5">
-                                    <Button size="lg" className="ms-2 gradient no-border" onClick={handleClick}>
+                                    {/* <Button size="lg" className="ms-2 gradient no-border" onClick={handleClick}>
                                         Read more <FontAwesomeIcon icon={faBookOpen} className="ms-2" />
-                                    </Button>
+                                    </Button> */}
                                 </Row>
                             </Col>
                         </Row>
