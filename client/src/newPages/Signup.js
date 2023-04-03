@@ -2,13 +2,16 @@ import React from "react"
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/esm/Form";
 import Button from "react-bootstrap/esm/Button";
+import Nav from "react-bootstrap/esm/Nav";
+import Navbar from "react-bootstrap/esm/Navbar";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
+import { Link, } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 
-function Login() {
+
+function SignUp() {
+
+
 
     return (
         <div>
@@ -26,13 +29,21 @@ function Login() {
                     </Container>
                 </Navbar>
             </header>
-
             <Container className="small-container">
                 <Helmet>
-                    <title>Login</title>
+                    <title>Sign Up</title>
                 </Helmet>
-                <h1 className="my-5">Login</h1>
+                <h1 className="my-5">Sign Up</h1>
                 <Form>
+                    <Form.Group className="mb-4" controlId="username">
+                        <Form.Control type="text" placeholder="Username" required />
+                    </Form.Group>
+                    <Form.Group className="mb-4" controlId="location">
+                        <Form.Control type="text" placeholder="Location" required />
+                    </Form.Group>
+                    <Form.Group className="mb-4" controlId="occupaiom">
+                        <Form.Control type="text" placeholder="Occupaion" required />
+                    </Form.Group>
                     <Form.Group className="mb-4" controlId="email">
                         <Form.Control type="email" placeholder="Email" required />
                     </Form.Group>
@@ -40,10 +51,10 @@ function Login() {
                         <Form.Control type="password" placeholder="Password" required />
                     </Form.Group>
                     <div className="mb-3 text-center d-grid">
-                        <Button type="submit">LOGIN</Button>
+                        <Button type="submit">Sign Up</Button>
                     </div>
                     <div className="mb-3">
-                        <Link to={`/signup`}>Don't have an account? Sign Up here</Link>
+                        <Link to={`/login`}>Already have an account? Login here</Link>
                     </div>
                 </Form>
             </Container>
@@ -52,4 +63,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default SignUp;
