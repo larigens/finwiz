@@ -1,39 +1,42 @@
 import React from 'react';
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
+import { Link } from "react-router-dom"
 
 function Home() {
     return (
-        <main>
-            <Container className="justify-content-start mt-5 pt-5 mb-5 pb-4">
-                <Row className="justify-content-start mt-3 pt-2">
-                    <Col md={12} className="ms-5 ps-4">
-                        <Row className="justify-content-center align-items-center">
-                            <Col md={3} className="text-end">
-                                {/* <img src={avatar} alt="finwiz" className="img-fluid" /> */}
-                            </Col>
-                            <Col md={9} className="align-items-center">
-                                <Row className="me-5">
-                                    <h1 className="display-5 gradient-text typing fw-light">
-                                        Hi, welcome to <span className="gradient-text heading-font fw-semibold">FinWiz!</span>
-                                    </h1>
-                                </Row>
-                                <Row className="text-justify w-75">
-                                    <p className="light-accent fs-5">
-                                        I am a Financial Wizard.
-                                    </p>
-                                </Row>
-                                <Row className="justify-content-start text-justify w-75 mt-5">
-                                    {/* <Button size="lg" className="ms-2 gradient no-border" onClick={handleClick}>
-                                        Read more <FontAwesomeIcon icon={faBookOpen} className="ms-2" />
-                                    </Button> */}
-                                </Row>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
+        <Container className="home-container">
+            <Container className="left-container">
+                <Container className="logo"><h2>Logo</h2></Container>
+                <Link to='/login'><button>LOGIN</button></Link>
             </Container>
-        </main>
-    );
-};
+            <Container className="right-container">
+                <Container className="top-container">
+                    <Container className="navbar-container">
+                        <Form.Control type='text' placeholder="search" />
+                        <Container className="icon">
+                            <i class="fa-solid fa-ellipsis"></i>
+                            <i class="fa-regular fa-bell"></i>
+                        </Container>
+                    </Container>
+                    <Container className="main-page-content"><h2>Main Page Content</h2></Container>
+                </Container>
+                <Container className="bottom-container">
+                    <Container className="left-text-container">dummy text</Container>
+                    <Container className="Form-container">
+                        <Form action="">
+                            <h3>Contact Us</h3>
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control type='text' placeholder="John Doe" />
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" placeholder="John Doe" />
+                            <Form.Label>Message</Form.Label>
+                            <textarea></textarea>
+                        </Form>
+                    </Container>
+                </Container>
+            </Container>
+        </Container>
+    )
+}
 
-export default Home;
+export default Home
