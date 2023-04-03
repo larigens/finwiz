@@ -1,29 +1,68 @@
 import React from "react"
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import Login from "./newPages/Login";
-import Home from "./newPages/Home";
-import SignUp from "./newPages/SignUp";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
-function App() {
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Login from "./pages/Login";
+import SignUp from "./pages/Signup";
+import Home from "./pages/Home";
 
+// import { Store } from "./Store";
+// import CartScreen from "./screens/CartScreen";
+// import SigninScreen from "./screens/SigninScreen";
+// import HomeScreen from "./screens/HomeScreen";
+// import ProductScreen from "./screens/ProductScreen";
+// import Badge from "react-bootstrap/Badge";
+// import { useContext } from "react";
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  uri: 'graphql',
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+export default function App() {
+  // const {cart} = useContext(Store).state
   return (
-    <BrowserRouter>
-      <div className="site-container">
-
-        <main>
-          <Container className="">
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </Container>
-        </main>
-        <footer className="text-center">All rights reserved</footer>
-      </div>
-    </BrowserRouter>
+    <ApolloProvider client={client}>
+      <Router>
+        <>
+          <Header />
+          <Routes>
+            <Route
+              path='/'
+              element={<Home />}
+            />
+            <Route
+              path='/login'
+              element={<Login />}
+            />
+            <Route
+              path='/signup'
+              element={<SignUp />}
+            />
+          </Routes>
+        </>
+      </Router>
+      <Footer />
+    </ApolloProvider>
   );
 }
-
-export default App;
