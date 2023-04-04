@@ -31,18 +31,15 @@ const resolvers = {
         },
     },
     Mutation: {
-        addUser: async (_, { input }, context) => {
-            if (context.user && context.user.role === 'Admin') {
-                try {
-                    const user = await User.create(input);
-                    const token = signToken(user);
-                    return { token, user };
-                } catch (err) {
-                    console.log(err);
-                    throw new Error('Failed to add user.');
-                }
+        addUser: async (_, { firstName, lastName, username, email, password, role }) => {
+            try {
+                const user = await User.create({ firstName, lastName, username, email, password, role });
+                const token = signToken(user);
+                return { token, user };
+            } catch (err) {
+                console.log(err);
+                throw new Error('Failed to add user.');
             }
-            throw new AuthenticationError('Access denied!');
         },
         loginUser: async (_, { username, password }) => {
             try {
