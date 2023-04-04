@@ -2,20 +2,26 @@
 
 /* Pseudo-class that matches the root element of the document. */
 :root {
-  --dark-shades: #4B0082;
-  --dark-accent: #4169E1;
-  --main-brand: #00FF00;
-  --light-accent: #FFD700;
-  --light-shades: #FFC0CB;
-  --light: #F0E6F0;
-  --gradient: -webkit-linear-gradient(45deg, var(--dark-accent), var(--main-brand), var(--light-accent), var(--main-brand), var(--dark-accent));
-  --gradient-dark: -webkit-linear-gradient(45deg, var(--dark-accent), var(--main-brand), var(--dark-accent), var(--dark-accent));
+  --dark-shades: #2C2E3E;
+  --dark-accent: #3658A7;
+  --main-brand: #3B5BFF;
+  --light-accent: #98B5FF;
+  --light-shades: #F2F3F5;  
+  --light: #e6edf0;
+  --gradient: -webkit-linear-gradient(45deg, var(--light), var(--light-accent), var(--light), var(--light-accent));
+  --gradient-dark: -webkit-linear-gradient(45deg, var(--dark-accent), var(--main-brand), var(--dark-accent), var(--main-brand));
   --heading: 'Italianno', cursive;
   --body: 'Montserrat', sans-serif;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: var(--dark-shades);
+  background-color: var(--dark-accent);
   font-family: var(--body);
 }
 
@@ -24,10 +30,6 @@ html,
 body {
   height: 100% !important;
   margin: 0 !important;
-}
-
-header {
-  box-shadow: 0 3px 6px var(--main-brand);
 }
 
 /* Ensures that the main content takes up at least the full height of the page. */
@@ -89,6 +91,8 @@ textarea:focus {
   color: var(--light-shades) !important;
 }
 
+input::placeholder,
+textarea::placeholder,
 .main-brand {
   color: var(--main-brand) !important;
 }
@@ -172,14 +176,8 @@ input::placeholder {
   border-radius: 100%;
 }
 
-input,
-textarea {
-  border: 2px solid var(--main-brand) !important;
-}
-
 .card {
   border-radius: 20px !important;
-  box-shadow: 0 4px 9px 4px var(--main-brand) !important;
 }
 
 textarea {
@@ -214,4 +212,30 @@ textarea {
   to {
     width: 100%
   }
+}
+
+.left-container {
+  width: 19%;
+  box-shadow: 0 1px 8px var(--dark-shades);
+  z-index: 11;
+}
+
+.right-container {
+  width: calc(80%);
+}
+
+.top-container {
+  /* height: 50%; */
+  background-color: #f8f8fa;
+  padding: 20px;
+}
+
+.main-page-content {
+  color: var(--dark-accent);
+}
+
+.bottom-container {
+  padding: 10px 30px;
+  background-color: var(--light-shades);
+  color: var(--dark-shades);
 }

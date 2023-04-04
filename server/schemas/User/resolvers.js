@@ -44,7 +44,7 @@ const resolvers = {
             }
             throw new AuthenticationError('Access denied!');
         },
-        login: async (_, { username, password }) => {
+        loginUser: async (_, { username, password }) => {
             try {
                 const user = await User.findOne({ username });
 

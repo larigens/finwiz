@@ -43,7 +43,7 @@ input UserInput {
   type Mutation {
     # Set up mutations to handle adding an User or logging into a profile and return Auth type
     addUser(input: UserInput!): Auth
-    login(username: String!, password: String!): Auth
+    loginUser(username: String!, password: String!): Auth
     addUserCarrier(userId: ID!, carrierId: ID!): EmployeeProperty
     updateUser(userId: ID!, input: UserInput!): User!
     removeUser(userId: ID!): User!

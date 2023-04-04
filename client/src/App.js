@@ -1,4 +1,5 @@
-import React from "react"
+import React from "react";
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -17,6 +18,7 @@ import Home from "./pages/Home";
 // import Badge from "react-bootstrap/Badge";
 // import { useContext } from "react";
 
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -34,7 +36,6 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  uri: 'graphql',
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
@@ -44,23 +45,21 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <>
-          <Header />
-          <Routes>
-            <Route
-              path='/'
-              element={<Home />}
-            />
-            <Route
-              path='/login'
-              element={<Login />}
-            />
-            <Route
-              path='/signup'
-              element={<SignUp />}
-            />
-          </Routes>
-        </>
+        <Header />
+        <Routes>
+          <Route
+            path='/'
+            element={<Home />}
+          />
+          <Route
+            path='/login'
+            element={<Login />}
+          />
+          <Route
+            path='/signup'
+            element={<SignUp />}
+          />
+        </Routes>
       </Router>
       <Footer />
     </ApolloProvider>

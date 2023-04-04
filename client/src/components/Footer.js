@@ -15,7 +15,7 @@ export default function Footer() {
         <>
             <footer className="justify-content-center mt-5 mb-2">
                 {/* TODO: add current year function */}
-                <Container className="text-center">
+                <Container className="text-center fw-semibold">
                     <span className="gradient-text" style={styles.span}>&copy;FinWiz. All rights reserved. <FontAwesomeIcon icon={faWandSparkles} className='ms-1'></FontAwesomeIcon></span>
                 </Container>
             </footer>
