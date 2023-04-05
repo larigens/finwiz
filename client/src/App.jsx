@@ -14,14 +14,8 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import SignUp from './pages/Signup';
 import Home from './pages/Home';
+import About from "./pages/About/About";
 
-// import { Store } from './Store';
-// import CartScreen from './screens/CartScreen';
-// import SigninScreen from './screens/SigninScreen';
-// import HomeScreen from './screens/HomeScreen';
-// import ProductScreen from './screens/ProductScreen';
-// import Badge from 'react-bootstrap/Badge';
-// import { useContext } from 'react';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -45,13 +39,13 @@ const client = new ApolloClient({
 });
 
 export default function App() {
-  // const {cart} = useContext(Store).state
   return (
     <ApolloProvider client={client}>
       <Router>
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
