@@ -16,6 +16,9 @@ export default function Header() {
                         <Navbar.Collapse id="navbar-nav">
                             {/* Added the ms-auto class to the Nav component to align the login link to the right on small screens */}
                             <Nav className="ms-auto">
+                                <Link to="/About_us" className="nav-link light">
+                                    About Us
+                                </Link>
                                 <Link to="/reports" className="nav-link light">
                                     Reports
                                 </Link>

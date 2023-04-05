@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
 import Home from "./pages/Home";
+import About_us from "./pages/About_us/About_us";
 
 // import { Store } from "./Store";
 // import CartScreen from "./screens/CartScreen";
@@ -58,6 +59,10 @@ export default function App() {
           <Route
             path='/signup'
             element={<SignUp />}
+          />
+          <Route
+            path='/About_us'
+            element={<About_us />}
           />
         </Routes>
       </Router>
