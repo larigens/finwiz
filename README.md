@@ -1,21 +1,21 @@
-<h1 align="center"> FinWiz </h1>
+<h1 align='center'> FinWiz </h1>
 
-<p align="center">
-    <img src="./client/public/images/logo.png" alt="logo" width="120px" height="120px" />
+<p align='center'>
+    <img src='./client/public/images/logo.png' alt='logo' width='120px' height='120px' />
   <br><br>
   <i> Factoring software designed to
     <br> simplify the management of accounts receivables and payables </i>
   <br>
 </p>
 
-<p align="center">
-  <a href="/"><strong> FinWiz Official Site </strong></a>
+<p align='center'>
+  <a href='/'><strong> FinWiz Official Site </strong></a>
   <br>
 </p>
 
 <br>
 
-<div align="center">
+<div align='center'>
 
 ![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-ff69b4.svg)
 ![Contributors](https://img.shields.io/github/contributors/larigens/finwiz?style=plastic&color=ff69b4)
@@ -23,7 +23,7 @@
 
 </div>
 
-<div align="center">
+<div align='center'>
 
 ![GraphQL](https://img.shields.io/badge/GraphQL-E10098?logo=graphql)
 ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=white)
@@ -84,15 +84,15 @@ Once you run this, npm will begin the installation process of all of the current
 
 The following images shows the web application's appearance:
 
-<div align="center">
+<div align='center'>
 
-<img src="./client/public/images/demo1.png" alt="App Screenshot" width="530px" height="280px" />
+<img src='./client/public/images/demo1.png' alt='App Screenshot' width='530px' height='280px' />
 
-<img src="./client/public/images/demo2.png" alt="App Screenshot" width="530px" height="280px" />
+<img src='./client/public/images/demo2.png' alt='App Screenshot' width='530px' height='280px' />
 
-<img src="./client/public/images/demo3.png" alt="App Screenshot" width="530px" height="280px" />
+<img src='./client/public/images/demo3.png' alt='App Screenshot' width='530px' height='280px' />
 
-<img src="./client/public/images/demo4.png" alt="App Screenshot" width="530px" height="280px" />
+<img src='./client/public/images/demo4.png' alt='App Screenshot' width='530px' height='280px' />
 
 </div>
 
@@ -111,11 +111,11 @@ For questions and support feel free to contact us via:
 
 **Larissa Guilherme**
 
-<a href="mailto:larigens@gmail.com">📧 Email </a>
+<a href='mailto:larigens@gmail.com'>📧 Email </a>
 
 **Anastasia Marvova**
 
-<a href="mailto:anastasia19markova@gmail.com">📧 Email </a>
+<a href='mailto:anastasia19markova@gmail.com'>📧 Email </a>
 
 ## Contributing
 

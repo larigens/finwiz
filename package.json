@@ -4,14 +4,17 @@
   "description": "Financial Wizard",
   "main": "server/server.js",
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "prettier": "^2.8.7"
   },
   "scripts": {
     "start": "node server/server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "lint": "cd client && npx eslint **/*.jsx",
+    "prettier": "npx prettier --write 'client/src/**/*.jsx'"
   },
   "repository": {
     "type": "git",
@@ -34,9 +37,9 @@
   },
   "homepage": "https://github.com/larigens/finwiz#readme",
   "dependencies": {
-    "dotenv": "^16.0.3",
-    "mongodb": "^5.1.0",
     "@graphql-tools/merge": "^8.4.0",
-    "graphql": "^16.6.0"
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "mongodb": "^5.1.0"
   }
 }

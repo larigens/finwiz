@@ -2,14 +2,26 @@
 
 /* Pseudo-class that matches the root element of the document. */
 :root {
-  --dark-shades: #2C2E3E;
-  --dark-accent: #3658A7;
-  --main-brand: #3B5BFF;
-  --light-accent: #98B5FF;
-  --light-shades: #F2F3F5;  
+  --dark-shades: #2c2e3e;
+  --dark-accent: #3658a7;
+  --main-brand: #3b5bff;
+  --light-accent: #98b5ff;
+  --light-shades: #f2f3f5;
   --light: #e6edf0;
-  --gradient: -webkit-linear-gradient(45deg, var(--light), var(--light-accent), var(--light), var(--light-accent));
-  --gradient-dark: -webkit-linear-gradient(45deg, var(--dark-accent), var(--main-brand), var(--dark-accent), var(--main-brand));
+  --gradient: -webkit-linear-gradient(
+    45deg,
+    var(--light),
+    var(--light-accent),
+    var(--light),
+    var(--light-accent)
+  );
+  --gradient-dark: -webkit-linear-gradient(
+    45deg,
+    var(--dark-accent),
+    var(--main-brand),
+    var(--dark-accent),
+    var(--main-brand)
+  );
   --heading: 'Italianno', cursive;
   --body: 'Montserrat', sans-serif;
 }
@@ -75,14 +87,16 @@ footer {
   color: var(--dark-shades) !important;
 }
 
-.dark-accent,
-input,
-input:focus,
-textarea,
-textarea:focus {
+input::placeholder,
+textarea::placeholder,
+.dark-accent {
   color: var(--dark-accent) !important;
 }
 
+input,
+input:focus,
+textarea,
+textarea:focus,
 .light-accent {
   color: var(--light-accent) !important;
 }
@@ -91,8 +105,6 @@ textarea:focus {
   color: var(--light-shades) !important;
 }
 
-input::placeholder,
-textarea::placeholder,
 .main-brand {
   color: var(--main-brand) !important;
 }
@@ -197,8 +209,7 @@ textarea {
 /* Animation */
 .typing {
   /* Typing effect */
-  animation:
-    typing 4s steps(50, end);
+  animation: typing 4s steps(50, end);
   /* Right and left margins need to be auto to move text while animation is on */
   margin: 0 auto 36px auto !important;
 }
@@ -206,11 +217,11 @@ textarea {
 /* Controls the intermediate steps in the animation sequence */
 @keyframes typing {
   from {
-    width: 0
+    width: 0;
   }
 
   to {
-    width: 100%
+    width: 100%;
   }
 }
 
