@@ -72,29 +72,22 @@ function Login() {
         <title>Login</title>
       </Helmet>
       <Box
-        as='form'
+        as="form"
         noValidate
         validated={validated.toString()} // convert validated state to a string
         onSubmit={handleFormSubmit}
         py={{ base: 8, md: 16 }}
         px={{ base: 2, md: 4 }}
         bg={useColorModeValue('white', 'gray.900')}
-        rounded='md'
-        boxShadow='md'
+        rounded="md"
+        boxShadow="md"
       >
         {/* show alert if server response is bad */}
-        <Heading as="h1" size="xl" textAlign="center" color='brand.800'>
+        <Heading as="h1" size="xl" textAlign="center" color="brand.800">
           Login
         </Heading>
         {showAlert && (
-          <Box
-            mt={2}
-            px={3}
-            py={2}
-            bg="red.50"
-            color="red.500"
-            rounded="md"
-          >
+          <Box mt={2} px={3} py={2} bg="red.50" color="red.500" rounded="md">
             Something went wrong with your signup!
           </Box>
         )}
@@ -110,23 +103,31 @@ function Login() {
           <FormErrorMessage>Username is required!</FormErrorMessage>
         </FormControl>
         <FormControl isRequired mt={4}>
-          <FormLabel htmlFor='password'>Password</FormLabel>
-          <InputGroup size='md'>
+          <FormLabel htmlFor="password">Password</FormLabel>
+          <InputGroup size="md">
             <Input
               type={show ? 'text' : 'password'}
-              id='password'
-              placeholder='Password'
-              name='password'
+              id="password"
+              placeholder="Password"
+              name="password"
               onChange={handleInputChange}
               value={userFormData.password}
             />
-            <InputRightElement width='4.5rem'>
-              <Button h='1.75rem' size='sm' onClick={handleClick} bg="brand.600">
+            <InputRightElement width="4.5rem">
+              <Button
+                h="1.75rem"
+                size="sm"
+                onClick={handleClick}
+                bg="brand.600"
+              >
                 {show ? 'Hide' : 'Show'}
               </Button>
             </InputRightElement>
           </InputGroup>
-          <FormErrorMessage><WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon> Password is required!</FormErrorMessage>
+          <FormErrorMessage>
+            <WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon>{' '}
+            Password is required!
+          </FormErrorMessage>
         </FormControl>
         <Container className="text-center" mt={10} mb={3}>
           <Button bg="brand.600" onClick={handleFormSubmit}>
@@ -134,7 +135,9 @@ function Login() {
           </Button>
         </Container>
         <Container className="text-center" mb={3}>
-          <Link to="/signup" color="brand.600">Don't have an account? Sign Up here</Link>
+          <Link to="/signup" color="brand.600">
+            Don't have an account? Sign Up here
+          </Link>
         </Container>
       </Box>
       {error && (

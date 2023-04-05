@@ -2,6 +2,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import {
   Flex,
+  Button,
   Heading,
   IconButton,
   Link,
@@ -11,8 +12,13 @@ import {
   TabList,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import Auth from '../utils/auth';
 
 export default function Header() {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
   return (
     <header>
       <Flex
@@ -25,7 +31,14 @@ export default function Header() {
         borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
       >
         <Link as={RouterLink} to="/">
-          <Heading as="h1" size="xl" fontWeight="bold" m={0} color='brand.800' _hover={{ color: 'brand.600' }}>
+          <Heading
+            as="h1"
+            size="xl"
+            fontWeight="bold"
+            m={0}
+            color="brand.800"
+            _hover={{ color: 'brand.600' }}
+          >
             FinWiz
           </Heading>
         </Link>
@@ -43,9 +56,20 @@ export default function Header() {
           mt={{ base: 2, lg: 0 }}
           w={{ base: 'full', lg: 'auto' }}
         >
-          <Tabs variant='unstyled'>
+          <Tabs variant="unstyled">
             <TabList>
-              <Tab _selected={{ color: 'brand.900', bg: 'brand.400', borderRadius: '2xl' }} _active={{ color: 'brand.900', bg: 'brand.400', borderRadius: '2xl' }}>
+              <Tab
+                _selected={{
+                  color: 'brand.900',
+                  bg: 'brand.400',
+                  borderRadius: '2xl',
+                }}
+                _active={{
+                  color: 'brand.900',
+                  bg: 'brand.400',
+                  borderRadius: '2xl',
+                }}
+              >
                 <Link
                   as={RouterLink}
                   to="/about"
@@ -56,15 +80,39 @@ export default function Header() {
                   About us
                 </Link>
               </Tab>
-              <Tab _selected={{ color: 'brand.900', bg: 'brand.400', borderRadius: '2xl' }} _active={{ color: 'brand.900', bg: 'brand.400', borderRadius: '2xl' }}>
-                <Link
-                  as={RouterLink}
-                  to="/login"
-                  color={useColorModeValue('brand.800', 'brand.900')}
+              {Auth.loggedIn() ? (
+                <Button
+                  onClick={logout}
+                  color={useColorModeValue('brand.600', 'brand.700')}
+                  bg='white'
+                  _hover={{ color: 'brand.800' }}
+                  borderRadius='2xl'
                 >
-                  Login
-                </Link>
-              </Tab>
+                  Logout
+                </Button>
+              ) : (
+                <Tab
+                  _selected={{
+                    color: 'brand.900',
+                    bg: 'brand.400',
+                    borderRadius: '2xl',
+                  }}
+                  _active={{
+                    color: 'brand.900',
+                    bg: 'brand.400',
+                    borderRadius: '2xl',
+                  }}
+                >
+                  <Link
+                    as={RouterLink}
+                    to="/login"
+                    color={useColorModeValue('brand.800', 'brand.900')}
+                  >
+                    Login
+                  </Link>
+                </Tab>
+              )
+              }
             </TabList>
           </Tabs>
         </Flex>

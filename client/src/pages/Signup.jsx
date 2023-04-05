@@ -6,6 +6,7 @@ import {
   FormControl,
   Select,
   FormErrorMessage,
+  FormHelperText,
   FormLabel,
   Heading,
   Input,
@@ -15,14 +16,18 @@ import {
   Stack,
   Text,
   useColorModeValue,
-  Divider
+  Divider,
 } from '@chakra-ui/react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import { WarningTwoIcon } from '@chakra-ui/icons';
-import { MdOutlineDriveFileRenameOutline, MdPassword, MdOutlineAdminPanelSettings } from 'react-icons/md';
+import {
+  MdOutlineDriveFileRenameOutline,
+  MdPassword,
+  MdOutlineAdminPanelSettings,
+} from 'react-icons/md';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BiUserCircle } from 'react-icons/bi';
 
@@ -91,30 +96,23 @@ const SignUp = () => {
       </Helmet>
       {/* This is needed for the validation functionality above */}
       <Box
-        as='form'
+        as="form"
         noValidate
         validated={validated.toString()} // convert validated state to a string
         onSubmit={handleFormSubmit}
         py={{ base: 8, md: 16 }}
         px={{ base: 2, md: 4 }}
         bg={useColorModeValue('white', 'gray.900')}
-        rounded='md'
-        boxShadow='md'
+        rounded="md"
+        boxShadow="md"
       >
-        <Stack spacing={{ base: 4, md: 6 }} >
+        <Stack spacing={{ base: 4, md: 6 }}>
           {/* show alert if server response is bad */}
-          <Heading as="h1" size="xl" textAlign="center" color='brand.800'>
+          <Heading as="h1" size="xl" textAlign="center" color="brand.800">
             Sign Up
           </Heading>
           {showAlert && (
-            <Box
-              mt={2}
-              px={3}
-              py={2}
-              bg="red.50"
-              color="red.500"
-              rounded="md"
-            >
+            <Box mt={2} px={3} py={2} bg="red.50" color="red.500" rounded="md">
               Something went wrong with your signup!
             </Box>
           )}
@@ -122,8 +120,8 @@ const SignUp = () => {
             <FormLabel htmlFor="firstName">First Name</FormLabel>
             <InputGroup>
               <InputLeftElement
-                pointerEvents='none'
-                children={<MdOutlineDriveFileRenameOutline color='gray.300' />}
+                pointerEvents="none"
+                children={<MdOutlineDriveFileRenameOutline color="gray.300" />}
               />
               <Input
                 type="text"
@@ -134,86 +132,109 @@ const SignUp = () => {
                 onChange={handleInputChange}
               />
             </InputGroup>
-            <FormErrorMessage><WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon> First Name is required!</FormErrorMessage>
+            <FormErrorMessage>
+              <WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon>{' '}
+              First Name is required!
+            </FormErrorMessage>
           </FormControl>
 
           <FormControl isRequired>
             <FormLabel>Last Name</FormLabel>
             <InputGroup>
               <InputLeftElement
-                pointerEvents='none'
-                children={<MdOutlineDriveFileRenameOutline color='gray.300' />}
+                pointerEvents="none"
+                children={<MdOutlineDriveFileRenameOutline color="gray.300" />}
               />
               <Input
-                type='text'
-                placeholder='Last Name'
-                name='lastName'
+                type="text"
+                placeholder="Last Name"
+                name="lastName"
                 onChange={handleInputChange}
                 value={userFormData.lastName}
               />
             </InputGroup>
-            <FormErrorMessage><WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon> Last Name is required!</FormErrorMessage>
+            <FormErrorMessage>
+              <WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon> Last
+              Name is required!
+            </FormErrorMessage>
           </FormControl>
 
           <FormControl isRequired>
             <FormLabel>Username</FormLabel>
             <InputGroup>
               <InputLeftElement
-                pointerEvents='none'
-                children={<BiUserCircle color='gray.300' />}
+                pointerEvents="none"
+                children={<BiUserCircle color="gray.300" />}
               />
               <Input
-                type='text'
-                placeholder='Username'
-                name='username'
+                type="text"
+                placeholder="Username"
+                name="username"
                 onChange={handleInputChange}
                 value={userFormData.username}
               />
             </InputGroup>
-            <FormErrorMessage><WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon> Username is required!</FormErrorMessage>
+            <FormErrorMessage>
+              <WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon>{' '}
+              Username is required!
+            </FormErrorMessage>
           </FormControl>
 
           <FormControl isRequired>
-            <FormLabel htmlFor='email'>Email</FormLabel>
+            <FormLabel htmlFor="email">Email</FormLabel>
             <InputGroup>
               <InputLeftElement
-                pointerEvents='none'
-                children={<AiOutlineMail color='gray.300' />}
+                pointerEvents="none"
+                children={<AiOutlineMail color="gray.300" />}
               />
               <Input
-                type='email'
-                id='email'
-                placeholder='Email'
-                name='email'
+                type="email"
+                id="email"
+                placeholder="Email"
+                name="email"
                 onChange={handleInputChange}
                 value={userFormData.email}
               />
             </InputGroup>
-            <FormErrorMessage><WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon> Email is required!</FormErrorMessage>
+            <FormErrorMessage>
+              <WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon>{' '}
+              Email is required!
+            </FormErrorMessage>
           </FormControl>
 
           <FormControl isRequired>
-            <FormLabel htmlFor='password'>Password</FormLabel>
-            <InputGroup size='md'>
+            <FormLabel htmlFor="password">Password</FormLabel>
+            <InputGroup size="md">
               <InputLeftElement
-                pointerEvents='none'
-                children={<MdPassword color='gray.300' />}
+                pointerEvents="none"
+                children={<MdPassword color="gray.300" />}
               />
               <Input
                 type={show ? 'text' : 'password'}
-                id='password'
-                placeholder='Password'
-                name='password'
+                id="password"
+                placeholder="Password"
+                name="password"
                 onChange={handleInputChange}
                 value={userFormData.password}
               />
-              <InputRightElement width='4.5rem'>
-                <Button h='1.75rem' size='sm' onClick={handleClick} bg="brand.600">
+              <InputRightElement width="4.5rem">
+                <Button
+                  h="1.75rem"
+                  size="sm"
+                  onClick={handleClick}
+                  bg="brand.600"
+                >
                   {show ? 'Hide' : 'Show'}
                 </Button>
               </InputRightElement>
             </InputGroup>
-            <FormErrorMessage><WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon> Password is required!</FormErrorMessage>
+            <FormHelperText color='brand.600' size='sm'>
+              Must contain at least 1 digit, 1 lowercase letter, 1 uppercase letter, and 1 special character!
+            </FormHelperText>
+            <FormErrorMessage>
+              <WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon>{' '}
+              Password is required!
+            </FormErrorMessage>
           </FormControl>
 
           <FormControl isRequired mb={5} pb={5}>
@@ -226,7 +247,7 @@ const SignUp = () => {
               value={userFormData.role}
               isRequired
               icon={<MdOutlineAdminPanelSettings />}
-              cursor='pointer'
+              cursor="pointer"
             >
               <option value="admin">Admin</option>
               <option value="employee">Employee</option>
@@ -236,8 +257,8 @@ const SignUp = () => {
 
           <FormControl mb={5} pb={5}>
             <Button
-              type='submit'
-              variant='solid'
+              type="submit"
+              variant="solid"
               bg="brand.600"
               mt={5}
               ms={1}
@@ -255,14 +276,16 @@ const SignUp = () => {
               Submit
             </Button>
           </FormControl>
-          <Divider orientation='horizontal' />
+          <Divider orientation="horizontal" />
           <Text mt={3}>
-            <Link to='/login' color='brand.600'>Already have an account? Login here</Link>
+            <Link to="/login" color="brand.600">
+              Already have an account? Login here
+            </Link>
           </Text>
         </Stack>
       </Box>
       {error && (
-        <Container mt={3} p={3} bg='red.500' color='white'>
+        <Container mt={3} p={3} bg="red.500" color="white">
           {error.message}
         </Container>
       )}

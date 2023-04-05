@@ -14,8 +14,7 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import SignUp from './pages/Signup';
 import Home from './pages/Home';
-import About from "./pages/About/About";
-
+import About from './pages/About/About';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
