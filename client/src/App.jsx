@@ -12,9 +12,10 @@ import { setContext } from '@apollo/client/link/context';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './pages/Login';
-import SignUp from './pages/Signup';
+import Market from './pages/Market/Market';
 import Home from './pages/Home';
 import About from './pages/About/About';
+import Signup from './pages/Signup';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -45,8 +46,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/market" element={<Market />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </Router>
       <Footer />

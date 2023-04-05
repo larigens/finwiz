@@ -80,13 +80,35 @@ export default function Header() {
                   About us
                 </Link>
               </Tab>
+              <Tab
+                _selected={{
+                  color: 'brand.900',
+                  bg: 'brand.400',
+                  borderRadius: '2xl',
+                }}
+                _active={{
+                  color: 'brand.900',
+                  bg: 'brand.400',
+                  borderRadius: '2xl',
+                }}
+              >
+                <Link
+                  as={RouterLink}
+                  to="/market"
+                  mr={{ base: 0, lg: 6 }}
+                  mb={{ base: 2, lg: 0 }}
+                  color={useColorModeValue('brand.800', 'brand.900')}
+                >
+                  WizMarket
+                </Link>
+              </Tab>
               {Auth.loggedIn() ? (
                 <Button
                   onClick={logout}
                   color={useColorModeValue('brand.600', 'brand.700')}
-                  bg='white'
+                  bg="white"
                   _hover={{ color: 'brand.800' }}
-                  borderRadius='2xl'
+                  borderRadius="2xl"
                 >
                   Logout
                 </Button>
@@ -111,8 +133,7 @@ export default function Header() {
                     Login
                   </Link>
                 </Tab>
-              )
-              }
+              )}
             </TabList>
           </Tabs>
         </Flex>
