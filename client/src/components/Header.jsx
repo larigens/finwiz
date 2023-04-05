@@ -48,12 +48,12 @@ export default function Header() {
               <Tab _selected={{ color: 'brand.900', bg: 'brand.400', borderRadius: '2xl' }} _active={{ color: 'brand.900', bg: 'brand.400', borderRadius: '2xl' }}>
                 <Link
                   as={RouterLink}
-                  to="/reports"
+                  to="/about"
                   mr={{ base: 0, lg: 6 }}
                   mb={{ base: 2, lg: 0 }}
                   color={useColorModeValue('brand.800', 'brand.900')}
                 >
-                  Reports
+                  About us
                 </Link>
               </Tab>
               <Tab _selected={{ color: 'brand.900', bg: 'brand.400', borderRadius: '2xl' }} _active={{ color: 'brand.900', bg: 'brand.400', borderRadius: '2xl' }}>
