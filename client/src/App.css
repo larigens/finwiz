@@ -4,20 +4,19 @@
 :root {
   --dark-shades: #2c2e3e;
   --dark-accent: #3658a7;
-  --main-brand: #3b5bff;
+  --main-brand: #6f92fc;
   --light-accent: #98b5ff;
   --light-shades: #f2f3f5;
   --light: #e6edf0;
   --gradient: -webkit-linear-gradient(
-    45deg,
-    var(--light),
-    var(--light-accent),
-    var(--light),
+    bottom,
+    var(--dark-accent),
+    var(--main-brand),
+    var(--dark-accent),
     var(--light-accent)
   );
   --gradient-dark: -webkit-linear-gradient(
     45deg,
-    var(--dark-accent),
     var(--main-brand),
     var(--dark-accent),
     var(--main-brand)
@@ -33,7 +32,7 @@
 }
 
 body {
-  background-color: var(--dark-accent);
+  background-color: var(--light-accent) !important;
   font-family: var(--body);
 }
 
@@ -46,6 +45,7 @@ body {
 
 /* Ensures that the main content takes up at least the full height of the page. */
 .main {
+  background-color: var(--light-accent) !important;
   min-height: calc(100%-5em) !important;
   /* 5em is the height of the footer */
   margin-bottom: 10rem;
@@ -63,6 +63,11 @@ footer {
 
 .background-main {
   background: var(--main-brand) !important;
+}
+
+header,
+.background-dark {
+  background: var(--dark-accent) !important;
 }
 
 /* Displays smooth transitions between the three specified colors - The linear gradient goes diagonally as defined by the 45 degrees */
@@ -93,14 +98,14 @@ textarea::placeholder,
   color: var(--dark-accent) !important;
 }
 
-input,
-input:focus,
-textarea,
-textarea:focus,
 .light-accent {
   color: var(--light-accent) !important;
 }
 
+input,
+input:focus,
+textarea,
+textarea:focus,
 .light-shades {
   color: var(--light-shades) !important;
 }
@@ -113,8 +118,10 @@ textarea:focus,
   color: var(--light) !important;
 }
 
+.gradient-hv:hover {
+  color: var(--light-shades);
+}
 /* When hovering, the link color will change to smooth transitions between the three specified colors */
-.gradient-hv:hover,
 .gradient-text {
   background: var(--gradient);
   /* Need to set that is a text you are removing the background / color or the gradient won't work */
@@ -145,6 +152,10 @@ li {
 
 .fs-medium {
   font-size: 18px;
+}
+
+.fs-heading {
+  font-size: 44px !important;
 }
 
 input::placeholder {
@@ -198,6 +209,12 @@ textarea {
   /* Any line breaks or multiple spaces that were entered in the textarea will be preserved and displayed */
 }
 
+input,
+textarea,
+select {
+  border: 1px solid var(--main-brand) !important;
+}
+
 .typing,
 .typing-slow {
   /* To keep in the same line */
@@ -223,30 +240,4 @@ textarea {
   to {
     width: 100%;
   }
-}
-
-.left-container {
-  width: 19%;
-  box-shadow: 0 1px 8px var(--dark-shades);
-  z-index: 11;
-}
-
-.right-container {
-  width: calc(80%);
-}
-
-.top-container {
-  /* height: 50%; */
-  background-color: #f8f8fa;
-  padding: 20px;
-}
-
-.main-page-content {
-  color: var(--dark-accent);
-}
-
-.bottom-container {
-  padding: 10px 30px;
-  background-color: var(--light-shades);
-  color: var(--dark-shades);
 }

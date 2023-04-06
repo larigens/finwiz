@@ -6,7 +6,6 @@ import {
   Heading,
   IconButton,
   Link,
-  useColorModeValue,
   Tabs,
   Tab,
   TabList,
@@ -21,24 +20,9 @@ export default function Header() {
   };
   return (
     <header>
-      <Flex
-        as="nav"
-        align="center"
-        justify="space-between"
-        py={3}
-        px={4}
-        borderBottom="1px"
-        borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-      >
+      <Flex as="nav" align="center" justify="space-between" py={3} px={4}>
         <Link as={RouterLink} to="/">
-          <Heading
-            as="h1"
-            size="xl"
-            fontWeight="bold"
-            m={0}
-            color="brand.800"
-            _hover={{ color: 'brand.600' }}
-          >
+          <Heading as="h1" size="xl" fontWeight="bold" m={1} color="brand.500">
             FinWiz
           </Heading>
         </Link>
@@ -57,47 +41,75 @@ export default function Header() {
           w={{ base: 'full', lg: 'auto' }}
         >
           <Tabs variant="unstyled">
-            <TabList>
+            <TabList justifyContent="space-between" mx={4}>
               <Tab
+                textAlign="center"
+                borderRadius="full"
+                me={4}
                 _selected={{
-                  color: 'brand.900',
-                  bg: 'brand.400',
-                  borderRadius: '2xl',
+                  bg: 'brand.700',
+                  borderRadius: 'full',
+                  px: 2,
                 }}
                 _active={{
-                  color: 'brand.900',
-                  bg: 'brand.400',
-                  borderRadius: '2xl',
+                  bg: 'brand.700',
+                  borderRadius: 'full',
+                  px: 2,
+                }}
+                _hover={{
+                  bg: 'brand.700',
+                  borderRadius: 'full',
+                  px: 2,
                 }}
               >
                 <Link
                   as={RouterLink}
-                  to="/about"
-                  mr={{ base: 0, lg: 6 }}
-                  mb={{ base: 2, lg: 0 }}
-                  color={useColorModeValue('brand.800', 'brand.900')}
+                  to="/"
+                  color="brand.500"
+                  className="fs-medium"
+                  px="2"
+                  _hover={{
+                    color: 'brand.400',
+                    bg: 'brand.700',
+                    borderRadius: 'full',
+                    px: '2',
+                  }}
                 >
                   About us
                 </Link>
               </Tab>
               <Tab
+                textAlign="center"
+                borderRadius="full"
+                me={4}
                 _selected={{
-                  color: 'brand.900',
-                  bg: 'brand.400',
-                  borderRadius: '2xl',
+                  bg: 'brand.700',
+                  borderRadius: 'full',
+                  px: 2,
                 }}
                 _active={{
-                  color: 'brand.900',
-                  bg: 'brand.400',
-                  borderRadius: '2xl',
+                  bg: 'brand.700',
+                  borderRadius: 'full',
+                  px: 2,
+                }}
+                _hover={{
+                  bg: 'brand.700',
+                  borderRadius: 'full',
+                  px: 2,
                 }}
               >
                 <Link
                   as={RouterLink}
                   to="/market"
-                  mr={{ base: 0, lg: 6 }}
-                  mb={{ base: 2, lg: 0 }}
-                  color={useColorModeValue('brand.800', 'brand.900')}
+                  color="brand.500"
+                  className="fs-medium"
+                  px="2"
+                  _hover={{
+                    color: 'brand.400',
+                    bg: 'brand.700',
+                    borderRadius: 'full',
+                    px: '2',
+                  }}
                 >
                   WizMarket
                 </Link>
@@ -105,30 +117,50 @@ export default function Header() {
               {Auth.loggedIn() ? (
                 <Button
                   onClick={logout}
-                  color={useColorModeValue('brand.600', 'brand.700')}
-                  bg="white"
-                  _hover={{ color: 'brand.800' }}
-                  borderRadius="2xl"
+                  variant="ghost"
+                  color="brand.500"
+                  _hover={{ bg: 'brand.700', color: 'brand.400' }}
+                  bg="brand.800"
+                  borderRadius="full"
                 >
                   Logout
                 </Button>
               ) : (
                 <Tab
+                  textAlign="center"
+                  borderRadius="full"
+                  me={4}
                   _selected={{
-                    color: 'brand.900',
-                    bg: 'brand.400',
-                    borderRadius: '2xl',
+                    color: 'brand.800',
+                    bg: 'brand.700',
+                    borderRadius: 'full',
+                    px: 2,
                   }}
                   _active={{
-                    color: 'brand.900',
-                    bg: 'brand.400',
-                    borderRadius: '2xl',
+                    color: 'brand.800',
+                    bg: 'brand.700',
+                    borderRadius: 'full',
+                    px: 2,
+                  }}
+                  _hover={{
+                    color: 'brand.800',
+                    bg: 'brand.700',
+                    borderRadius: 'full',
+                    px: 2,
                   }}
                 >
                   <Link
                     as={RouterLink}
                     to="/login"
-                    color={useColorModeValue('brand.800', 'brand.900')}
+                    color="brand.500"
+                    className="fs-medium"
+                    px="2"
+                    _hover={{
+                      color: 'brand.400',
+                      bg: 'brand.700',
+                      borderRadius: 'full',
+                      px: '2',
+                    }}
                   >
                     Login
                   </Link>

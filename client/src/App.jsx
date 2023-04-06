@@ -14,7 +14,6 @@ import Footer from './components/Footer';
 import Login from './pages/Login';
 import Market from './pages/Market/Market';
 import Home from './pages/Home';
-import About from './pages/About/About';
 import Signup from './pages/Signup';
 
 const httpLink = createHttpLink({
@@ -45,7 +44,6 @@ export default function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
           <Route path="/market" element={<Market />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />

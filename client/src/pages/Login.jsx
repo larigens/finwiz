@@ -12,7 +12,6 @@ import {
   FormErrorMessage,
   Button,
   Heading,
-  useColorModeValue,
 } from '@chakra-ui/react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
@@ -67,7 +66,7 @@ function Login() {
   };
 
   return (
-    <Box px={10} mx={10} py={5}>
+    <Box px={10} mx={10} py={5} bg="brand.600">
       <Helmet>
         <title>Login</title>
       </Helmet>
@@ -76,14 +75,15 @@ function Login() {
         noValidate
         validated={validated.toString()} // convert validated state to a string
         onSubmit={handleFormSubmit}
-        py={{ base: 8, md: 16 }}
-        px={{ base: 2, md: 4 }}
-        bg={useColorModeValue('white', 'gray.900')}
-        rounded="md"
+        py={{ base: 6, md: 10 }}
+        px={{ base: 2, md: 6 }}
+        rounded="2xl"
         boxShadow="md"
+        bg="brand.800"
+        textAlign="center"
       >
         {/* show alert if server response is bad */}
-        <Heading as="h1" size="xl" textAlign="center" color="brand.800">
+        <Heading as="h1" size="xl" textAlign="center" color="brand.500">
           Login
         </Heading>
         {showAlert && (
@@ -92,7 +92,9 @@ function Login() {
           </Box>
         )}
         <FormControl isRequired>
-          <FormLabel htmlFor="username">Username</FormLabel>
+          <FormLabel htmlFor="username" color="brand.500">
+            Username
+          </FormLabel>
           <Input
             type="text"
             placeholder="Username"
@@ -103,7 +105,9 @@ function Login() {
           <FormErrorMessage>Username is required!</FormErrorMessage>
         </FormControl>
         <FormControl isRequired mt={4}>
-          <FormLabel htmlFor="password">Password</FormLabel>
+          <FormLabel htmlFor="password" color="brand.500">
+            Password
+          </FormLabel>
           <InputGroup size="md">
             <Input
               type={show ? 'text' : 'password'}
@@ -119,6 +123,8 @@ function Login() {
                 size="sm"
                 onClick={handleClick}
                 bg="brand.600"
+                color="brand.500"
+                _hover={{ bg: 'brand.500', color: 'brand.700' }}
               >
                 {show ? 'Hide' : 'Show'}
               </Button>
@@ -130,12 +136,17 @@ function Login() {
           </FormErrorMessage>
         </FormControl>
         <Container className="text-center" mt={10} mb={3}>
-          <Button bg="brand.600" onClick={handleFormSubmit}>
+          <Button
+            bg="brand.600"
+            color="brand.500"
+            _hover={{ bg: 'brand.500', color: 'brand.600' }}
+            onClick={handleFormSubmit}
+          >
             Submit
           </Button>
         </Container>
-        <Container className="text-center" mb={3}>
-          <Link to="/signup" color="brand.600">
+        <Container className="text-center" mb={3} color="brand.600">
+          <Link to="/signup" color="brand.600" className="gradient-hv">
             Don't have an account? Sign Up here
           </Link>
         </Container>
