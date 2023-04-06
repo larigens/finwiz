@@ -15,8 +15,8 @@ function Dashboard() {
       <Helmet>
         <title>Dashboard</title>
       </Helmet>
-      <Stack spacing="6" bg="brand.600">
-        <Card>
+      <Stack spacing="6" bg="brand.600" mt={8}>
+        <Card bg='brand.800' color='brand.500' p={1} m={3} borderRadius='2xl'>
           <CardHeader>
             <Heading size="md">Client Report</Heading>
           </CardHeader>

@@ -64,42 +64,6 @@ export default function Header() {
               >
                 <Link
                   as={RouterLink}
-                  to="/"
-                  color="brand.500"
-                  className="fs-medium"
-                  px="2"
-                  _hover={{
-                    color: 'brand.400',
-                    bg: 'brand.700',
-                    borderRadius: 'full',
-                    px: '2',
-                  }}
-                >
-                  About us
-                </Link>
-              </Tab>
-              <Tab
-                textAlign="center"
-                borderRadius="full"
-                me={4}
-                _selected={{
-                  bg: 'brand.700',
-                  borderRadius: 'full',
-                  px: 2,
-                }}
-                _active={{
-                  bg: 'brand.700',
-                  borderRadius: 'full',
-                  px: 2,
-                }}
-                _hover={{
-                  bg: 'brand.700',
-                  borderRadius: 'full',
-                  px: 2,
-                }}
-              >
-                <Link
-                  as={RouterLink}
                   to="/market"
                   color="brand.500"
                   className="fs-medium"
@@ -115,56 +79,132 @@ export default function Header() {
                 </Link>
               </Tab>
               {Auth.loggedIn() ? (
-                <Button
-                  onClick={logout}
-                  variant="ghost"
-                  color="brand.500"
-                  _hover={{ bg: 'brand.700', color: 'brand.400' }}
-                  bg="brand.800"
-                  borderRadius="full"
-                >
-                  Logout
-                </Button>
-              ) : (
-                <Tab
-                  textAlign="center"
-                  borderRadius="full"
-                  me={4}
-                  _selected={{
-                    color: 'brand.800',
-                    bg: 'brand.700',
-                    borderRadius: 'full',
-                    px: 2,
-                  }}
-                  _active={{
-                    color: 'brand.800',
-                    bg: 'brand.700',
-                    borderRadius: 'full',
-                    px: 2,
-                  }}
-                  _hover={{
-                    color: 'brand.800',
-                    bg: 'brand.700',
-                    borderRadius: 'full',
-                    px: 2,
-                  }}
-                >
-                  <Link
-                    as={RouterLink}
-                    to="/login"
-                    color="brand.500"
-                    className="fs-medium"
-                    px="2"
-                    _hover={{
-                      color: 'brand.400',
+                <>
+                  <Tab
+                    textAlign="center"
+                    borderRadius="full"
+                    me={4}
+                    _selected={{
                       bg: 'brand.700',
                       borderRadius: 'full',
-                      px: '2',
+                      px: 2,
+                    }}
+                    _active={{
+                      bg: 'brand.700',
+                      borderRadius: 'full',
+                      px: 2,
+                    }}
+                    _hover={{
+                      bg: 'brand.700',
+                      borderRadius: 'full',
+                      px: 2,
                     }}
                   >
-                    Login
-                  </Link>
-                </Tab>
+                    <Link
+                      as={RouterLink}
+                      to="/dashboard"
+                      color="brand.500"
+                      className="fs-medium"
+                      px="2"
+                      _hover={{
+                        color: 'brand.400',
+                        bg: 'brand.700',
+                        borderRadius: 'full',
+                        px: '2',
+                      }}
+                    >
+                      Dashboard
+                    </Link>
+                  </Tab>
+                  <Button
+                    onClick={logout}
+                    variant="ghost"
+                    color="brand.500"
+                    _hover={{ bg: 'brand.700', color: 'brand.400' }}
+                    bg="brand.800"
+                    borderRadius="full"
+                  >
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Tab
+                    textAlign="center"
+                    borderRadius="full"
+                    me={4}
+                    _selected={{
+                      bg: 'brand.700',
+                      borderRadius: 'full',
+                      px: 2,
+                    }}
+                    _active={{
+                      bg: 'brand.700',
+                      borderRadius: 'full',
+                      px: 2,
+                    }}
+                    _hover={{
+                      bg: 'brand.700',
+                      borderRadius: 'full',
+                      px: 2,
+                    }}
+                  >
+                    <Link
+                      as={RouterLink}
+                      to="/"
+                      color="brand.500"
+                      className="fs-medium"
+                      px="2"
+                      _hover={{
+                        color: 'brand.400',
+                        bg: 'brand.700',
+                        borderRadius: 'full',
+                        px: '2',
+                      }}
+                    >
+                      About us
+                    </Link>
+                  </Tab>
+                  <Tab
+                    textAlign="center"
+                    borderRadius="full"
+                    me={4}
+                    _selected={{
+                      color: 'brand.800',
+                      bg: 'brand.700',
+                      borderRadius: 'full',
+                      px: 2,
+                    }}
+                    _active={{
+                      color: 'brand.800',
+                      bg: 'brand.700',
+                      borderRadius: 'full',
+                      px: 2,
+                    }}
+                    _hover={{
+                      color: 'brand.800',
+                      bg: 'brand.700',
+                      borderRadius: 'full',
+                      px: 2,
+                    }}
+                  >
+                    <Link
+                      as={RouterLink}
+                      to="/login"
+                      color="brand.500"
+                      className="fs-medium"
+                      px="2"
+                      _hover={{
+                        color: 'brand.400',
+                        bg: 'brand.700',
+                        borderRadius: 'full',
+                        px: '2',
+                      }}
+                    >
+                      Login
+                    </Link>
+                  </Tab>
+                </>
               )}
             </TabList>
           </Tabs>
