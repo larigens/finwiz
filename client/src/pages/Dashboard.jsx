@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
+import { AgingChart } from './Charts/AgingChart';
 
 function Dashboard() {
   const { loading, data } = useQuery(GET_ME);
@@ -81,6 +82,9 @@ function Dashboard() {
         </Card>
         {/* Add more cards or sections here as needed */}
       </Stack>
+      <Box mx={10} px={10} my={10}>
+        <AgingChart />
+      </Box>
     </>
   );
 }
