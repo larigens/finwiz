@@ -261,8 +261,7 @@ const SignUp = () => {
             onChange={handleInputChange}
             name="role"
             value={userFormData.role}
-            isRequired
-            mb={5}
+            isRequired mb={5}
             icon={<MdOutlineAdminPanelSettings />}
             cursor="pointer"
             color="brand.500"
@@ -312,3 +311,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
