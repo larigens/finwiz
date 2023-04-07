@@ -24,13 +24,33 @@ export const options = {
   plugins: {
     legend: {
       position: 'top',
+      labels: {
+        color: '#e7f0f4',
+      },
     },
     title: {
       display: true,
       text: 'Accounts Receivable Overview',
+      color: '#e7f0f4',
       font: {
-        size: 28
-      }
+        size: 28,
+        color: '#e7f0f4',
+      },
+    },
+    tooltip: {
+      bodyColor: '#e7f0f4', // set the tooltip body color to white
+    },
+  },
+  scales: {
+    x: {
+      ticks: {
+        color: '#e7f0f4', // set x-axis label color to white
+      },
+    },
+    y: {
+      ticks: {
+        color: '#e7f0f4', // set y-axis label color to white
+      },
     },
   },
 };

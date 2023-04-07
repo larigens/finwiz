@@ -77,7 +77,7 @@ function Invoice() {
   const carriers = data?.carriers || [];
 
   return (
-    <Box px={10} mx={10} py={5} bg="brand.600">
+    <Box px={10} mx={10} py={5} bg="brand.800">
       <Helmet>
         <title>Invoice Entry</title>
       </Helmet>
@@ -89,9 +89,10 @@ function Invoice() {
         py={{ base: 6, md: 10 }}
         px={{ base: 2, md: 6 }}
         rounded="2xl"
-        boxShadow="md"
+        boxShadow="lg"
         bg="brand.800"
         textAlign="center"
+        border="0.5px solid #98B5FF"
       >
         {/* show alert if server response is bad */}
         <Heading as="h1" size="xl" textAlign="center" color="brand.500">
@@ -102,52 +103,54 @@ function Invoice() {
             Something went wrong adding your invoice!
           </Box>
         )}
-        <FormControl isRequired>
+        <FormControl isRequired my={3}>
           <FormLabel htmlFor="invoiceNumber" color="brand.500">
             Invoice Number
           </FormLabel>
           <Input
             type="number"
-            placeholder="invoiceNumber"
             name="invoiceNumber"
             onChange={handleInputChange}
             value={invoiceFormData.invoiceNumber}
+            bg="brand.600"
+            className='no-border'
           />
           <FormErrorMessage>Invoice Number is required!</FormErrorMessage>
         </FormControl>
-        <FormControl isRequired>
+        <FormControl isRequired my={3}>
           <FormLabel htmlFor="loadNumber" color="brand.500">
             Load Number
           </FormLabel>
           <Input
             type="text"
-            placeholder="loadNumber"
             name="loadNumber"
             onChange={handleInputChange}
             value={invoiceFormData.loadNumber}
+            bg="brand.600"
+            className='no-border'
           />
           <FormErrorMessage>Load Number is required!</FormErrorMessage>
         </FormControl>
-        <FormControl isRequired>
+        <FormControl isRequired my={3}>
           <FormLabel htmlFor="amount" color="brand.500">
             Amount
           </FormLabel>
           <Input
             type="number"
-            placeholder="amount"
             name="amount"
             onChange={handleInputChange}
             value={invoiceFormData.amount}
+            bg="brand.600"
+            className='no-border'
           />
           <FormErrorMessage>Amount is required!</FormErrorMessage>
         </FormControl>
-        <FormControl isRequired>
+        <FormControl isRequired my={3}>
           <FormLabel htmlFor="carrier" color="brand.500">
             Carrier
           </FormLabel>
           <Select
             id="carrier"
-            placeholder="Select carrier"
             onChange={handleInputChange}
             name="carrier"
             value={invoiceFormData.carrier}
@@ -155,7 +158,10 @@ function Invoice() {
             mb={5}
             cursor="pointer"
             color="brand.500"
+            bg="brand.600"
+            className='no-border'
           >
+            <option></option>
             {carriers &&
               carriers.map((singleCarrier) => (
                 <option key={singleCarrier._id} value={singleCarrier._id}>
@@ -165,13 +171,12 @@ function Invoice() {
           </Select>
           <FormErrorMessage>Carrier is required!</FormErrorMessage>
         </FormControl>
-        <FormControl isRequired>
+        <FormControl isRequired my={3}>
           <FormLabel htmlFor="broker" color="brand.500">
             Broker
           </FormLabel>
           <Select
             id="broker"
-            placeholder="Select broker"
             onChange={handleInputChange}
             name="broker"
             value={invoiceFormData.broker}
@@ -179,7 +184,10 @@ function Invoice() {
             mb={5}
             cursor="pointer"
             color="brand.500"
+            bg="brand.600"
+            className='no-border'
           >
+            <option></option>
             {brokers &&
               brokers.map((singleBroker) => (
                 <option key={singleBroker._id} value={singleBroker._id}>

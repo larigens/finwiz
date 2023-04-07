@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link as RouterLink } from 'react-router-dom';
 
 import {
   Card,
@@ -11,13 +10,25 @@ import {
   Box,
   Text,
   Link,
+  Collapse,
 } from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 import { AgingChart } from './Charts/AgingChart';
+import Invoice from './Invoice/Invoice';
 
 function Dashboard() {
   const { loading, data } = useQuery(GET_ME);
+  const [showAnalysis, setShowAnalysis] = useState(false);
+  const [showInvoiceEntry, setShowInvoiceEntry] = useState(false);
+
+  const handleAnalysisClick = () => {
+    setShowAnalysis(!showAnalysis);
+  };
+
+  const handleInvoiceEntryClick = () => {
+    setShowInvoiceEntry(!showInvoiceEntry);
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -54,17 +65,31 @@ function Dashboard() {
               </Text>
             </Box>
             <Box>
-              <Heading size="xs" textTransform="uppercase">
-                Analysis
-              </Heading>
+              <Link
+                onClick={handleAnalysisClick}
+                color="brand.500"
+                _hover={{
+                  color: 'brand.600',
+                }}
+              >
+                <Heading size="xs" textTransform="uppercase">
+                  Analysis
+                </Heading>
+              </Link>
               <Text pt="2" fontSize="sm">
                 See a detailed analysis of all your invoices.
               </Text>
+              <Box mt={1}>
+                <Collapse in={showAnalysis}>
+                  <Box mx={10} px={10} my={10}>
+                    <AgingChart />
+                  </Box>
+                </Collapse>
+              </Box>
             </Box>
             <Box>
               <Link
-                as={RouterLink}
-                to="/invoice"
+                onClick={handleInvoiceEntryClick}
                 color="brand.500"
                 _hover={{
                   color: 'brand.600',
@@ -77,14 +102,16 @@ function Dashboard() {
               <Text pt="2" fontSize="sm">
                 Add a new invoice to your list.
               </Text>
+              <Collapse in={showInvoiceEntry}>
+                <Box mx={10} px={10} my={10}>
+                  <Invoice />
+                </Box>
+              </Collapse>
             </Box>
           </Stack>
         </Card>
         {/* Add more cards or sections here as needed */}
       </Stack>
-      <Box mx={10} px={10} my={10}>
-        <AgingChart />
-      </Box>
     </>
   );
 }

@@ -123,6 +123,9 @@ export default function Header() {
                     _hover={{ bg: 'brand.700', color: 'brand.400' }}
                     bg="brand.800"
                     borderRadius="full"
+                    fontSize="lg"
+                    fontWeight="normal"
+                    px={4}
                   >
                     Logout
                   </Button>
