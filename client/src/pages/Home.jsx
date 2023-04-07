@@ -19,6 +19,7 @@ import {
   Heading,
   Image,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import imgPlaceholder from '../assets/placeholder.png';
 import {
   Accordion,
@@ -29,7 +30,6 @@ import {
 } from '@chakra-ui/react';
 import About from './About/About';
 import { Helmet } from 'react-helmet-async';
-
 function Home() {
   const [input, setInput] = useState('');
 
@@ -109,6 +109,53 @@ function Home() {
                 </AccordionButton>
               </h2>
               <AccordionPanel>
+                <Heading as="h2" size="md" mb={2} py={2}>
+                  FAQ
+                </Heading>
+                <Accordion defaultIndex={[0]} allowMultiple py={5}>
+                  <AccordionItem>
+                    <h2>
+                      <AccordionButton>
+                        <Box
+                          as="span"
+                          flex="1"
+                          textAlign="left"
+                          className="light"
+                        >
+                          General Questions
+                        </Box>
+                        <AccordionIcon />
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel pb={4} className="light">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </AccordionPanel>
+                  </AccordionItem>
+                  <AccordionItem>
+                    <h2>
+                      <AccordionButton>
+                        <Box
+                          as="span"
+                          flex="1"
+                          textAlign="left"
+                          className="light"
+                        >
+                          Get yourself <Link to="/signup" color="brand.600">Rigister</Link>
+                        </Box>
+                        <AccordionIcon />
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel pb={4} className="light">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </AccordionPanel>
+                  </AccordionItem>
+                </Accordion>
                 <Box as="form" bg="brand.800" p={4} className="radius-15">
                   <FormControl id="name" mb={3} isRequired>
                     <FormLabel className="light">Name</FormLabel>
@@ -157,3 +204,4 @@ function Home() {
 }
 
 export default Home;
+
