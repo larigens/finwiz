@@ -7,8 +7,37 @@ export const GET_ME = gql`
       _id
       username
       email
-      role: String!
-      fullName: String
+      role
+      fullName
     }
   }
+`;
+
+export const GET_USER_BY_ID = gql`
+  query getUserById($userId: ID!) {
+    user(userId: $userId) {
+      _id
+      username
+      fullName
+      role
+    }
+  }
+`;
+
+export const GET_ALL_CARRIERS_BROKERS = gql`
+query getAllCarriersBrokers {
+  carriers {
+    _id
+    company
+    fullName
+    mcNumber
+  }
+  brokers {
+    _id
+    mcNumber
+    name
+    buy
+    creditScore
+  }
+}
 `;

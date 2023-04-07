@@ -28,7 +28,7 @@ type Query {
 }
 
 type Mutation {
-    addBroker(input: BrokerInput!): Broker!
+    addBroker( name: String!, mcNumber: Int, email: String!, phoneNumber: String!, creditScore: Int!, buy: Boolean!): Broker!
     updateBroker(brokerId: ID!, input: BrokerInput!): Broker!
     addBrokerCarrier(brokerId: ID!, carrierId: ID!): Broker!
 }

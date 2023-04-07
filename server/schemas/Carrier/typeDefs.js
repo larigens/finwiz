@@ -1,15 +1,6 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-input CarrierInput {
-  company: String!,
-  mcNumber: Int,
-  firstName: String!,
-  lastName: String!,
-  email: String!,
-  phoneNumber: String!
-}
-
 type Carrier {
   _id: ID!
   company: String!
@@ -29,8 +20,8 @@ type Query {
 }
 
 type Mutation {
-    addCarrier(input: CarrierInput!): Carrier!
-    updateCarrier(carrierId: ID!, input: CarrierInput!): Carrier!
+    addCarrier(company: String!, mcNumber: Int, firstName: String!, lastName: String!, email: String!, phoneNumber: String!): Carrier!
+    updateCarrier(carrierId: ID!, company: String!, mcNumber: Int, firstName: String!, lastName: String!, email: String!, phoneNumber: String!): Carrier!
     addCarrierBroker(carrierId: ID!, brokerId: ID!): Carrier!
 }
 `;

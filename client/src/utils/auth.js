@@ -38,6 +38,7 @@ class AuthService {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
     window.location.assign('/dashboard');
+    // TODO:get token, get role, if carrier, redirect to a dif page?
   }
 
   logout() {

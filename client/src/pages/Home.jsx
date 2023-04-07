@@ -124,8 +124,7 @@ function Home() {
                       onChange={handleInputChange}
                     />
                     <FormHelperText color="brand.600">
-                      Enter the email you'd like to receive the newsletter
-                      on.
+                      Enter the email you'd like to receive the newsletter on.
                     </FormHelperText>
                   </FormControl>
                   <FormControl id="message" isRequired>

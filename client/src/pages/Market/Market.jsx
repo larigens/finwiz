@@ -14,8 +14,8 @@ import {
 } from '@chakra-ui/react';
 import { SearchIcon, BellIcon } from '@chakra-ui/icons';
 import { TfiReceipt, TfiShoppingCartFull } from 'react-icons/tfi';
-import { products } from './products/products';
-import Product from './products/product';
+import { products } from './products/product-data';
+import Product from './products/product-card';
 
 function Market() {
   return (

@@ -31,16 +31,13 @@ const resolvers = {
         invoiceCount: (invoice) => invoice.invoices.length,
     },
     Mutation: {
-        addInvoice: async (_, { input }, context) => {
+        addInvoice: async (_, { invoiceNumber, loadNumber, amount, carrier, broker }, context) => {
             if (context.user) {
-
                 try {
-                    const { invoiceNumber, loadNumber, amount, paid, shortPaid, carrier, broker } = input;
                     // Creates the invoice.
-                    const invoice = await Invoice.create({ invoiceNumber, loadNumber, amount, paid, shortPaid, carrier, broker });
-
+                    const invoice = await Invoice.create({ invoiceNumber, loadNumber, amount, carrier, broker });
                     // Add the new invoice to the carrier collection.
-                    const updateCarrier = Carrier.findOneAndUpdate(
+                    const updateCarrier = await Carrier.findOneAndUpdate(
                         { _id: carrier },
                         { $push: { invoices: invoice._id } },
                         { new: true }
@@ -50,7 +47,7 @@ const resolvers = {
                         throw new Error('Carrier not found');
                     }
                     // Add the new invoice to the broker collection.
-                    const updateBroker = Broker.findOneAndUpdate(
+                    const updateBroker = await Broker.findOneAndUpdate(
                         { _id: broker },
                         { $push: { invoices: invoice._id } },
                         { new: true }
@@ -59,11 +56,7 @@ const resolvers = {
                     if (!updateBroker) {
                         throw new Error('Broker not found');
                     }
-                    await Promise.all([updateCarrier, updateBroker]);
-
-                    // Populate the carrier and broker fields in the invoice and return it
-                    const populatedInvoice = await invoice.populate('carrier').populate('broker')
-                    return populatedInvoice;
+                    return invoice;
                 } catch (err) {
                     console.log(err);
                     throw new Error('Failed to create invoice.');
@@ -71,10 +64,9 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        updateInvoice: async (_, { invoiceId, input }, context) => {
+        updateInvoice: async (_, { invoiceId, invoiceNumber, loadNumber, amount, paid, shortPaid, carrier, broker }, context) => {
             if (context.user) {
                 try {
-                    const { invoiceNumber, loadNumber, amount, paid, shortPaid, carrier, broker } = input;
 
                     const existingInvoice = await Invoice.findOne({ _id: invoiceId });
                     if (!existingInvoice) {

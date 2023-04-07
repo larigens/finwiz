@@ -20,17 +20,14 @@ const invoiceSchema = new Schema(
         paid: {
             type: Boolean,
             default: false,
-            required: true,
         },
         shortPaid: {
             type: Boolean,
             default: false,
-            required: true,
         },
         invoiceDate: {
             type: Date,
             default: Date.now,
-            required: true,
             get: function (timestamp) {
                 return timestamp.toLocaleString(); // format the timestamp using the toLocaleString method.
                 // returns a string representation of a date and time that is formatted according to the locale settings of the user's computer.
@@ -43,7 +40,6 @@ const invoiceSchema = new Schema(
                 const thirtyDaysFromNow = now.setDate(now.getDate() + 30);
                 return thirtyDaysFromNow;
             },
-            required: true,
             get: function (timestamp) {
                 return timestamp.toLocaleString();
             }
@@ -61,7 +57,6 @@ const invoiceSchema = new Schema(
     }, {
     toJSON: { virtuals: true },
     id: false,
-    timestamps: true,
 }
 );
 

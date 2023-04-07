@@ -3,12 +3,12 @@ import { gql } from '@apollo/client';
 // Create a new user
 export const ADD_USER = gql`
   mutation addUser(
-    $firstName: String!
-    $lastName: String!
-    $email: String!
-    $username: String!
-    $password: String!
-    $role: String!
+    $firstName: String
+    $lastName: String
+    $email: String
+    $username: String
+    $password: String
+    $role: String
   ) {
     addUser(
       firstName: $firstName
@@ -38,4 +38,20 @@ export const LOGIN_USER = gql`
       }
     }
   }
+`;
+
+export const ADD_INVOICE = gql`
+mutation addInvoice($invoiceNumber: Int!, $loadNumber: String!, $amount: Int!, $carrier: ID!, $broker: ID!) {
+  addInvoice(invoiceNumber: $invoiceNumber, loadNumber: $loadNumber, amount: $amount, carrier: $carrier, broker: $broker) {
+    _id
+    amount
+    invoiceNumber
+    carrier {
+      _id
+    }
+    broker {
+      _id
+    }
+  }
+}
 `;
