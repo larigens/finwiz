@@ -41,3 +41,33 @@ query getAllCarriersBrokers {
   }
 }
 `;
+
+export const GET_ALL_INVOICES = gql`
+query Invoices {
+  invoices {
+    _id
+    invoiceNumber
+    loadNumber
+    amount
+    paid
+    shortPaid
+    invoiceDate
+    dueDate
+  }
+}
+`;
+
+export const GET_INVOICE_BY_ID = gql`
+query Invoices($invoiceId: ID!) {
+  invoice(invoiceId: $invoiceId) {
+    _id
+    amount
+    dueDate
+    invoiceDate
+    invoiceNumber
+    loadNumber
+    paid
+    shortPaid
+  }
+}
+`;
