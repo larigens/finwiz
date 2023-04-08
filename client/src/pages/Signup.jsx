@@ -87,7 +87,12 @@ const SignUp = () => {
   };
 
   return (
-    <Box px={10} mx={10} py={5} bg="brand.600">
+    <Box
+      px={{ base: 3, md: 10 }}
+      mx={{ base: 3, md: 10 }}
+      py={5}
+      bg="brand.600"
+    >
       <Helmet>
         <title>Sign Up</title>
       </Helmet>
@@ -98,13 +103,19 @@ const SignUp = () => {
         validated={validated.toString()} // convert validated state to a string
         onSubmit={handleFormSubmit}
         py={{ base: 6, md: 10 }}
-        px={{ base: 2, md: 6 }}
+        px={{ base: 3, md: 6 }}
         rounded="2xl"
         boxShadow="md"
         bg="brand.800"
       >
         {/* show alert if server response is bad */}
-        <Heading as="h1" size="xl" textAlign="center" color="brand.500">
+        <Heading
+          as="h1"
+          size={{ base: '2xl', md: '4xl' }}
+          textAlign="center"
+          color="brand.500"
+          mb={5}
+        >
           Sign Up
         </Heading>
         {showAlert && (
@@ -129,6 +140,7 @@ const SignUp = () => {
               placeholder="First Name"
               value={userFormData.firstName}
               onChange={handleInputChange}
+              size="md"
             />
           </InputGroup>
           <FormErrorMessage>
@@ -136,7 +148,6 @@ const SignUp = () => {
             Name is required!
           </FormErrorMessage>
         </FormControl>
-
         <FormControl isRequired mb={5}>
           <FormLabel htmlFor="lastName" color="brand.500">
             Last Name
@@ -153,6 +164,7 @@ const SignUp = () => {
               name="lastName"
               onChange={handleInputChange}
               value={userFormData.lastName}
+              size="md"
             />
           </InputGroup>
           <FormErrorMessage>
@@ -160,7 +172,6 @@ const SignUp = () => {
             Name is required!
           </FormErrorMessage>
         </FormControl>
-
         <FormControl isRequired mb={5}>
           <FormLabel htmlFor="username" color="brand.500">
             Username
@@ -177,6 +188,7 @@ const SignUp = () => {
               name="username"
               onChange={handleInputChange}
               value={userFormData.username}
+              size="md"
             />
           </InputGroup>
           <FormErrorMessage>
@@ -184,7 +196,6 @@ const SignUp = () => {
             Username is required!
           </FormErrorMessage>
         </FormControl>
-
         <FormControl isRequired mb={5}>
           <FormLabel htmlFor="email" color="brand.500">
             Email
@@ -202,6 +213,7 @@ const SignUp = () => {
               name="email"
               onChange={handleInputChange}
               value={userFormData.email}
+              size="md"
             />
           </InputGroup>
           <FormErrorMessage>
@@ -209,7 +221,6 @@ const SignUp = () => {
             is required!
           </FormErrorMessage>
         </FormControl>
-
         <FormControl isRequired mb={5}>
           <FormLabel htmlFor="password" color="brand.500">
             Password
@@ -227,6 +238,7 @@ const SignUp = () => {
               name="password"
               onChange={handleInputChange}
               value={userFormData.password}
+              size="md"
             />
             <InputRightElement width="4.5rem">
               <Button
@@ -250,7 +262,6 @@ const SignUp = () => {
             Password is required!
           </FormErrorMessage>
         </FormControl>
-
         <FormControl isRequired mb={5}>
           <FormLabel htmlFor="role" color="brand.500">
             Role
@@ -266,13 +277,13 @@ const SignUp = () => {
             icon={<MdOutlineAdminPanelSettings />}
             cursor="pointer"
             color="brand.500"
+            size="md"
           >
             <option value="admin">Admin</option>
             <option value="employee">Employee</option>
             <option value="carrier">Carrier</option>
           </Select>
         </FormControl>
-
         <FormControl mb={5} pb={5}>
           <Button
             type="submit"
@@ -291,6 +302,8 @@ const SignUp = () => {
                 userFormData.role
               )
             }
+            size="md"
+            width={{ base: 'full', md: 'auto' }}
           >
             Submit
           </Button>
