@@ -7,9 +7,13 @@ import {
   FormControl,
   FormLabel,
   Input,
+  InputGroup,
+  InputLeftAddon,
+  FormHelperText,
   FormErrorMessage,
   Button,
   Heading,
+  Flex,
   Select,
 } from '@chakra-ui/react';
 import { useQuery, useMutation } from '@apollo/client';
@@ -33,6 +37,15 @@ function Invoice() {
     const { name, value } = event.target;
     setinvoiceFormData({ ...invoiceFormData, [name]: value });
   };
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileInputChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+    console.log(selectedFile);
+  };
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -76,86 +89,86 @@ function Invoice() {
   const carriers = data?.carriers || [];
 
   return (
-    <Box px={10} mx={10} py={5} bg="brand.800">
+    <Box py={5} bg='brand.800' textAlign='center'>
       <Box
-        as="form"
+        as='form'
         noValidate
         validated={validated.toString()} // convert validated state to a string
         onSubmit={handleFormSubmit}
-        py={{ base: 6, md: 10 }}
-        px={{ base: 2, md: 6 }}
-        rounded="2xl"
-        boxShadow="lg"
-        bg="brand.800"
-        textAlign="center"
-        border="0.5px solid #98B5FF"
+        p={{ base: 3, md: 8 }}
+        rounded='2xl'
+        boxShadow='lg'
+        bg='brand.800'
+        border='0.5px solid #98B5FF'
       >
         {/* show alert if server response is bad */}
-        <Heading as="h1" size="xl" textAlign="center" color="brand.500">
+        <Heading as='h1' size='xl' color='brand.500' mb={8}>
           Invoice Entry
         </Heading>
         {showAlert && (
-          <Box mt={2} px={3} py={2} bg="red.50" color="red.500" rounded="md">
+          <Box mb={4} px={3} py={2} bg='red.50' color='red.500' rounded='md'>
             Something went wrong adding your invoice!
           </Box>
         )}
-        <FormControl isRequired my={3}>
-          <FormLabel htmlFor="invoiceNumber" color="brand.500">
+        <FormControl isRequired mb={4}>
+          <FormLabel htmlFor='invoiceNumber' color='brand.500'>
             Invoice Number
           </FormLabel>
           <Input
-            type="number"
-            name="invoiceNumber"
+            type='number'
+            name='invoiceNumber'
             onChange={handleInputChange}
             value={invoiceFormData.invoiceNumber}
-            bg="brand.600"
-            className="no-border"
+            bg='brand.600'
+            className='no-border'
           />
           <FormErrorMessage>Invoice Number is required!</FormErrorMessage>
         </FormControl>
-        <FormControl isRequired my={3}>
-          <FormLabel htmlFor="loadNumber" color="brand.500">
+        <FormControl isRequired mb={4}>
+          <FormLabel htmlFor='loadNumber' color='brand.500'>
             Load Number
           </FormLabel>
           <Input
-            type="text"
-            name="loadNumber"
+            type='text'
+            name='loadNumber'
             onChange={handleInputChange}
             value={invoiceFormData.loadNumber}
-            bg="brand.600"
-            className="no-border"
+            bg='brand.600'
+            className='no-border'
           />
           <FormErrorMessage>Load Number is required!</FormErrorMessage>
         </FormControl>
-        <FormControl isRequired my={3}>
-          <FormLabel htmlFor="amount" color="brand.500">
+        <FormControl isRequired mb={4}>
+          <FormLabel htmlFor='amount' color='brand.500'>
             Amount
           </FormLabel>
-          <Input
-            type="number"
-            name="amount"
-            onChange={handleInputChange}
-            value={invoiceFormData.amount}
-            bg="brand.600"
-            className="no-border"
-          />
+          <InputGroup>
+            <InputLeftAddon children='$' color='brand.500' bg='transparent' border='none' size='lg' />
+            <Input
+              type='number'
+              name='amount'
+              onChange={handleInputChange}
+              value={invoiceFormData.amount}
+              bg='brand.600'
+              className='no-border'
+            />
+          </InputGroup>
           <FormErrorMessage>Amount is required!</FormErrorMessage>
         </FormControl>
-        <FormControl isRequired my={3}>
-          <FormLabel htmlFor="carrier" color="brand.500">
+        <FormControl isRequired mb={4}>
+          <FormLabel htmlFor='carrier' color='brand.500'>
             Carrier
           </FormLabel>
           <Select
-            id="carrier"
+            id='carrier'
             onChange={handleInputChange}
-            name="carrier"
+            name='carrier'
             value={invoiceFormData.carrier}
             isRequired
-            mb={5}
-            cursor="pointer"
-            color="brand.500"
-            bg="brand.600"
-            className="no-border"
+            cursor='pointer'
+            color='brand.500'
+            bg='brand.600'
+            className='no-border'
           >
             <option></option>
             {carriers &&
@@ -167,21 +180,20 @@ function Invoice() {
           </Select>
           <FormErrorMessage>Carrier is required!</FormErrorMessage>
         </FormControl>
-        <FormControl isRequired my={3}>
-          <FormLabel htmlFor="broker" color="brand.500">
+        <FormControl isRequired mb={4}>
+          <FormLabel htmlFor='broker' color='brand.500'>
             Broker
           </FormLabel>
           <Select
-            id="broker"
+            id='broker'
             onChange={handleInputChange}
-            name="broker"
+            name='broker'
             value={invoiceFormData.broker}
             isRequired
-            mb={5}
-            cursor="pointer"
-            color="brand.500"
-            bg="brand.600"
-            className="no-border"
+            cursor='pointer'
+            color='brand.500'
+            bg='brand.600'
+            className='no-border'
           >
             <option></option>
             {brokers &&
@@ -193,10 +205,52 @@ function Invoice() {
           </Select>
           <FormErrorMessage>Broker is required!</FormErrorMessage>
         </FormControl>
-        <Container className="text-center" mt={10} mb={3}>
+        <FormControl my={3}>
+          <FormLabel htmlFor="pdf" color="brand.500">
+            Upload Paperwork
+          </FormLabel>
+          <Flex alignItems="center" direction={{ base: 'column', sm: 'row' }}>
+            <Button
+              as="label"
+              htmlFor="pdf"
+              cursor="pointer"
+              bg="brand.600"
+              color="brand.500"
+              _hover={{ bg: 'brand.500', color: 'brand.600' }}
+              mr={{ base: 0, sm: 3 }}
+              mb={{ base: 2, sm: 0 }}
+              w={{ base: '100%', sm: 'auto' }}
+            >
+              Choose file
+            </Button>
+            <Input
+              type="file"
+              id="pdf"
+              name="pdf"
+              accept=".pdf"
+              onChange={handleFileInputChange}
+              display="none"
+            />
+            <Button
+              size="sm"
+              ml={{ base: 0, sm: 2 }}
+              colorScheme="brand.600"
+              onClick={() => document.getElementById('pdf').click()}
+              w={{ base: '100%', sm: 'auto' }}
+            >
+              {selectedFile ? selectedFile.name : 'Choose file'}
+            </Button>
+          </Flex>
+          <Flex mt={1} justifyContent='flex-start'>
+            <FormHelperText color="brand.600" size="sm">
+              Only PDF files are allowed.
+            </FormHelperText>
+          </Flex>
+        </FormControl>
+        <Container className='text-center' mt={10} mb={3}>
           <Button
-            bg="brand.600"
-            color="brand.500"
+            bg='brand.600'
+            color='brand.500'
             _hover={{ bg: 'brand.500', color: 'brand.600' }}
             onClick={handleFormSubmit}
           >
@@ -206,7 +260,7 @@ function Invoice() {
         {/* TODO: ADD SECTION TO UPLOAD PAPERWORK */}
       </Box>
       {error && (
-        <Alert status="error" mt={5}>
+        <Alert status='error' mt={5}>
           <AlertIcon />
           {error.message}
         </Alert>

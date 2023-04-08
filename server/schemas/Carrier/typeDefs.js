@@ -20,7 +20,6 @@ type Query {
 }
 
 type Mutation {
-    addCarrier(company: String!, mcNumber: Int, firstName: String!, lastName: String!, email: String!, phoneNumber: String!): Carrier!
     updateCarrier(carrierId: ID!, company: String!, mcNumber: Int, firstName: String!, lastName: String!, email: String!, phoneNumber: String!): Carrier!
     addCarrierBroker(carrierId: ID!, brokerId: ID!): Carrier!
 }

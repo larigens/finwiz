@@ -279,9 +279,9 @@ const SignUp = () => {
             color="brand.500"
             size="md"
           >
-            <option value="admin">Admin</option>
-            <option value="employee">Employee</option>
-            <option value="carrier">Carrier</option>
+            <option value="Admin">Admin</option>
+            <option value="Employee">Employee</option>
+            <option value="Carrier">Carrier</option>
           </Select>
         </FormControl>
         <FormControl mb={5} pb={5}>

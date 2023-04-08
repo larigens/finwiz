@@ -1,30 +1,14 @@
 import React from 'react';
-import {
-  Container,
-  Box,
-  // Icon,
-} from '@chakra-ui/react';
-// import { HamburgerIcon } from '@chakra-ui/icons';
-// import { faWandSparkles } from '@fortawesome/free-solid-svg-icons';
+import { Flex, Text } from '@chakra-ui/react';
 
 export default function Footer() {
-  const styles = {
-    span: {
-      letterSpacing: '3px',
-    },
-  };
-
   return (
-    <Box bg="brand.600">
-      <footer className="justify-content-center mt-5 mb-2" bg="brand.600">
-        {/* TODO: add current year function */}
-        <Container className="text-center fw-semibold">
-          <span className="gradient-text" style={styles.span}>
-            &copy;FinWiz. All rights reserved.{' '}
-            {/* <Icon as={faWandSparkles} className='ms-1' /> */}
-          </span>
-        </Container>
-      </footer>
-    </Box>
+    <footer>
+      <Flex justify="center" bg="brand.600" py={5}>
+        <Text fontSize={{ base: 'sm', md: 'lg' }} className='gradient-text'>
+          &copy; FinWiz. All rights reserved.
+        </Text>
+      </Flex>
+    </footer>
   );
 }

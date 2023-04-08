@@ -102,7 +102,7 @@ function Dashboard() {
                 Add a new invoice to your list.
               </Text>
               <Collapse in={showInvoiceEntry}>
-                <Box mx={10} px={10} my={10}>
+                <Box mx={4} px={5} my={5}>
                   <Invoice />
                 </Box>
               </Collapse>
