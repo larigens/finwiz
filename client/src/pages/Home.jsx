@@ -31,9 +31,10 @@ import {
 } from '@chakra-ui/react';
 import About from './About/About';
 import { Helmet } from 'react-helmet-async';
+import Client_dashboard from './Client_dashboard/Client_dashboard';
 
 function Home() {
-  const [input, setInput] = useState('');
+const [input, setInput] = useState('');
 
   const handleInputChange = (e) => setInput(e.target.value);
 
@@ -245,6 +246,7 @@ function Home() {
           </Accordion>
         </GridItem>
       </Grid>
+       <Client_dashboard />
     </>
   );
 }

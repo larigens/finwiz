@@ -9,7 +9,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -31,8 +30,8 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Accounts Receivable Overview',
-      color: '#e7f0f4',
+      text: 'Aging',
+      color: '#000000',
       font: {
         size: 25,
         color: '#e7f0f4',
@@ -62,21 +61,21 @@ export const options = {
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = ['15 or less', '16 to 30', '31 to 45', '46 to 60', '61 to 75', 'over 75'];
 
 export const data = {
   labels,
   datasets: [
     {
-      label: 'Total Paid',
-      data: [800, 1200, 1500, 900, 600, 1400, 1700],
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-    {
-      label: 'Short-Payments',
-      data: [50, 150, 100, 20, 0, 15, 60],
+      label: 'Corrent Aging',
+      data: [2000, 5000, 10000, 900, 600, 1400, 1700],
       backgroundColor: 'rgba(255, 99, 132, 0.5)',
     },
+    // {
+    //   label: 'Short-Payments',
+    //   data: [50, 150, 100, 20, 0, 15, 60],
+    //   backgroundColor: 'rgba(255, 99, 132, 0.5)',
+    // },
   ],
 };
 
