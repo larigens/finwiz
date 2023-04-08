@@ -20,6 +20,7 @@ ChartJS.register(
 
 export const options = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: 'top',
@@ -32,7 +33,7 @@ export const options = {
       text: 'Aging',
       color: '#000000',
       font: {
-        size: 28,
+        size: 25,
         color: '#e7f0f4',
       },
     },
@@ -44,11 +45,17 @@ export const options = {
     x: {
       ticks: {
         color: '#e7f0f4', // set x-axis label color to white
+        size: 14,
+        maxRotation: 0, // set to 0 to rotate x-axis labels if they overlap
+        autoSkip: true, // set to true to automatically skip labels if there are too many
       },
     },
     y: {
       ticks: {
         color: '#e7f0f4', // set y-axis label color to white
+        size: 14,
+        maxRotation: 0, // set to 0 to rotate x-axis labels if they overlap
+        autoSkip: true, // set to true to automatically skip labels if there are too many
       },
     },
   },
