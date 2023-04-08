@@ -139,7 +139,7 @@ function Login() {
           <Button
             bg="brand.600"
             color="brand.500"
-            _hover={{ bg: 'brand.500', color: 'brand.600' }}
+            _hover={{ bg: 'brand.700', color: 'brand.500' }}
             onClick={handleFormSubmit}
             w={{ base: '100%', md: 'auto' }}
           >

@@ -289,7 +289,7 @@ const SignUp = () => {
             type="submit"
             bg="brand.600"
             color="brand.500"
-            _hover={{ bg: 'brand.500', color: 'brand.700' }}
+            _hover={{ bg: 'brand.700', color: 'brand.500' }}
             mt={5}
             ms={1}
             isDisabled={
