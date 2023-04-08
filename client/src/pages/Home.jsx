@@ -98,7 +98,7 @@ function Home() {
             <AccordionItem>
               <h2>
                 <AccordionButton
-                  color='brand.800'
+                  color="brand.800"
                   _expanded={{ bg: 'brand.600', color: 'white' }}
                 >
                   <Box as="span" flex="1" textAlign="left">
@@ -116,11 +116,11 @@ function Home() {
             <AccordionItem>
               <h2>
                 <AccordionButton
-                  color='brand.800'
+                  color="brand.800"
                   _expanded={{ bg: 'brand.600', color: 'white' }}
                 >
                   <Box as="span" flex="1" textAlign="left">
-                    <Heading as="h2" size="md" mb={{ base: 2, md: 0 }} py={2} >
+                    <Heading as="h2" size="md" mb={{ base: 2, md: 0 }} py={2}>
                       Contact Us
                     </Heading>
                   </Box>
@@ -128,7 +128,13 @@ function Home() {
                 </AccordionButton>
               </h2>
               <AccordionPanel>
-                <Heading as="h2" size="md" mb={{ base: 2, md: 4 }} py={2} color='brand.800'>
+                <Heading
+                  as="h2"
+                  size="md"
+                  mb={{ base: 2, md: 4 }}
+                  py={2}
+                  color="brand.800"
+                >
                   FAQ
                 </Heading>
                 <Accordion
@@ -143,8 +149,8 @@ function Home() {
                           as="span"
                           flex="1"
                           textAlign="left"
-                          color='brand.800'
-                          fontWeight='bold'
+                          color="brand.800"
+                          fontWeight="bold"
                           mt={2}
                         >
                           General Questions
@@ -152,7 +158,7 @@ function Home() {
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
-                    <AccordionPanel pb={4} className="light" fontWeight='bold'>
+                    <AccordionPanel pb={4} className="light" fontWeight="bold">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -166,20 +172,33 @@ function Home() {
                           as="span"
                           flex="1"
                           textAlign="left"
-                          color='brand.800'
-                          fontWeight='bold'
+                          color="brand.800"
+                          fontWeight="bold"
                           mt={2}
                         >
-                          <Text display='inline-flex'> Join the </Text>
-                          <RouterLink to="/signup" >
-                            <Text display='inline-flex' ms={1} color="brand.800" _hover={{ bgGradient: 'linear(to-r, brand.800, brand.700, brand.800)', bgClip: 'text' }}> FinWiz Squad </Text>
+                          <Text display="inline-flex"> Join the </Text>
+                          <RouterLink to="/signup">
+                            <Text
+                              display="inline-flex"
+                              ms={1}
+                              color="brand.800"
+                              _hover={{
+                                bgGradient:
+                                  'linear(to-r, brand.800, brand.700, brand.800)',
+                                bgClip: 'text',
+                              }}
+                            >
+                              {' '}
+                              FinWiz Squad{' '}
+                            </Text>
                           </RouterLink>
                         </Box>
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
-                    <AccordionPanel pb={4} className="light" fontWeight='bold'>
-                      Let's get this money party started! Register now and let the wiz work its magic on your finances!
+                    <AccordionPanel pb={4} className="light" fontWeight="bold">
+                      Let's get this money party started! Register now and let
+                      the wiz work its magic on your finances!
                     </AccordionPanel>
                   </AccordionItem>
                 </Accordion>

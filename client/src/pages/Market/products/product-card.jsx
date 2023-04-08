@@ -9,6 +9,7 @@ import {
   Stack,
   Heading,
   Icon,
+  HStack,
 } from '@chakra-ui/react';
 import { TfiShoppingCartFull } from 'react-icons/tfi';
 
@@ -45,7 +46,8 @@ function Product({ product }) {
           _hover={{ bg: 'brand.700', color: 'brand.500' }}
           mb={{ base: '4', md: '0' }}
           mr={{ md: '4' }}
-          flexGrow="1"
+          flexGrow={{ base: '1', md: '0' }}
+          width={{ base: '100%', md: 'auto' }}
         >
           Buy now
         </Button>
@@ -53,22 +55,24 @@ function Product({ product }) {
           variant="ghost"
           color="brand.400"
           _hover={{ bg: 'brand.700', color: 'brand.500' }}
-          flexGrow="1"
+          flexGrow={{ base: '1', md: '1' }}
           display="flex"
-          justifyContent="flex-end"
+          justifyContent={{ base: 'center', md: 'flex-end' }}
           alignItems="center"
+          width={{ base: '100%', md: 'auto' }}
+          mt={{ base: '4', md: '0' }}
         >
-          <Flex justifyContent='center' align='center'>
+          <HStack justifyContent="center" align="center">
             <Icon
               as={TfiShoppingCartFull}
               color="brand.500"
               w={4}
               h={4}
               mr={1}
-              display={{ base: 'none', md: 'inline-block' }}
+              display={{ base: 'none', lg: 'inline-block' }}
             />
             <Text
-              display={{ base: 'none', md: 'inline-block' }}
+              display={{ base: 'none', lg: 'inline-block' }}
               whiteSpace="nowrap"
               mr={1}
             >
@@ -79,9 +83,9 @@ function Product({ product }) {
               color="brand.500"
               w={4}
               h={4}
-              display={{ base: 'inline-block', md: 'none' }}
+              display={{ base: 'inline-block', md: 'inline-block', lg: 'none' }}
             />
-          </Flex>
+          </HStack>
         </Button>
       </CardFooter>
     </>

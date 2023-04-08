@@ -78,9 +78,9 @@ function Dashboard() {
               <Text pt="2" fontSize="sm">
                 See a detailed analysis of all your invoices.
               </Text>
-              <Box mt={1}>
+              <Box mt={1} mx={{ base: 1, md: 10 }} px={{ base: 4, md: 10 }}>
                 <Collapse in={showAnalysis}>
-                  <Box mx={10} px={10} my={10}>
+                  <Box mx='auto' style={{ height: '300px'}}>
                     <AgingChart />
                   </Box>
                 </Collapse>
