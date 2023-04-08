@@ -12,7 +12,6 @@ import {
   Heading,
   Select,
 } from '@chakra-ui/react';
-import { Helmet } from 'react-helmet-async';
 import { useQuery, useMutation } from '@apollo/client';
 import { ADD_INVOICE } from '../../utils/mutations';
 import { GET_ALL_CARRIERS_BROKERS } from '../../utils/queries';
@@ -78,9 +77,6 @@ function Invoice() {
 
   return (
     <Box px={10} mx={10} py={5} bg="brand.800">
-      <Helmet>
-        <title>Invoice Entry</title>
-      </Helmet>
       <Box
         as="form"
         noValidate
@@ -113,7 +109,7 @@ function Invoice() {
             onChange={handleInputChange}
             value={invoiceFormData.invoiceNumber}
             bg="brand.600"
-            className='no-border'
+            className="no-border"
           />
           <FormErrorMessage>Invoice Number is required!</FormErrorMessage>
         </FormControl>
@@ -127,7 +123,7 @@ function Invoice() {
             onChange={handleInputChange}
             value={invoiceFormData.loadNumber}
             bg="brand.600"
-            className='no-border'
+            className="no-border"
           />
           <FormErrorMessage>Load Number is required!</FormErrorMessage>
         </FormControl>
@@ -141,7 +137,7 @@ function Invoice() {
             onChange={handleInputChange}
             value={invoiceFormData.amount}
             bg="brand.600"
-            className='no-border'
+            className="no-border"
           />
           <FormErrorMessage>Amount is required!</FormErrorMessage>
         </FormControl>
@@ -159,7 +155,7 @@ function Invoice() {
             cursor="pointer"
             color="brand.500"
             bg="brand.600"
-            className='no-border'
+            className="no-border"
           >
             <option></option>
             {carriers &&
@@ -185,7 +181,7 @@ function Invoice() {
             cursor="pointer"
             color="brand.500"
             bg="brand.600"
-            className='no-border'
+            className="no-border"
           >
             <option></option>
             {brokers &&

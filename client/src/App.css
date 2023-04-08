@@ -12,14 +12,19 @@
     bottom,
     var(--dark-accent),
     var(--main-brand),
-    var(--dark-accent),
-    var(--light-accent)
+    var(--dark-accent)
   );
   --gradient-dark: -webkit-linear-gradient(
     45deg,
     var(--main-brand),
     var(--dark-accent),
     var(--main-brand)
+  );
+  --gradient-heading: -webkit-linear-gradient(
+    45deg,
+    var(--light-accent),
+    var(--light-shades),
+    var(--light-accent)
   );
   --heading: 'Italianno', cursive;
   --body: 'Montserrat', sans-serif;
@@ -131,6 +136,15 @@ textarea:focus,
   -webkit-text-fill-color: transparent;
 }
 
+.gradient-heading {
+  background: var(--gradient-heading);
+  /* Need to set that is a text you are removing the background / color or the gradient won't work */
+  -webkit-background-clip: text;
+  background-clip: none;
+  /* Text-fill needs to be transparent to show the gradient */
+  -webkit-text-fill-color: transparent;
+}
+
 /* Removes the underline default for anchors tags */
 a {
   text-decoration: none !important;
@@ -156,6 +170,10 @@ li {
 
 .fs-heading {
   font-size: 44px !important;
+}
+
+.ls-sm {
+  letter-spacing: 1px;
 }
 
 input::placeholder {

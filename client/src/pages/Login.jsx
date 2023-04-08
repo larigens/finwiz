@@ -66,7 +66,7 @@ function Login() {
   };
 
   return (
-    <Box px={10} mx={10} py={5} bg="brand.600">
+    <Box px={{ base: 2, md: 10 }} py={{ base: 5, md: 10 }} bg="brand.600">
       <Helmet>
         <title>Login</title>
       </Helmet>
@@ -75,12 +75,12 @@ function Login() {
         noValidate
         validated={validated.toString()} // convert validated state to a string
         onSubmit={handleFormSubmit}
-        py={{ base: 6, md: 10 }}
-        px={{ base: 2, md: 6 }}
         rounded="2xl"
         boxShadow="md"
         bg="brand.800"
         textAlign="center"
+        px={{ base: 3, md: 10 }}
+        py={{ base: 5, md: 10 }}
       >
         {/* show alert if server response is bad */}
         <Heading as="h1" size="xl" textAlign="center" color="brand.500">
@@ -141,6 +141,7 @@ function Login() {
             color="brand.500"
             _hover={{ bg: 'brand.500', color: 'brand.600' }}
             onClick={handleFormSubmit}
+            w={{ base: '100%', md: 'auto' }}
           >
             Submit
           </Button>
