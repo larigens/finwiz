@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text, Heading, Flex, Card, Grid } from '@chakra-ui/react';
+import { Box, Text, Heading, Card, Grid, Link } from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_INVOICES } from '../../utils/queries';
 // import Invoice from './Invoice';
@@ -40,104 +40,105 @@ function ViewInvoices() {
         border="0.5px solid #98B5FF"
       >
         {invoices.length ? (
-          <Flex direction="column">
-            <Grid
-              templateColumns={{ base: '1fr', md: 'repeat(6, 1fr)' }}
-              alignItems="center"
-              my={4}
+          <Grid
+            templateColumns="repeat(7, 1fr)"
+            gap={2}
+            alignItems="center"
+            mb={4}
+            borderBottom="0.5px solid #98B5FF"
+          >
+            <Text
+              gridColumn="1 / span 1"
+              fontSize="lg"
+              textAlign="center"
+              color="brand.500"
+              fontWeight="bold"
             >
-              <Heading
-                as="h6"
-                fontSize="lg"
-                textAlign="center"
-                px={2}
-                color="brand.500"
-              >
-                Invoice Date
-              </Heading>
-              <Heading
-                as="h6"
-                fontSize="lg"
-                textAlign="center"
-                px={2}
-                color="brand.500"
-              >
-                Invoice Number
-              </Heading>
-              <Heading
-                as="h6"
-                fontSize="lg"
-                textAlign="center"
-                px={2}
-                color="brand.500"
-              >
-                Load Number
-              </Heading>
-              <Heading
-                as="h6"
-                fontSize="lg"
-                textAlign="center"
-                px={2}
-                color="brand.500"
-              >
-                Amount
-              </Heading>
-              <Heading
-                as="h6"
-                fontSize="lg"
-                textAlign="center"
-                px={2}
-                color="brand.500"
-              >
-                Carrier
-              </Heading>
-              <Heading
-                as="h6"
-                fontSize="lg"
-                textAlign="center"
-                px={2}
-                color="brand.500"
-              >
-                Broker
-              </Heading>
-              {invoices.slice(0, 20).map((singleInvoice) => (
-                <>
-                  {/* <Link onClick={() => getSingleInvoice(singleInvoice._id)}>
-                    {' '}
-                    View{' '}
-                  </Link> */}
-                  <Text
-                    textAlign="center"
-                    key={singleInvoice._id}
-                    value={singleInvoice._id}
-                    color="brand.500"
-                  >
-                    {new Date(singleInvoice.invoiceDate).toLocaleDateString(
-                      'en-US',
-                    )}
-                  </Text>
-                  <Text textAlign="center" color="brand.500">
-                    {singleInvoice.invoiceNumber}
-                  </Text>
-                  <Text textAlign="center" color="brand.500">
-                    {singleInvoice.loadNumber}
-                  </Text>
-                  <Text textAlign="center" color="brand.500">
-                    {singleInvoice.amount.toLocaleString('en-US', {
-                      style: 'currency',
-                      currency: 'USD',
-                    })}
-                  </Text>
-                  <Text textAlign="center" color="brand.500">
-                    {singleInvoice.carrier}
-                  </Text>
-                  <Text textAlign="center" color="brand.500">
-                    {singleInvoice.broker}
-                  </Text>
-                </>
-              ))}
-            </Grid>
-          </Flex>
+              *
+            </Text>
+            <Text
+              gridColumn="2 / span 1"
+              fontSize="lg"
+              textAlign="center"
+              color="brand.500"
+              fontWeight="bold"
+            >
+              Invoice Date
+            </Text>
+            <Text
+              gridColumn="3 / span 1"
+              fontSize="lg"
+              textAlign="center"
+              color="brand.500"
+              fontWeight="bold"
+            >
+              Invoice Number
+            </Text>
+            <Text
+              gridColumn="4 / span 1"
+              fontSize="lg"
+              textAlign="center"
+              color="brand.500"
+              fontWeight="bold"
+            >
+              Load Number
+            </Text>
+            <Text
+              gridColumn="5 / span 1"
+              fontSize="lg"
+              textAlign="center"
+              color="brand.500"
+              fontWeight="bold"
+            >
+              Amount
+            </Text>
+            <Text
+              gridColumn="6 / span 1"
+              fontSize="lg"
+              textAlign="center"
+              color="brand.500"
+              fontWeight="bold"
+            >
+              Carrier
+            </Text>
+            <Text
+              gridColumn="7 / span 1"
+              fontSize="lg"
+              textAlign="center"
+              color="brand.500"
+              fontWeight="bold"
+            >
+              Broker
+            </Text>
+            {invoices.slice(0, 20).map((singleInvoice) => (
+              <>
+                <Link to={`/invoices/${singleInvoice._id}`}>View</Link>
+                <Text textAlign="center" color="brand.500">
+                  {new Date(singleInvoice.invoiceDate).toLocaleDateString(
+                    'en-US',
+                  )}
+                </Text>
+                <Text textAlign="center" color="brand.500">
+                  {singleInvoice.invoiceNumber}
+                </Text>
+                <Text textAlign="center" color="brand.500">
+                  {singleInvoice.loadNumber}
+                </Text>
+                <Text textAlign="center" color="brand.500">
+                  {singleInvoice.amount.toLocaleString('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  })}
+                </Text>
+                <Text textAlign="center" color="brand.500">
+                  {singleInvoice.carrier}
+                </Text>
+                <Text textAlign="center" color="brand.500">
+                  {singleInvoice.broker}
+                </Text>
+              </>
+            ))}
+          </Grid>
         ) : (
           <Text>No invoices found.</Text>
         )}
