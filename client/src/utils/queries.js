@@ -71,3 +71,18 @@ query Invoices($invoiceId: ID!) {
   }
 }
 `;
+
+export const GET_INVOICE_BY_NUMBER = gql`
+query InvoiceByNumber($invoiceNumber: Int!) {
+  invoiceByNumber(invoiceNumber: $invoiceNumber) {
+    _id
+    amount
+    invoiceNumber
+    loadNumber
+    invoiceDate
+    dueDate
+    paid
+    shortPaid
+  }
+}
+`;

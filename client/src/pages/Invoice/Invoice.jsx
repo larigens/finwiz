@@ -8,14 +8,16 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
-import { GET_INVOICE_BY_ID } from '../../utils/queries';
+import { GET_INVOICE_BY_NUMBER } from '../../utils/queries';
 
-function Invoice({ invoiceId }) {
-  const { loading, data } = useQuery(GET_INVOICE_BY_ID, {
-    variables: { invoiceId },
+function Invoice({ invoiceNumberData }) {
+  const { loading, data } = useQuery(GET_INVOICE_BY_NUMBER, {
+    variables: { invoiceNumber: invoiceNumberData },
   });
 
-  const invoice = data?.invoice;
+  console.log(invoiceNumberData);
+  console.log(data);
+  const invoice = data?.invoiceByNumber;
   const [isEditing, setIsEditing] = useState(false);
   const [editedInvoice, setEditedInvoice] = useState(invoice);
 
@@ -43,83 +45,76 @@ function Invoice({ invoiceId }) {
   }
 
   return (
-    <Box py={5} bg="brand.800" textAlign="center">
-      {/* show alert if server response is bad */}
-      <Heading as="h1" size="xl" color="brand.500" mb={8}>
-        Invoice Summary
-      </Heading>
-
-      <Box p={4} borderWidth="1px" rounded="md">
-        <Text mb={4} fontWeight="bold" fontSize="xl">
-          Invoice {invoice.invoiceNumber}
-        </Text>
-        {isEditing ? (
-          <>
-            <FormControl mb={2}>
-              <FormLabel>Invoice date</FormLabel>
-              <Input
-                type="date"
-                name="invoiceDate"
-                value={editedInvoice.invoiceDate}
-                onChange={handleInputChange}
-              />
-            </FormControl>
-            <FormControl mb={2}>
-              <FormLabel>Load number</FormLabel>
-              <Input
-                type="text"
-                name="loadNumber"
-                value={editedInvoice.loadNumber}
-                onChange={handleInputChange}
-              />
-            </FormControl>
-            <FormControl mb={2}>
-              <FormLabel>Amount</FormLabel>
-              <Input
-                type="number"
-                name="amount"
-                value={editedInvoice.amount}
-                onChange={handleInputChange}
-              />
-            </FormControl>
-            <FormControl mb={2}>
-              <FormLabel>Carrier</FormLabel>
-              <Input
-                type="text"
-                name="carrier"
-                value={editedInvoice.carrier}
-                onChange={handleInputChange}
-              />
-            </FormControl>
-            <FormControl mb={2}>
-              <FormLabel>Broker</FormLabel>
-              <Input
-                type="text"
-                name="broker"
-                value={editedInvoice.broker}
-                onChange={handleInputChange}
-              />
-            </FormControl>
-            <Button mr={2} onClick={handleSaveClick}>
-              Save
-            </Button>
-            <Button variant="outline" onClick={handleCancelClick}>
-              Cancel
-            </Button>
-          </>
-        ) : (
-          <>
-            <Text mb={2}>Invoice date: {invoice.invoiceDate}</Text>
-            <Text mb={2}>Load number: {invoice.loadNumber}</Text>
-            <Text mb={2}>Amount: {invoice.amount}</Text>
-            <Text mb={2}>Carrier: {invoice.carrier}</Text>
-            <Text mb={2}>Broker: {invoice.broker}</Text>
-            <Button variant="outline" onClick={handleEditClick}>
-              Edit
-            </Button>
-          </>
-        )}
-      </Box>
+    <Box p={4} borderWidth="1px" rounded="md" bg="brand.800" textAlign="center">
+      <Text mb={4} fontWeight="bold" fontSize="xl">
+        Invoice {invoice.invoiceNumber}
+      </Text>
+      {isEditing ? (
+        <>
+          <FormControl mb={2}>
+            <FormLabel>Invoice date</FormLabel>
+            <Input
+              type="date"
+              name="invoiceDate"
+              value={editedInvoice.invoiceDate}
+              onChange={handleInputChange}
+            />
+          </FormControl>
+          <FormControl mb={2}>
+            <FormLabel>Load number</FormLabel>
+            <Input
+              type="text"
+              name="loadNumber"
+              value={editedInvoice.loadNumber}
+              onChange={handleInputChange}
+            />
+          </FormControl>
+          <FormControl mb={2}>
+            <FormLabel>Amount</FormLabel>
+            <Input
+              type="number"
+              name="amount"
+              value={editedInvoice.amount}
+              onChange={handleInputChange}
+            />
+          </FormControl>
+          <FormControl mb={2}>
+            <FormLabel>Carrier</FormLabel>
+            <Input
+              type="text"
+              name="carrier"
+              value={editedInvoice.carrier}
+              onChange={handleInputChange}
+            />
+          </FormControl>
+          <FormControl mb={2}>
+            <FormLabel>Broker</FormLabel>
+            <Input
+              type="text"
+              name="broker"
+              value={editedInvoice.broker}
+              onChange={handleInputChange}
+            />
+          </FormControl>
+          <Button mr={2} onClick={handleSaveClick}>
+            Save
+          </Button>
+          <Button variant="outline" onClick={handleCancelClick}>
+            Cancel
+          </Button>
+        </>
+      ) : (
+        <>
+          <Text mb={2}>Invoice date: {invoice.invoiceDate}</Text>
+          <Text mb={2}>Load number: {invoice.loadNumber}</Text>
+          <Text mb={2}>Amount: {invoice.amount}</Text>
+          <Text mb={2}>Carrier: {invoice.carrier}</Text>
+          <Text mb={2}>Broker: {invoice.broker}</Text>
+          <Button variant="outline" onClick={handleEditClick}>
+            Edit
+          </Button>
+        </>
+      )}
     </Box>
   );
 }

@@ -11,7 +11,7 @@ import {
 import { useQuery } from '@apollo/client';
 import { GET_ME } from '../../utils/queries';
 import NewInvoice from '../Invoice/NewInvoice';
-import ViewInvoices from '../Invoice/ViewInvoices';
+import SearchInvoice from '../Invoice/SearchInvoice';
 
 function Employee() {
   const { loading, data } = useQuery(GET_ME);
@@ -29,6 +29,7 @@ function Employee() {
   if (loading) {
     return <div>Loading...</div>;
   }
+
   console.log(data.me.role);
 
   return (
@@ -80,11 +81,11 @@ function Employee() {
                 color: 'brand.600',
               }}
             >
-              <Heading size="xs">Invoice Summary</Heading>
+              <Heading size="xs">Search Invoice</Heading>
             </Link>
             <Collapse in={showInvoiceSummary}>
               <Box mx={4} px={5} my={5}>
-                <ViewInvoices />
+                <SearchInvoice />
               </Box>
             </Collapse>
           </Box>

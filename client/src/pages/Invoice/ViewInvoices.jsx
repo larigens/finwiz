@@ -1,21 +1,27 @@
-import React from 'react';
-import { Box, Text, Heading, Card, Grid, Link } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import {
+  Box,
+  Text,
+  Heading,
+  Card,
+  Grid,
+  Link,
+  Collapse,
+  Flex,
+} from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_INVOICES } from '../../utils/queries';
-// import Invoice from './Invoice';
-// import { BrowserRouter as Router } from 'react-router-dom';
+import Invoice from './Invoice';
 
 function ViewInvoices() {
   const { loading, data } = useQuery(GET_ALL_INVOICES);
   const showAlert = !loading && !data;
+  const [selectedInvoiceId, setSelectedInvoiceId] = useState(null);
 
-  //   const getSingleInvoice = (invoiceId) => {
-  //     return (
-  //       <Router>
-  //         <Invoice path="/invoices/:invoiceId" invoiceId={invoiceId} />
-  //       </Router>
-  //     );
-  //   };
+  const handleInvoiceClick = (event, invoiceId) => {
+    event.preventDefault();
+    setSelectedInvoiceId(invoiceId);
+  };
 
   const invoices = data ? data.invoices : [];
   console.log(invoices);
@@ -45,7 +51,6 @@ function ViewInvoices() {
             gap={2}
             alignItems="center"
             mb={4}
-            borderBottom="0.5px solid #98B5FF"
           >
             <Text
               gridColumn="1 / span 1"
@@ -53,6 +58,8 @@ function ViewInvoices() {
               textAlign="center"
               color="brand.500"
               fontWeight="bold"
+              p={1}
+              borderBottom="0.5px solid #98B5FF"
             >
               *
             </Text>
@@ -62,6 +69,8 @@ function ViewInvoices() {
               textAlign="center"
               color="brand.500"
               fontWeight="bold"
+              p={1}
+              borderBottom="0.5px solid #98B5FF"
             >
               Invoice Date
             </Text>
@@ -71,6 +80,8 @@ function ViewInvoices() {
               textAlign="center"
               color="brand.500"
               fontWeight="bold"
+              p={1}
+              borderBottom="0.5px solid #98B5FF"
             >
               Invoice Number
             </Text>
@@ -80,6 +91,8 @@ function ViewInvoices() {
               textAlign="center"
               color="brand.500"
               fontWeight="bold"
+              p={1}
+              borderBottom="0.5px solid #98B5FF"
             >
               Load Number
             </Text>
@@ -89,6 +102,8 @@ function ViewInvoices() {
               textAlign="center"
               color="brand.500"
               fontWeight="bold"
+              p={1}
+              borderBottom="0.5px solid #98B5FF"
             >
               Amount
             </Text>
@@ -98,6 +113,8 @@ function ViewInvoices() {
               textAlign="center"
               color="brand.500"
               fontWeight="bold"
+              p={1}
+              borderBottom="0.5px solid #98B5FF"
             >
               Carrier
             </Text>
@@ -107,12 +124,24 @@ function ViewInvoices() {
               textAlign="center"
               color="brand.500"
               fontWeight="bold"
+              p={1}
+              borderBottom="0.5px solid #98B5FF"
             >
               Broker
             </Text>
             {invoices.slice(0, 20).map((singleInvoice) => (
-              <>
-                <Link to={`/invoices/${singleInvoice._id}`}>View</Link>
+              <Flex key={singleInvoice._id}>
+                <Link
+                  onClick={(event) =>
+                    handleInvoiceClick(event, singleInvoice._id)
+                  }
+                  color="brand.500"
+                  _hover={{
+                    color: 'brand.600',
+                  }}
+                >
+                  View
+                </Link>
                 <Text textAlign="center" color="brand.500">
                   {new Date(singleInvoice.invoiceDate).toLocaleDateString(
                     'en-US',
@@ -136,7 +165,12 @@ function ViewInvoices() {
                 <Text textAlign="center" color="brand.500">
                   {singleInvoice.broker}
                 </Text>
-              </>
+                <Collapse in={selectedInvoiceId === singleInvoice._id}>
+                  <Box mx={4} px={5} my={5}>
+                    <Invoice invoiceId={singleInvoice._id} />
+                  </Box>
+                </Collapse>
+              </Flex>
             ))}
           </Grid>
         ) : (
