@@ -165,13 +165,13 @@ function ViewInvoices() {
                 <Text textAlign="center" color="brand.500">
                   {singleInvoice.broker}
                 </Text>
-                <Collapse in={selectedInvoiceId === singleInvoice._id}>
-                  <Box mx={4} px={5} my={5}>
-                    <Invoice invoiceId={singleInvoice._id} />
-                  </Box>
-                </Collapse>
               </Flex>
             ))}
+            <Collapse in={selectedInvoiceId === singleInvoice._id}>
+              <Box mx={4} px={5} my={5}>
+                <Invoice invoiceId={singleInvoice._id} />
+              </Box>
+            </Collapse>
           </Grid>
         ) : (
           <Text>No invoices found.</Text>

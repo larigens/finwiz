@@ -1,25 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Button,
+  ButtonGroup,
   FormControl,
   FormLabel,
   Input,
   Text,
+  Select,
 } from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
 import { GET_INVOICE_BY_NUMBER } from '../../utils/queries';
+import { getAllCarriesAndBroker } from '../../utils/helper';
 
 function Invoice({ invoiceNumberData }) {
   const { loading, data } = useQuery(GET_INVOICE_BY_NUMBER, {
     variables: { invoiceNumber: invoiceNumberData },
   });
 
-  console.log(invoiceNumberData);
-  console.log(data);
+  const carriers = getAllCarriesAndBroker().carriers;
+  const brokers = getAllCarriesAndBroker().brokers;
+
   const invoice = data?.invoiceByNumber;
   const [isEditing, setIsEditing] = useState(false);
-  const [editedInvoice, setEditedInvoice] = useState(invoice);
+  const [editedInvoice, setEditedInvoice] = useState({});
+
+  useEffect(() => {
+    if (invoice) {
+      setEditedInvoice(invoice);
+    }
+  }, [invoice]);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -44,8 +54,20 @@ function Invoice({ invoiceNumberData }) {
     return <div>Loading...</div>;
   }
 
+  if (!invoice) {
+    return <div>No invoice found!</div>;
+  }
+
   return (
-    <Box p={4} borderWidth="1px" rounded="md" bg="brand.800" textAlign="center">
+    <Box
+      p={4}
+      rounded="md"
+      boxShadow="md"
+      bg="brand.800"
+      borderWidth="1px"
+      borderColor="brand.700"
+      textAlign="center"
+    >
       <Text mb={4} fontWeight="bold" fontSize="xl">
         Invoice {invoice.invoiceNumber}
       </Text>
@@ -56,8 +78,8 @@ function Invoice({ invoiceNumberData }) {
             <Input
               type="date"
               name="invoiceDate"
-              value={editedInvoice.invoiceDate}
-              onChange={handleInputChange}
+              value={new Date(invoice.invoiceDate).toLocaleDateString('en-US')}
+              readOnly
             />
           </FormControl>
           <FormControl mb={2}>
@@ -80,39 +102,104 @@ function Invoice({ invoiceNumberData }) {
           </FormControl>
           <FormControl mb={2}>
             <FormLabel>Carrier</FormLabel>
-            <Input
-              type="text"
+            <Select
+              id="carrier"
+              onChange={handleInputChange}
               name="carrier"
               value={editedInvoice.carrier}
-              onChange={handleInputChange}
-            />
+              isRequired
+              cursor="pointer"
+              color="brand.500"
+              bg="brand.600"
+              className="no-border"
+            >
+              <option></option>
+              {carriers &&
+                carriers.map((singleCarrier) => (
+                  <option key={singleCarrier._id} value={singleCarrier._id}>
+                    {singleCarrier.company}
+                  </option>
+                ))}
+            </Select>
           </FormControl>
           <FormControl mb={2}>
             <FormLabel>Broker</FormLabel>
-            <Input
-              type="text"
+            <Select
+              id="broker"
+              onChange={handleInputChange}
               name="broker"
               value={editedInvoice.broker}
-              onChange={handleInputChange}
-            />
+              isRequired
+              cursor="pointer"
+              color="brand.500"
+              bg="brand.600"
+              className="no-border"
+            >
+              <option></option>
+              {brokers &&
+                brokers.map((singleBroker) => (
+                  <option key={singleBroker._id} value={singleBroker._id}>
+                    {singleBroker.name}
+                  </option>
+                ))}
+            </Select>
           </FormControl>
-          <Button mr={2} onClick={handleSaveClick}>
-            Save
-          </Button>
-          <Button variant="outline" onClick={handleCancelClick}>
-            Cancel
-          </Button>
+          <ButtonGroup mx={{ base: 2, md: 5 }} my={4}>
+            <Button
+              onClick={handleSaveClick}
+              size="md"
+              bg="brand.600"
+              color="brand.500"
+              _hover={{ bg: 'brand.500', color: 'brand.700' }}
+            >
+              Save
+            </Button>
+            <Button
+              onClick={handleCancelClick}
+              size="md"
+              bg="brand.600"
+              color="brand.500"
+              _hover={{ bg: 'brand.500', color: 'brand.700' }}
+            >
+              Cancel
+            </Button>
+          </ButtonGroup>
         </>
       ) : (
         <>
-          <Text mb={2}>Invoice date: {invoice.invoiceDate}</Text>
+          <Text mb={2}>
+            Invoice date:{' '}
+            {new Date(invoice.invoiceDate).toLocaleDateString('en-US')}
+          </Text>
           <Text mb={2}>Load number: {invoice.loadNumber}</Text>
-          <Text mb={2}>Amount: {invoice.amount}</Text>
+          <Text mb={2}>
+            Amount:{' '}
+            {invoice.amount.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            })}
+          </Text>
           <Text mb={2}>Carrier: {invoice.carrier}</Text>
           <Text mb={2}>Broker: {invoice.broker}</Text>
-          <Button variant="outline" onClick={handleEditClick}>
-            Edit
-          </Button>
+          <ButtonGroup mx={{ base: 2, md: 5 }}>
+            <Button
+              onClick={handleEditClick}
+              size="md"
+              bg="brand.600"
+              color="brand.500"
+              _hover={{ bg: 'brand.500', color: 'brand.700' }}
+            >
+              Edit
+            </Button>
+            <Button
+              size="md"
+              bg="brand.600"
+              color="brand.500"
+              _hover={{ bg: 'brand.500', color: 'brand.700' }}
+            >
+              Delete
+            </Button>
+          </ButtonGroup>
         </>
       )}
     </Box>

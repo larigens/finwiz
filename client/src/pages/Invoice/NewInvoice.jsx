@@ -16,9 +16,9 @@ import {
   Flex,
   Select,
 } from '@chakra-ui/react';
-import { useQuery, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ADD_INVOICE } from '../../utils/mutations';
-import { GET_ALL_CARRIERS_BROKERS } from '../../utils/queries';
+import { getAllCarriesAndBroker } from '../../utils/helper';
 
 function NewInvoice() {
   const [invoiceFormData, setinvoiceFormData] = useState({
@@ -28,12 +28,13 @@ function NewInvoice() {
     carrier: '',
     broker: '',
   });
+  const carriers = getAllCarriesAndBroker().carriers;
+  const brokers = getAllCarriesAndBroker().brokers;
 
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [addInvoice, { error }] = useMutation(ADD_INVOICE);
-  const { loading, data } = useQuery(GET_ALL_CARRIERS_BROKERS);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -80,13 +81,6 @@ function NewInvoice() {
       broker: '',
     });
   };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  const brokers = data?.brokers || [];
-  const carriers = data?.carriers || [];
 
   return (
     <Box py={5} bg="brand.800" textAlign="center">

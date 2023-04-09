@@ -48,9 +48,9 @@ function SearchInvoice() {
             value={invoiceNumberData}
             onChange={handleInputChange}
           />
-          <InputRightElement width="4.5rem">
+          <InputRightElement width="5rem">
             <Button
-              h="1.75rem"
+              mx={2}
               size="sm"
               onClick={handleClick}
               bg="brand.600"
@@ -67,11 +67,11 @@ function SearchInvoice() {
         </FormErrorMessage>
       </FormControl>
       {showInvoice ? (
-        <Box>
+        <Box my={4}>
           <Invoice invoiceNumberData={invoiceNumberData} />
         </Box>
       ) : (
-        <h6>No Invoices found</h6>
+        <></>
       )}
     </Box>
   );
