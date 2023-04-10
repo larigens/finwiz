@@ -8,13 +8,10 @@ import {
   Link,
   Collapse,
 } from '@chakra-ui/react';
-import { useQuery } from '@apollo/client';
-import { GET_ME } from '../../utils/queries';
 import NewInvoice from '../Invoice/NewInvoice';
 import SearchInvoice from '../Invoice/SearchInvoice';
 
 function Employee() {
-  const { loading, data } = useQuery(GET_ME);
   const [showInvoiceSummary, setShowInvoiceSummary] = useState(false);
   const [showInvoiceEntry, setShowInvoiceEntry] = useState(false);
 
@@ -25,12 +22,6 @@ function Employee() {
   const handleInvoiceEntryClick = () => {
     setShowInvoiceEntry(!showInvoiceEntry);
   };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  console.log(data.me.role);
 
   return (
     <>

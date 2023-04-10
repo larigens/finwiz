@@ -55,3 +55,24 @@ mutation addInvoice($invoiceNumber: Int!, $loadNumber: String!, $amount: Int!, $
   }
 }
 `;
+
+export const UPDATE_INVOICE = gql`
+mutation Mutation($invoiceId: ID!, $invoiceNumber: Int!, $loadNumber: String!, $amount: Int!, $carrier: ID!, $broker: ID!, $paid: Boolean, $shortPaid: Boolean) {
+  updateInvoice(invoiceId: $invoiceId, invoiceNumber: $invoiceNumber, loadNumber: $loadNumber, amount: $amount, carrier: $carrier, broker: $broker, paid: $paid, shortPaid: $shortPaid) {
+    _id
+    amount
+    broker {
+      _id
+    }
+    carrier {
+      _id
+    }
+    dueDate
+    invoiceDate
+    invoiceNumber
+    loadNumber
+    paid
+    shortPaid
+  }
+}
+`;

@@ -109,7 +109,7 @@ function NewInvoice() {
             Invoice Date
           </FormLabel>
           <Input
-            type="date"
+            type="text"
             name="invoiceDate"
             value={new Date().toLocaleDateString('en-US')}
             isDisabled

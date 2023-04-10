@@ -10,7 +10,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 import { WarningTwoIcon } from '@chakra-ui/icons';
-import Invoice from './Invoice';
+import ViewInvoice from './ViewInvoice';
 
 function SearchInvoice() {
   const [invoiceNumberData, setInvoiceNumberData] = useState('');
@@ -68,7 +68,7 @@ function SearchInvoice() {
       </FormControl>
       {showInvoice ? (
         <Box my={4}>
-          <Invoice invoiceNumberData={invoiceNumberData} />
+          <ViewInvoice invoiceNumberData={invoiceNumberData} />
         </Box>
       ) : (
         <></>

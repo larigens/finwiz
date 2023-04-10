@@ -34,7 +34,7 @@ function Dashboard() {
     return <div>Loading...</div>;
   }
 
-  const isAuth = data.me.role === 'admin';
+  const isAuth = data.me.role === 'admin' || data.me.role === 'employee' ;
 
   return (
     <>
