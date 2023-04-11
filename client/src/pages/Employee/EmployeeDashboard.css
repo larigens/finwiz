@@ -1,0 +1,29 @@
+/* input[type=search],
+select {
+    color: black !important;
+    font-size: 20px;
+}
+
+input[type=text],
+select {
+    color: black !important;
+    font-size: 20px;
+}
+
+input[type=date],
+select {
+    color: black !important;
+    font-size: 20px;
+}
+
+.all::placeholder {
+    font-size: 20px !important;
+}
+
+
+/* update check box */
+
+/* .form-check-input[type=checkbox] {
+    border-radius: 0.25em;
+    padding: 10px !important;
+} */ 

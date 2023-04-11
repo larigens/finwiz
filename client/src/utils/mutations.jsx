@@ -71,11 +71,11 @@ export const ADD_INVOICE = gql`
 export const UPDATE_INVOICE = gql`
   mutation Mutation(
     $invoiceId: ID!
-    $invoiceNumber: Int!
-    $loadNumber: String!
-    $amount: Int!
-    $carrier: ID!
-    $broker: ID!
+    $invoiceNumber: Int
+    $loadNumber: String
+    $amount: Int
+    $carrier: ID
+    $broker: ID
     $paid: Boolean
     $shortPaid: Boolean
   ) {

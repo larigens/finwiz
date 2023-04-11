@@ -42,7 +42,6 @@ export const GET_ALL_CARRIERS_BROKERS = gql`
   }
 `;
 
-// ADD CARRIERS
 export const GET_BROKER_BY_ID = gql`
   query Broker($brokerId: ID!) {
     broker(brokerId: $brokerId) {
@@ -62,6 +61,31 @@ export const GET_BROKER_BY_ID = gql`
         paid
         dueDate
         _id
+      }
+    }
+  }
+`;
+
+export const GET_CARRIER_BY_ID = gql`
+  query Carrier($carrierId: ID!) {
+    carrier(carrierId: $carrierId) {
+      _id
+      company
+      mcNumber
+      firstName
+      lastName
+      email
+      phoneNumber
+      fullName
+      invoices {
+        _id
+        invoiceNumber
+        loadNumber
+        amount
+        paid
+        shortPaid
+        invoiceDate
+        dueDate
       }
     }
   }
@@ -98,16 +122,22 @@ export const GET_INVOICE_BY_ID = gql`
 `;
 
 export const GET_INVOICE_BY_NUMBER = gql`
-  query InvoiceByNumber($invoiceNumber: Int!) {
+  query Query($invoiceNumber: Int!) {
     invoiceByNumber(invoiceNumber: $invoiceNumber) {
       _id
-      amount
       invoiceNumber
       loadNumber
-      invoiceDate
-      dueDate
+      amount
       paid
       shortPaid
+      invoiceDate
+      dueDate
+      carrier {
+        _id
+      }
+      broker {
+        _id
+      }
     }
   }
 `;
