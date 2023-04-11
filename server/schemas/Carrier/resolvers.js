@@ -28,6 +28,22 @@ const resolvers = {
         },
     },
     Mutation: {
+        // Add a third argument to the resolver to access data in our `context`
+        addCarrier: async (_, { input }, context) => {
+            // If context has a `user` property, that means the user executing this mutation has a valid JWT and is logged in
+            if (context.user) {
+                try {
+                    const { company, mcNumber, firstName, lastName, email, phoneNumber } = input;
+                    const carrier = await Carrier.create({ company, mcNumber, firstName, lastName, email, phoneNumber });
+                    return carrier;
+                } catch (err) {
+                    console.log(err);
+                    throw new Error('Failed to create carrier.');
+                }
+            }
+            // If user attempts to execute this mutation and isn't logged in, throw an error
+            throw new AuthenticationError('You need to be logged in!');
+        },
         updateCarrier: async (_, { carrierId, input }, context) => {
             if (context.user) {
                 try {
@@ -74,7 +90,18 @@ const resolvers = {
                 }
             }
             throw new AuthenticationError('You need to be logged in!');
-        }
+        },
+        removeCarrier: async (_, { carrierId }, context) => {
+            if (context.user) {
+                try {
+                    return Carrier.findOneAndDelete({ _id: carrierId });
+                } catch (err) {
+                    console.log(err);
+                    throw new Error('Failed to remove carrier.');
+                }
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
     },
 };
 

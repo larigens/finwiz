@@ -30,8 +30,8 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Aging',
-      color: '#000000',
+      text: 'AGING',
+      color: '#F2F3F5',
       font: {
         size: 25,
         color: '#e7f0f4',
@@ -61,21 +61,23 @@ export const options = {
   },
 };
 
-const labels = ['15 or less', '16 to 30', '31 to 45', '46 to 60', '61 to 75', 'over 75'];
+const labels = [
+  '15 or less',
+  '16 to 30',
+  '31 to 45',
+  '46 to 60',
+  '61 to 75',
+  'over 75',
+];
 
 export const data = {
   labels,
   datasets: [
     {
-      label: 'Corrent Aging',
+      label: 'Current Aging',
       data: [2000, 5000, 10000, 900, 600, 1400, 1700],
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    // {
-    //   label: 'Short-Payments',
-    //   data: [50, 150, 100, 20, 0, 15, 60],
-    //   backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    // },
+      backgroundColor: '#6f92fc',
+    }
   ],
 };
 

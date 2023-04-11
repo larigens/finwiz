@@ -22,7 +22,7 @@ import { WarningTwoIcon } from '@chakra-ui/icons';
 import Auth from '../utils/auth';
 
 function Login() {
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 
   const [userFormData, setUserFormData] = useState({

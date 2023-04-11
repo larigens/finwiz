@@ -26,6 +26,18 @@ const resolvers = {
                 throw new Error('Failed to fetch invoices.');
             }
         },
+        invoiceByNumber: async (_, { invoiceNumber }) => {
+            try {
+                const invoice = await Invoice.findOne({ invoiceNumber: invoiceNumber })
+                    .select('-__v')
+                    .populate('carrier')
+                    .populate('broker')
+                return invoice;
+            } catch (err) {
+                console.log(err);
+                throw new Error('Failed to fetch invoice.');
+            }
+        },
     },
     Invoice: {
         invoiceCount: (invoice) => invoice.invoices.length,

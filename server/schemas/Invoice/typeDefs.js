@@ -17,6 +17,7 @@ const { gql } = require('apollo-server-express');
 
   type Query {
     invoice(invoiceId: ID!): Invoice
+    invoiceByNumber(invoiceNumber: Int!): Invoice
     invoices: [Invoice]
   }
 

@@ -87,7 +87,18 @@ const resolvers = {
                 }
             }
             throw new AuthenticationError('You need to be logged in!');
-        }
+        },
+        removeBroker: async (_, { brokerId }, context) => {
+            if (context.user) {
+                try {
+                    return Broker.findOneAndDelete({ _id: brokerId });
+                } catch (err) {
+                    console.log(err);
+                    throw new Error('Failed to remove broker.');
+                }
+            }
+            throw new AuthenticationError('You need to be logged in!');
+        },
     },
 };
 
