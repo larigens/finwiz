@@ -8,6 +8,7 @@ import {
   Link,
   Collapse,
 } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 import NewInvoice from '../Invoice/NewInvoice';
 import SearchInvoice from '../Invoice/SearchInvoice';
 
@@ -95,6 +96,35 @@ function Employee() {
                 <NewInvoice />
               </Box>
             </Collapse>
+          </Box>
+          <Box>
+            <Link
+              as={RouterLink}
+              to="/updateInvoice"
+              color="brand.500"
+              _hover={{
+                color: 'brand.600',
+              }}
+            >
+              <Heading size="xs">Update Invoice</Heading>
+            </Link>
+          </Box>
+        </Box>
+        <Box>
+          <Heading size="xs" textTransform="uppercase">
+            Others
+          </Heading>
+          <Box>
+            <Link
+              as={RouterLink}
+              to="/employeeDashboard"
+              color="brand.500"
+              _hover={{
+                color: 'brand.600',
+              }}
+            >
+              More Options...
+            </Link>
           </Box>
         </Box>
       </Stack>

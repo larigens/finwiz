@@ -16,6 +16,8 @@ import Market from './pages/Market/Market';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import EmployeeDashboard from './pages/Employee/EmployeeDashboard';
+import UpdateInvoice from './pages/Invoice/UpdateInvoice';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -49,6 +51,8 @@ export default function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/employeeDashboard" element={<EmployeeDashboard />} />
+          <Route path="/updateInvoice" element={<UpdateInvoice />} />
         </Routes>
       </Router>
       <Footer />

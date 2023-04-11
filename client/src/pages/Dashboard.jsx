@@ -14,13 +14,20 @@ import {
 import { useQuery } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 import { AgingChart } from './Charts/AgingChart';
+import Doughnutchart from './Charts/Doughnutchart';
+
 import NewInvoice from './Invoice/NewInvoice';
 import Employee from './Employee/Employee';
 
 function Dashboard() {
   const { loading, data } = useQuery(GET_ME);
   const [showAnalysis, setShowAnalysis] = useState(false);
+  const [showSummary, setShowSummary] = useState(false);
   const [showInvoiceEntry, setShowInvoiceEntry] = useState(false);
+
+  const handleSummaryClick = () => {
+    setShowSummary(!showSummary);
+  };
 
   const handleAnalysisClick = () => {
     setShowAnalysis(!showAnalysis);
@@ -34,7 +41,7 @@ function Dashboard() {
     return <div>Loading...</div>;
   }
 
-  const isAuth = data.me.role === 'admin' || data.me.role === 'employee' ;
+  const isAuth = data.me.role === 'admin' || data.me.role === 'employee';
 
   return (
     <>
@@ -61,12 +68,27 @@ function Dashboard() {
                 </Text>
               </Box>
               <Box>
-                <Heading size="xs" textTransform="uppercase">
-                  Overview
-                </Heading>
+                <Link
+                  onClick={handleSummaryClick}
+                  color="brand.500"
+                  _hover={{
+                    color: 'brand.600',
+                  }}
+                >
+                  <Heading size="xs" textTransform="uppercase">
+                    Overview
+                  </Heading>
+                </Link>
                 <Text pt="2" fontSize="sm">
                   Check out the overview of your favorite brokers.
                 </Text>
+                <Box mt={1} mx={{ base: 1, md: 10 }} px={{ base: 4, md: 10 }}>
+                  <Collapse in={showSummary}>
+                    <Box mx="auto" style={{ height: '400px' }} align="center">
+                      <Doughnutchart />
+                    </Box>
+                  </Collapse>
+                </Box>
               </Box>
               <Box>
                 <Link
@@ -85,7 +107,7 @@ function Dashboard() {
                 </Text>
                 <Box mt={1} mx={{ base: 1, md: 10 }} px={{ base: 4, md: 10 }}>
                   <Collapse in={showAnalysis}>
-                    <Box mx="auto" style={{ height: '300px' }}>
+                    <Box mx="auto" style={{ height: '400px' }}>
                       <AgingChart />
                     </Box>
                   </Collapse>

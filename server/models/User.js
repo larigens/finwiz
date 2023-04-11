@@ -34,7 +34,7 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: [true, 'Password is required!'],
-        match: [passwordRegex, 'Must contain at least 1 digit, 1 lowercase letter, 1 uppercase letter, and 1 special character!'],
+        // match: [passwordRegex, 'Must contain at least 1 digit, 1 lowercase letter, 1 uppercase letter, and 1 special character!'],
         minlength: [8, 'Password must be at least 8 characters long.'],
     },
     role: {
