@@ -42,7 +42,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'AGING',
+      text: 'Favorite Brokers',
       color: '#F2F3F5',
       font: {
         size: 25,
