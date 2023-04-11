@@ -77,7 +77,7 @@ function UpdateInvoice() {
         color="brand.500"
         _hover={{ bg: 'brand.700', color: 'brand.500' }}
         borderRadius="full"
-        className='no-border'
+        className="no-border"
       >
         Update
       </Button>

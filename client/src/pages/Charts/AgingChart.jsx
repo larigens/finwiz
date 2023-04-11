@@ -77,7 +77,7 @@ export const data = {
       label: 'Current Aging',
       data: [2000, 5000, 10000, 900, 600, 1400, 1700],
       backgroundColor: '#6f92fc',
-    }
+    },
   ],
 };
 

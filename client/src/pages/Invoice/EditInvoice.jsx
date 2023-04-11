@@ -39,6 +39,8 @@ function EditInvoice({ invoice, carrierName, brokerName }) {
   const parseFormData = (formData) => {
     let isPaid;
     let isShortPaid;
+    let carrierId = formData.carrier;
+    let brokerId = formData.broker;
     if (formData.paid === 'true') {
       isPaid = true;
     } else {
@@ -49,19 +51,29 @@ function EditInvoice({ invoice, carrierName, brokerName }) {
     } else {
       isShortPaid = false;
     }
+    if (typeof carrierId === 'object') {
+      carrierId = formData.carrier._id;
+    }
+    if (typeof brokerId === 'object') {
+      brokerId = formData.broker._id;
+    }
     return {
       ...formData,
       invoiceNumber: parseInt(formData.invoiceNumber, 10),
       amount: parseInt(formData.amount, 10),
       paid: isPaid,
       shortPaid: isShortPaid,
+      carrier: carrierId,
+      broker: brokerId,
     };
   };
   // Save edited invoice data
   const handleSaveClick = async (event) => {
     event.preventDefault();
     try {
+      console.log(editedInvoice);
       const parsedFormData = parseFormData(editedInvoice);
+      console.log(parsedFormData);
       const { data } = await updateInvoice({
         variables: { ...parsedFormData },
       });
@@ -78,7 +90,6 @@ function EditInvoice({ invoice, carrierName, brokerName }) {
     setEditedInvoice({ ...editedInvoice, [name]: value });
   };
 
-  // TODO: Get the default value for carrier and broker if the user does not change
   return (
     <>
       {isEditing ? (
@@ -152,7 +163,7 @@ function EditInvoice({ invoice, carrierName, brokerName }) {
               borderWidth="1px"
               borderColor="brand.700"
             >
-              <option value={invoice.carrier}>{carrierName}</option>
+              <option value={editedInvoice.carrier}>{carrierName}</option>
               {carriers &&
                 carriers.map((singleCarrier) => (
                   <option key={singleCarrier._id} value={singleCarrier._id}>
