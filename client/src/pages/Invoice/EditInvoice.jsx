@@ -15,8 +15,7 @@ import { useMutation } from '@apollo/client';
 import { getAllCarriesAndBroker } from '../../utils/helper';
 import { UPDATE_INVOICE } from '../../utils/mutations';
 
-// TODO: MAKE THE NAME OF THE CARRIER AND BROKER SHOW UP
-function EditInvoice({ invoice }) {
+function EditInvoice({ invoice, carrierName, brokerName }) {
   const carriersAndBrokers = getAllCarriesAndBroker();
   const carriers = carriersAndBrokers.carriers;
   const brokers = carriersAndBrokers.brokers;
@@ -62,8 +61,7 @@ function EditInvoice({ invoice }) {
   const handleSaveClick = async (event) => {
     event.preventDefault();
     try {
-      const parsedFormData = await parseFormData(editedInvoice);
-      console.log(parseFormData);
+      const parsedFormData = parseFormData(editedInvoice);
       const { data } = await updateInvoice({
         variables: { ...parsedFormData },
       });
@@ -77,12 +75,10 @@ function EditInvoice({ invoice }) {
   // Update edited invoice state when form inputs change
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    const newValue =
-      name === 'paid' || name === 'shortPaid' ? Boolean(value) : value;
-    setEditedInvoice({ ...editedInvoice, [name]: newValue });
     setEditedInvoice({ ...editedInvoice, [name]: value });
   };
 
+  // TODO: Get the default value for carrier and broker if the user does not change
   return (
     <>
       {isEditing ? (
@@ -156,7 +152,7 @@ function EditInvoice({ invoice }) {
               borderWidth="1px"
               borderColor="brand.700"
             >
-              <option></option>
+              <option value={invoice.carrier}>{carrierName}</option>
               {carriers &&
                 carriers.map((singleCarrier) => (
                   <option key={singleCarrier._id} value={singleCarrier._id}>
@@ -179,7 +175,7 @@ function EditInvoice({ invoice }) {
               borderWidth="1px"
               borderColor="brand.700"
             >
-              <option></option>
+              <option value={invoice.broker}>{brokerName}</option>
               {brokers &&
                 brokers.map((singleBroker) => (
                   <option key={singleBroker._id} value={singleBroker._id}>
@@ -202,14 +198,8 @@ function EditInvoice({ invoice }) {
               borderWidth="1px"
               borderColor="brand.700"
             >
-              <option value="false" name="false">
-                {' '}
-                No{' '}
-              </option>
-              <option value="true" name="true">
-                {' '}
-                Yes{' '}
-              </option>
+              <option value="false"> No </option>
+              <option value="true"> Yes </option>
             </Select>
           </FormControl>
           <FormControl mb={2}>

@@ -1,32 +1,59 @@
 import React, { useState } from 'react';
 import { Box, Button, ButtonGroup, Text } from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
-import { GET_INVOICE_BY_NUMBER } from '../../utils/queries';
+import {
+  GET_INVOICE_BY_NUMBER,
+  GET_BROKER_BY_ID,
+  GET_CARRIER_BY_ID,
+} from '../../utils/queries';
 import EditInvoice from './EditInvoice';
 
 function ViewInvoice({ invoiceNumberData }) {
-  const { loading, data } = useQuery(GET_INVOICE_BY_NUMBER, {
+  const [edit, setEdit] = useState(false);
+  const { loading, data: invoiceData } = useQuery(GET_INVOICE_BY_NUMBER, {
     variables: { invoiceNumber: invoiceNumberData },
   });
-  const invoice = data?.invoiceByNumber || [];
-  const [edit, setEdit] = useState(false);
+
+  const { loading: carrierLoading, data: carrierData } = useQuery(
+    GET_CARRIER_BY_ID,
+    {
+      skip: !invoiceData?.invoiceByNumber?.carrier?._id,
+      variables: { carrierId: invoiceData?.invoiceByNumber?.carrier?._id },
+    },
+  );
+
+  const { loading: brokerLoading, data: brokerData } = useQuery(
+    GET_BROKER_BY_ID,
+    {
+      skip: !invoiceData?.invoiceByNumber?.broker?._id,
+      variables: { brokerId: invoiceData?.invoiceByNumber?.broker?._id },
+    },
+  );
+
+  if (loading || brokerLoading || carrierLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!invoiceData?.invoiceByNumber) {
+    return <div>No invoice found!</div>;
+  }
+
+  const invoice = invoiceData.invoiceByNumber;
+  const carrierName = carrierData?.carrier?.company || 'N/A';
+  const brokerName = brokerData?.broker?.name || 'N/A';
 
   const handleEditClick = () => {
     setEdit(true);
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!invoice) {
-    return <div>No invoice found!</div>;
-  }
-
   return (
     <>
       {edit ? (
-        <EditInvoice invoice={invoice} />
+        <EditInvoice
+          invoice={invoice}
+          carrierName={carrierName}
+          brokerName={brokerName}
+        />
       ) : (
         <Box
           p={4}
@@ -62,13 +89,13 @@ function ViewInvoice({ invoiceNumberData }) {
           <Text mb={2} color="brand.600" fontWeight="bold">
             Carrier:
             <Text as="span" mx={1} color="brand.500" fontWeight="normal">
-              {invoice.carrier}
+              {carrierName}
             </Text>
           </Text>
           <Text mb={2} color="brand.600" fontWeight="bold">
             Broker:
             <Text as="span" mx={1} color="brand.500" fontWeight="normal">
-              {invoice.broker}
+              {brokerName}
             </Text>
           </Text>
           <Text mb={2} color="brand.600" fontWeight="bold">
