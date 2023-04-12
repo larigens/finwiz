@@ -63,6 +63,23 @@ function NavBar() {
               </Text>
             </RouterLink>
           </Box>
+          <Box m={2} mx={3}>
+            <RouterLink to="/payment">
+              <Text
+                fontSize="xl"
+                fontWeight="semibold"
+                bgGradient="linear(to-r, brand.500, brand.600)"
+                bgClip="text"
+                color={currentPage === 'Payment' ? 'brand.500' : 'transparent'}
+                _hover={{
+                  bgGradient: 'linear(to-r, brand.600, brand.500, brand.600)',
+                }}
+                onClick={() => setCurrentPage('Payment')}
+              >
+                Payment
+              </Text>
+            </RouterLink>
+          </Box>
           {Auth.loggedIn() ? (
             <>
               <Box m={2} mx={3}>
@@ -118,26 +135,6 @@ function NavBar() {
                     onClick={() => setCurrentPage('About')}
                   >
                     About us
-                  </Text>
-                </RouterLink>
-              </Box>
-              <Box m={2} mx={3}>
-                <RouterLink to="/Payment_form">
-                  <Text
-                    fontSize="xl"
-                    fontWeight="semibold"
-                    bgGradient="linear(to-r, brand.500, brand.600)"
-                    bgClip="text"
-                    color={
-                      currentPage === 'Login' ? 'brand.500' : 'transparent'
-                    }
-                    _hover={{
-                      bgGradient:
-                        'linear(to-r, brand.600, brand.500, brand.600)',
-                    }}
-                    onClick={() => setCurrentPage('Payment_form')}
-                  >
-                    Payment
                   </Text>
                 </RouterLink>
               </Box>

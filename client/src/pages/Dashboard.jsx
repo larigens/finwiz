@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import {
   Card,
@@ -102,17 +103,6 @@ function Dashboard() {
                     Analysis
                   </Heading>
                 </Link>
-                <Link to="/Payment_form "
-                  onClick={handleAnalysisClick}
-                  color="brand.500"
-                  _hover={{
-                    color: 'brand.600',
-                  }}
-                >
-                  <Heading size="xs" textTransform="uppercase">
-                    Payment
-                  </Heading>
-                </Link>
                 <Text pt="2" fontSize="sm">
                   See a detailed analysis of all your invoices.
                 </Text>
@@ -123,6 +113,20 @@ function Dashboard() {
                     </Box>
                   </Collapse>
                 </Box>
+              </Box>
+              <Box>
+                <Link
+                  as={RouterLink}
+                  to="/payment "
+                  color="brand.500"
+                  _hover={{
+                    color: 'brand.600',
+                  }}
+                >
+                  <Heading size="xs" textTransform="uppercase">
+                    Payment
+                  </Heading>
+                </Link>
               </Box>
               <Box>
                 <Link
