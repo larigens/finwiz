@@ -106,3 +106,11 @@ export const UPDATE_INVOICE = gql`
     }
   }
 `;
+
+export const REMOVE_INVOICE = gql`
+  mutation RemoveInvoice($invoiceId: ID!) {
+    removeInvoice(invoiceId: $invoiceId) {
+      invoiceNumber
+    }
+  }
+`;

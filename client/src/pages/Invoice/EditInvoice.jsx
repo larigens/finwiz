@@ -15,11 +15,16 @@ import { useMutation } from '@apollo/client';
 import { getAllCarriesAndBroker } from '../../utils/helper';
 import { UPDATE_INVOICE } from '../../utils/mutations';
 
-function EditInvoice({ invoice, carrierName, brokerName }) {
+function EditInvoice({
+  invoice,
+  carrierName,
+  brokerName,
+  isEditing,
+  setIsEditing,
+}) {
   const carriersAndBrokers = getAllCarriesAndBroker();
   const carriers = carriersAndBrokers.carriers;
   const brokers = carriersAndBrokers.brokers;
-  const [isEditing, setIsEditing] = useState(true);
   const [editedInvoice, setEditedInvoice] = useState({});
   const [updateInvoice, { error }] = useMutation(UPDATE_INVOICE);
 

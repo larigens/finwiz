@@ -135,16 +135,16 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        removeInvoice: async (_, { invoiceId }, context) => {
-            if (context.user) {
+        removeInvoice: async (_, { invoiceId }) => {
+            // if (context.user) {
                 try {
                     return Invoice.findOneAndDelete({ _id: invoiceId });
                 } catch (err) {
                     console.log(err);
                     throw new Error('Failed to remove invoice.');
                 }
-            }
-            throw new AuthenticationError('You need to be logged in!');
+            // }
+            // throw new AuthenticationError('You need to be logged in!');
         },
     }
 }
