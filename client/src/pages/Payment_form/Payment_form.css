@@ -1,0 +1,11 @@
+input[type=number],
+select {
+    color: black !important;
+    /* font-size: 20px; */
+}
+
+input[type=email],
+select {
+    color: black !important;
+    /* font-size: 20px; */
+}
