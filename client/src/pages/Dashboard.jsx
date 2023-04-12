@@ -102,6 +102,17 @@ function Dashboard() {
                     Analysis
                   </Heading>
                 </Link>
+                <Link to="/Payment_form "
+                  onClick={handleAnalysisClick}
+                  color="brand.500"
+                  _hover={{
+                    color: 'brand.600',
+                  }}
+                >
+                  <Heading size="xs" textTransform="uppercase">
+                    Payment
+                  </Heading>
+                </Link>
                 <Text pt="2" fontSize="sm">
                   See a detailed analysis of all your invoices.
                 </Text>
