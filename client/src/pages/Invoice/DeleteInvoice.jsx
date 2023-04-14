@@ -22,7 +22,7 @@ export default function DeleteInvoice({
   isOpen,
 }) {
   const [removeInvoice, { error }] = useMutation(REMOVE_INVOICE, {
-    variables: { invoiceId: invoice._id }
+    variables: { invoiceId: invoice._id },
   });
 
   const handleDelete = async () => {
@@ -39,33 +39,36 @@ export default function DeleteInvoice({
     <>
       {deleteInvoice ? (
         <>
-          <Modal isOpen={isOpen} onClose={onClose}>
+          <Modal isOpen={isOpen} onClose={onClose} size="sm">
             <ModalOverlay />
             <ModalContent bg="brand.600">
-              <ModalHeader color="brand.500" borderRadius="sm">
+              <ModalHeader color="brand.500" borderRadius="sm" fontSize="lg">
                 Delete Invoice
               </ModalHeader>
-              <ModalCloseButton color="brand.500" />
-              <ModalBody mt={1} color="brand.900">
+              <ModalCloseButton color="brand.500" size="sm" />
+              <ModalBody mt={1} color="brand.900" fontSize="sm">
                 Are you sure you want to delete this invoice?
               </ModalBody>
-              <ModalFooter>
+              <ModalFooter flexDirection="column">
                 <Button
-                  size="md"
+                  size="sm"
                   bg="brand.600"
                   color="brand.500"
                   _hover={{ bg: 'brand.500', color: 'brand.700' }}
                   onClick={() => setDeleteInvoice(false)}
+                  mt={2}
+                  width="100%"
                 >
                   Cancel
                 </Button>
                 <Button
-                  size="md"
+                  size="sm"
                   bg="brand.600"
                   color="brand.500"
                   _hover={{ bg: 'red', color: 'brand.500' }}
-                  ml={3}
                   onClick={handleDelete}
+                  mt={2}
+                  width="100%"
                 >
                   Delete
                 </Button>
@@ -73,7 +76,7 @@ export default function DeleteInvoice({
             </ModalContent>
           </Modal>
           {error && (
-            <Alert status="error" mt={5}>
+            <Alert status="error" mt={2}>
               <AlertIcon />
               {error.message}
             </Alert>

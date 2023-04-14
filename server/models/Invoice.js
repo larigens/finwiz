@@ -54,15 +54,13 @@ const invoiceSchema = new Schema(
             ref: 'Broker',
             required: true,
         },
-    }, {
-    toJSON: { virtuals: true },
-    id: false,
-}
+        payment: {
+            type: Schema.Types.ObjectId,
+            ref: 'Payment',
+            required: true,
+        },
+    }
 );
-
-invoiceSchema.virtual('invoiceCount').get(function () {
-    return this.length;
-});
 
 const Invoice = model('Invoice', invoiceSchema);
 

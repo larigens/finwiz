@@ -14,10 +14,13 @@ import {
 } from '../../utils/queries';
 import EditInvoice from './EditInvoice';
 import DeleteInvoice from './DeleteInvoice';
+import SettleInvoice from './SettleInvoice';
 
 function ViewInvoice({ invoiceNumberData }) {
   const [isEditing, setIsEditing] = useState(false);
   const [deleteInvoice, setDeleteInvoice] = useState(false);
+  const [settleInvoice, setSettleInvoice] = useState(false);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { loading, data: invoiceData } = useQuery(GET_INVOICE_BY_NUMBER, {
@@ -52,13 +55,16 @@ function ViewInvoice({ invoiceNumberData }) {
   const carrierName = carrierData?.carrier?.company || 'N/A';
   const brokerName = brokerData?.broker?.name || 'N/A';
 
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
-  const handleDeleteClick = () => {
-    onOpen();
-    setDeleteInvoice(true);
+  const handleClick = (event, id) => {
+    event.preventDefault();
+    if (id === 'editBtn') {
+      setIsEditing(true);
+    } else if (id === 'deleteBtn') {
+      onOpen();
+      setDeleteInvoice(true);
+    } else if (id === 'settleBtn') {
+      setSettleInvoice(true);
+    }
   };
 
   return (
@@ -74,7 +80,7 @@ function ViewInvoice({ invoiceNumberData }) {
       ) : (
         <>
           <Box
-            p={4}
+            p={{ base: 3, md: 4 }}
             rounded="md"
             boxShadow="md"
             bg="brand.800"
@@ -127,10 +133,11 @@ function ViewInvoice({ invoiceNumberData }) {
                 {invoice.shortPaid ? 'Yes' : 'No'}
               </Text>
             </Text>
-            <ButtonGroup mx={{ base: 2, md: 5 }}>
+            <ButtonGroup mx={{ base: 0, md: 5 }}>
               <Button
-                onClick={handleEditClick}
-                size="md"
+                id="editBtn"
+                onClick={(event) => handleClick(event, 'editBtn')}
+                size={{ base: 'sm', md: 'md' }}
                 bg="brand.600"
                 color="brand.500"
                 _hover={{ bg: 'brand.500', color: 'brand.700' }}
@@ -138,13 +145,24 @@ function ViewInvoice({ invoiceNumberData }) {
                 Edit
               </Button>
               <Button
-                onClick={handleDeleteClick}
-                size="md"
+                id="deleteBtn"
+                onClick={(event) => handleClick(event, 'deleteBtn')}
+                size={{ base: 'sm', md: 'md' }}
                 bg="brand.600"
                 color="brand.500"
                 _hover={{ bg: 'brand.500', color: 'brand.700' }}
               >
                 Delete
+              </Button>
+              <Button
+                id="settleBtn"
+                onClick={(event) => handleClick(event, 'settleBtn')}
+                size={{ base: 'sm', md: 'md' }}
+                bg="brand.600"
+                color="brand.500"
+                _hover={{ bg: 'brand.500', color: 'brand.700' }}
+              >
+                Settle
               </Button>
             </ButtonGroup>
           </Box>
@@ -157,6 +175,15 @@ function ViewInvoice({ invoiceNumberData }) {
               isOpen={isOpen}
             />
           ) : null}
+          <>
+            {settleInvoice ? (
+              <SettleInvoice
+                invoice={invoice}
+                settleInvoice={settleInvoice}
+                setSettleInvoice={setSettleInvoice}
+              />
+            ) : null}
+          </>
         </>
       )}
     </>

@@ -12,7 +12,7 @@ const { gql } = require('apollo-server-express');
     dueDate: String
     carrier: Carrier!
     broker: Broker!
-    invoiceCount: Int
+    payment: Payment!
   }
 
   type Query {
@@ -23,7 +23,7 @@ const { gql } = require('apollo-server-express');
 
   type Mutation {
     addInvoice(invoiceNumber: Int!, loadNumber: String!, amount: Int!, carrier: ID!, broker: ID!): Invoice!
-    updateInvoice(invoiceId: ID!, invoiceNumber: Int, loadNumber: String, amount: Int, paid: Boolean, shortPaid: Boolean, carrier: ID, broker: ID): Invoice!
+    updateInvoice(invoiceId: ID!, invoiceNumber: Int, loadNumber: String, amount: Int, paid: Boolean, shortPaid: Boolean, carrier: ID, broker: ID, payment: ID): Invoice!
     removeInvoice(invoiceId: ID!): Invoice!  
     }
   `;

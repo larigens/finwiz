@@ -1,4 +1,4 @@
-const { Invoice, Carrier, Broker } = require('../../models');
+const { Invoice, Carrier, Broker, Payment } = require('../../models');
 const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
@@ -39,9 +39,6 @@ const resolvers = {
             }
         },
     },
-    Invoice: {
-        invoiceCount: (invoice) => invoice.invoices.length,
-    },
     Mutation: {
         addInvoice: async (_, { invoiceNumber, loadNumber, amount, carrier, broker }, context) => {
             if (context.user) {
@@ -76,7 +73,7 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        updateInvoice: async (_, { invoiceId, invoiceNumber, loadNumber, amount, paid, shortPaid, carrier, broker }, context) => {
+        updateInvoice: async (_, { invoiceId, invoiceNumber, loadNumber, amount, paid, shortPaid, carrier, broker, payment }, context) => {
             if (context.user) {
                 try {
 
@@ -85,7 +82,7 @@ const resolvers = {
                         throw new Error('Invoice not found');
                     }
 
-                    const updates = { invoiceNumber, loadNumber, amount, paid, shortPaid, carrier, broker };
+                    const updates = { invoiceNumber, loadNumber, amount, paid, shortPaid, carrier, broker, payment };
 
                     // If the carrier field is being updated, we need to remove the invoice from the old carrier and add it to the new one.
                     if (carrier && carrier !== existingInvoice.carrier) {
@@ -121,6 +118,22 @@ const resolvers = {
                         }
                     }
 
+                    if (payment && payment !== existingInvoice.payment) {
+                        await Broker.findOneAndUpdate(
+                            { _id: existingInvoice.payment },
+                            { $pull: { invoice: invoiceId } },
+                            { new: true }
+                        );
+                        const updatePayment = await Payment.findOneAndUpdate(
+                            { _id: payment },
+                            { $set: { invoice: invoiceId } },
+                            { new: true }
+                        );
+                        if (!updatePayment) {
+                            throw new Error('Payment not found');
+                        }
+                    }
+
                     const updatedInvoice = await Invoice.findOneAndUpdate(
                         { _id: invoiceId },
                         { $set: updates },
@@ -137,12 +150,12 @@ const resolvers = {
         },
         removeInvoice: async (_, { invoiceId }) => {
             // if (context.user) {
-                try {
-                    return Invoice.findOneAndDelete({ _id: invoiceId });
-                } catch (err) {
-                    console.log(err);
-                    throw new Error('Failed to remove invoice.');
-                }
+            try {
+                return Invoice.findOneAndDelete({ _id: invoiceId });
+            } catch (err) {
+                console.log(err);
+                throw new Error('Failed to remove invoice.');
+            }
             // }
             // throw new AuthenticationError('You need to be logged in!');
         },

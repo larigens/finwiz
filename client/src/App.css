@@ -42,6 +42,10 @@ body {
   font-family: var(--body);
 }
 
+.bg-trans {
+  background-color: #a5b7e74b !important;
+}
+
 /* To ensure that the entire page is covered and there are no margins or padding around it. */
 html,
 body {
@@ -179,6 +183,10 @@ li {
 
 input::placeholder {
   font-size: 16px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+  filter: invert(1) hue-rotate(180deg);
 }
 
 /* Font Family */

@@ -41,7 +41,7 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_INVOICE = gql`
-  mutation addInvoice(
+  mutation AddInvoice(
     $invoiceNumber: Int!
     $loadNumber: String!
     $amount: Int!
@@ -68,8 +68,25 @@ export const ADD_INVOICE = gql`
   }
 `;
 
+export const ADD_PAYMENT = gql`
+mutation AddPayment($checkNumber: String!, $paidAmount: Int!, $invoice: ID!, $payDate: String, $rebate: Boolean, $rebateReason: String, $shortPaidReason: String) {
+  addPayment(checkNumber: $checkNumber, paidAmount: $paidAmount, invoice: $invoice, payDate: $payDate, rebate: $rebate, rebateReason: $rebateReason, shortPaidReason: $shortPaidReason) {
+    _id
+    checkNumber
+    paidAmount
+    rebate
+    rebateReason
+    shortPaidReason
+    invoice {
+      _id
+    }
+    payDate
+  }
+}
+`;
+
 export const UPDATE_INVOICE = gql`
-  mutation Mutation(
+  mutation UpdateInvoice(
     $invoiceId: ID!
     $invoiceNumber: Int
     $loadNumber: String

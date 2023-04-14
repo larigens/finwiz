@@ -66,6 +66,24 @@ export const GET_BROKER_BY_ID = gql`
   }
 `;
 
+export const GET_ALL_CARRIERS = gql`
+  query Carriers {
+    carriers {
+      _id
+      company
+      mcNumber
+      firstName
+      lastName
+      email
+      phoneNumber
+      invoices {
+        _id
+      }
+      fullName
+    }
+  }
+`;
+
 export const GET_CARRIER_BY_ID = gql`
   query Carrier($carrierId: ID!) {
     carrier(carrierId: $carrierId) {
@@ -102,6 +120,12 @@ export const GET_ALL_INVOICES = gql`
       shortPaid
       invoiceDate
       dueDate
+      carrier {
+        _id
+      }
+      broker {
+        _id
+      }
     }
   }
 `;
@@ -117,6 +141,12 @@ export const GET_INVOICE_BY_ID = gql`
       loadNumber
       paid
       shortPaid
+      carrier {
+        _id
+      }
+      broker {
+        _id
+      }
     }
   }
 `;

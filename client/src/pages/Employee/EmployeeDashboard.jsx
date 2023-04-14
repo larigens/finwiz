@@ -1,126 +1,79 @@
-import { Button, FormControl, FormLabel, Input, Stack } from '@chakra-ui/react';
+import React, { useState } from 'react';
 
 function EmployeeDashboard() {
+  const [showCheckFields, setShowCheckFields] = useState(false);
+  const [showReasonField, setShowReasonField] = useState(false);
+  const [checkNumber, setCheckNumber] = useState('');
+  const [amount, setAmount] = useState('');
+  const [reason, setReason] = useState('');
+  const handleButtonClick = (buttonType) => {
+    if (buttonType === 'Yes') {
+      setShowCheckFields(true);
+    } else if (buttonType === 'No') {
+      setShowCheckFields(false);
+    } else if (buttonType === 'Right') {
+      setShowReasonField(true);
+    }
+  };
+  const handleCheckNumberChange = (event) => {
+    setCheckNumber(event.target.value);
+  };
+
+  const handleAmountChange = (event) => {
+    setAmount(event.target.value);
+  };
+
+  const handleReasonChange = (event) => {
+    setReason(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Check Number: ', checkNumber);
+    console.log('Amount: ', amount);
+    console.log('Reason: ', reason);
+  };
   return (
-    <Stack
-      bg="brand.800"
-      p={10}
-      spacing={6}
-      borderRadius="lg"
-      boxShadow="lg"
-      mt={5}
-      mx={4}
-    >
-      <Stack spacing={4}>
-        <FormControl>
-          <FormLabel color="brand.500" fontSize="xl">
-            Search Invoices, Brokers and Carriers
-          </FormLabel>
-          <Input
-            type="search"
-            size="lg"
-            borderRadius="full"
-            bg="brand.800"
-            color="brand.500"
-          />
-        </FormControl>
-        <Button
-          bg="brand.600"
-          color="brand.500"
-          _hover={{ bg: 'brand.700', color: 'brand.500' }}
-          borderRadius="full"
-        >
-          Search
-        </Button>
-      </Stack>
-
-      <Stack spacing={6}>
-        <FormControl>
-          <FormLabel color="white" fontSize="xl">
-            Add new Invoice
-          </FormLabel>
-          <Input
+    <div>
+      <h1>Form with Buttons</h1>
+      <button onClick={() => handleButtonClick('Yes')}>Yes</button>
+      <button onClick={() => handleButtonClick('No')}>No</button>
+      <button onClick={() => handleButtonClick('Right')}>Right</button>
+      {showCheckFields && (
+        <div>
+          <label htmlFor="check-number">Check Number: </label>
+          <input
             type="text"
-            size="lg"
-            borderRadius="full"
-            bg="brand.800"
-            borderWidth="1px"
-            borderColor="brand.700"
-            color="brand.500"
+            id="check-number"
+            value={checkNumber}
+            onChange={handleCheckNumberChange}
           />
-        </FormControl>
-        <Button
-          bg="brand.600"
-          color="brand.500"
-          _hover={{ bg: 'brand.700', color: 'brand.500' }}
-          borderRadius="full"
-        >
-          {' '}
-          Add
-        </Button>
-      </Stack>
 
-      <Stack spacing={6}>
-        <FormControl>
-          <FormLabel color="white" fontSize="xl">
-            Update/Delete Invoice
-          </FormLabel>
-          <Input
+          <label htmlFor="amount">Amount: </label>
+          <input
             type="text"
-            size="lg"
-            borderRadius="full"
-            bg="brand.800"
-            borderWidth="1px"
-            borderColor="brand.700"
-            color="brand.500"
+            id="amount"
+            value={amount}
+            onChange={handleAmountChange}
           />
-        </FormControl>
-        <Stack direction={['column', 'row']} spacing={4}>
-          <Button
-            bg="brand.600"
-            color="brand.500"
-            _hover={{ bg: 'brand.700', color: 'brand.500' }}
-            borderRadius="full"
-          >
-            Update
-          </Button>
-          <Button
-            bg="brand.600"
-            color="brand.500"
-            _hover={{ bg: 'brand.700', color: 'brand.500' }}
-            borderRadius="full"
-          >
-            Delete
-          </Button>
-        </Stack>
-      </Stack>
-
-      <Stack spacing={6}>
-        <FormControl>
-          <FormLabel color="white" fontSize="xl">
-            Add new Broker
-          </FormLabel>
-          <Input
-            type="text"
-            size="lg"
-            borderRadius="full"
-            bg="brand.800"
-            borderWidth="1px"
-            borderColor="brand.700"
-            color="brand.500"
-          />
-        </FormControl>
-        <Button
-          bg="brand.600"
-          color="brand.500"
-          _hover={{ bg: 'brand.700', color: 'brand.500' }}
-          borderRadius="full"
-        >
-          {' '}
-          Add
-        </Button>
-      </Stack>
-    </Stack>
+          <br />
+        </div>
+      )}
+      {showReasonField && (
+        <div>
+          <label htmlFor="reason">Reason: </label>
+          <textarea
+            id="reason"
+            value={reason}
+            onChange={handleReasonChange}
+          ></textarea>
+          <br />
+        </div>
+      )}
+      <button type="submit" onClick={handleSubmit}>
+        Submit
+      </button>
+    </div>
   );
 }
 
