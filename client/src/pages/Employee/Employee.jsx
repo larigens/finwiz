@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Heading,
-  Stack,
-  StackDivider,
-  Box,
-  Text,
-  Link,
-} from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
-// import { EmployeeSideBar } from './EmployeeSideBar';
+import { Heading, Stack, StackDivider, Box } from '@chakra-ui/react';
 import { CarrierMenu } from '../Carrier/CarrierMenu';
 import { BrokerMenu } from '../Broker/BrokerMenu';
 import { InvoiceMenu } from '../Invoice/InvoiceMenu';
@@ -47,19 +38,6 @@ function Employee() {
           <Heading size="xs" textTransform="uppercase">
             Others
           </Heading>
-          <Box>
-            <Link
-              as={RouterLink}
-              to="/employeeDashboard"
-              color="brand.500"
-              _hover={{
-                color: 'brand.600',
-              }}
-              size="xs"
-            >
-              <Text size="xs"> More Options... </Text>
-            </Link>
-          </Box>
         </Box>
       </Stack>
     </>

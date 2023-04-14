@@ -78,6 +78,13 @@ export const GET_ALL_CARRIERS = gql`
       phoneNumber
       invoices {
         _id
+        invoiceNumber
+        loadNumber
+        amount
+        paid
+        shortPaid
+        invoiceDate
+        dueDate
       }
       fullName
     }

@@ -19,13 +19,16 @@ import {
   ModalCloseButton,
   ModalBody,
 } from '@chakra-ui/react';
-import { TfiShoppingCartFull } from 'react-icons/tfi';
+import { FaFileInvoiceDollar } from 'react-icons/fa';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_CARRIERS } from '../../utils/queries';
+import CarrierInvoices from './CarrierInvoices';
 
 function CarrierSummary() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedCarrier, setSelectedCarrier] = useState(null);
+  const [viewInvoices, setViewInvoices] = useState(false);
+
   const { loading, data } = useQuery(GET_ALL_CARRIERS);
   const carriers = data?.carriers;
 
@@ -33,9 +36,14 @@ function CarrierSummary() {
     return <div>Loading...</div>;
   }
 
-  const handleOpen = (carrier) => {
-    setSelectedCarrier(carrier);
-    setIsOpen(true);
+  const handleOpen = (carrier, id) => {
+    if (id === 'contactInfo') {
+      setSelectedCarrier(carrier);
+      setIsOpen(true);
+    } else if (id === 'carrierInvoices') {
+      setSelectedCarrier(carrier);
+      setViewInvoices(true);
+    }
   };
   const handleClose = () => {
     setIsOpen(false);
@@ -57,7 +65,12 @@ function CarrierSummary() {
               border="0.5px solid #98B5FF"
             >
               <CardBody textAlign="center">
-                <Stack mt="6" spacing="3">
+                <Stack
+                  spacing={{ base: 6, md: 12 }}
+                  alignItems="center"
+                  justifyContent="space-between"
+                  direction={['column', 'row']}
+                >
                   <Heading size="lg" color="brand.600">
                     {carrier.company}
                   </Heading>
@@ -68,6 +81,8 @@ function CarrierSummary() {
                       {carrier.mcNumber}
                     </Text>
                   </Text>
+                </Stack>
+                <Stack spacing={4} mt={{ base: 4, md: 8 }}>
                   <Flex flexDir="column">
                     <Text mx={4} color="brand.500" fontSize="lg">
                       {carrier.fullName}
@@ -97,7 +112,7 @@ function CarrierSummary() {
                   mr={{ md: '4' }}
                   flexGrow={{ base: '1', md: '0' }}
                   width={{ base: '100%', md: 'auto' }}
-                  onClick={() => handleOpen(carrier)}
+                  onClick={() => handleOpen(carrier, 'contactInfo')}
                 >
                   Contact Info
                 </Button>
@@ -111,10 +126,11 @@ function CarrierSummary() {
                   alignItems="center"
                   width={{ base: '100%', md: 'auto' }}
                   mt={{ base: '4', md: '0' }}
+                  onClick={() => handleOpen(carrier, 'carrierInvoices')}
                 >
                   <HStack justifyContent="center" align="center">
                     <Icon
-                      as={TfiShoppingCartFull}
+                      as={FaFileInvoiceDollar}
                       color="brand.500"
                       w={4}
                       h={4}
@@ -129,7 +145,7 @@ function CarrierSummary() {
                       Check Invoices
                     </Text>
                     <Icon
-                      as={TfiShoppingCartFull}
+                      as={FaFileInvoiceDollar}
                       color="brand.500"
                       w={4}
                       h={4}
@@ -139,51 +155,67 @@ function CarrierSummary() {
                         lg: 'none',
                       }}
                     />
+                    <Text
+                      display={{ base: 'inline-block', lg: 'none' }}
+                      whiteSpace="nowrap"
+                      mr={1}
+                    >
+                      Invoices
+                    </Text>
                   </HStack>
                 </Button>
               </CardFooter>
             </Card>
           ))}
       </SimpleGrid>
-      {selectedCarrier && (
-        <Modal isOpen={isOpen} onClose={handleClose}>
-          <ModalOverlay className="bg-trans" />
-          <ModalContent bg="brand.800">
-            <ModalHeader color="brand.500" borderRadius="sm">
-              Contact Info
-            </ModalHeader>
-            <ModalCloseButton color="brand.500" />
-            <ModalBody mt={1} color="brand.900">
-              <Flex flexDir="row">
-                <Text
-                  mx={4}
-                  color="brand.500"
-                  fontWeight="semibold"
-                  fontSize="lg"
-                >
-                  Email:
-                </Text>
-                <Text as="span" color="brand.500" fontSize="md">
-                  {selectedCarrier.email}
-                </Text>
-              </Flex>
-              <Flex flexDir="row">
-                <Text
-                  mx={4}
-                  color="brand.500"
-                  fontWeight="semibold"
-                  fontSize="lg"
-                >
-                  Phone:
-                </Text>
-                <Text as="span" color="brand.500" fontSize="md">
-                  {selectedCarrier.phoneNumber}
-                </Text>
-              </Flex>
-            </ModalBody>
-          </ModalContent>
-        </Modal>
+      {viewInvoices && (
+        <CarrierInvoices
+          selectedCarrier={selectedCarrier}
+          viewInvoices={viewInvoices}
+          setViewInvoices={setViewInvoices}
+        />
       )}
+      <>
+        {selectedCarrier && (
+          <Modal isOpen={isOpen} onClose={handleClose}>
+            <ModalOverlay className="bg-trans" />
+            <ModalContent bg="brand.800">
+              <ModalHeader color="brand.500" borderRadius="sm">
+                Contact Info
+              </ModalHeader>
+              <ModalCloseButton color="brand.500" />
+              <ModalBody mt={1} color="brand.900">
+                <Flex flexDir="row">
+                  <Text
+                    mx={4}
+                    color="brand.500"
+                    fontWeight="semibold"
+                    fontSize="lg"
+                  >
+                    Email:
+                  </Text>
+                  <Text as="span" color="brand.500" fontSize="md">
+                    {selectedCarrier.email}
+                  </Text>
+                </Flex>
+                <Flex flexDir="row">
+                  <Text
+                    mx={4}
+                    color="brand.500"
+                    fontWeight="semibold"
+                    fontSize="lg"
+                  >
+                    Phone:
+                  </Text>
+                  <Text as="span" color="brand.500" fontSize="md">
+                    {selectedCarrier.phoneNumber}
+                  </Text>
+                </Flex>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
+        )}
+      </>
     </>
   );
 }
