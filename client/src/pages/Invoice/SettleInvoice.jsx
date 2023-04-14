@@ -93,6 +93,7 @@ function SettleInvoice({ invoice }) {
       setRebateChecked(checked);
       setPaidChecked(!checked);
       setShowCheckInputs(false);
+      setShowShortPaidReasonTextarea(false);
     }
   };
 
@@ -249,25 +250,15 @@ function SettleInvoice({ invoice }) {
           </Stack>
         )}
         {showRebateReasonTextarea && (
-          <FormControl isRequired mb={2}>
-            <FormLabel fontSize="lg">Reason:</FormLabel>
-            <Textarea
-              placeholder="Write Reason"
-              name="rebateReason"
-              size="lg"
-              borderRadius="md"
-            />
+          <FormControl isRequired mb={2} px={3}>
+            <FormLabel fontSize="lg">Rebate Reason:</FormLabel>
+            <Textarea name="rebateReason" size="lg" borderRadius="md" />
           </FormControl>
         )}
         {showShortPaidReasonTextarea && (
           <FormControl isRequired mb={2} px={3}>
-            <FormLabel fontSize="lg">Reason:</FormLabel>
-            <Textarea
-              placeholder="Write Reason"
-              name="shortPaidReason"
-              size="lg"
-              borderRadius="md"
-            />
+            <FormLabel fontSize="lg">Short-Payment Reason:</FormLabel>
+            <Textarea name="shortPaidReason" size="lg" borderRadius="md" />
           </FormControl>
         )}
         <Container className="text-center" mt={10} mb={3}>

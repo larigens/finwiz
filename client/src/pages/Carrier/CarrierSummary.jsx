@@ -74,7 +74,12 @@ function CarrierSummary() {
                   <Heading size="lg" color="brand.600">
                     {carrier.company}
                   </Heading>
-                  <Text mx={4} fontSize="lg" color="brand.600">
+                  <Text
+                    mx={4}
+                    fontSize="lg"
+                    color="brand.600"
+                    fontWeight="semibold"
+                  >
                     MC Number:{' '}
                     <Text as="span" color="brand.500">
                       {' '}

@@ -10,28 +10,33 @@ import {
   InputGroup,
   InputRightElement,
   FormErrorMessage,
+  InputLeftElement,
   Button,
   Heading,
 } from '@chakra-ui/react';
 import { Helmet } from 'react-helmet-async';
+import { MdPassword, MdVisibility, MdVisibilityOff } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import { WarningTwoIcon } from '@chakra-ui/icons';
+import { BiUserCircle } from 'react-icons/bi';
 
 import Auth from '../utils/auth';
 
 function Login() {
-  const [show, setShow] = useState(false);
-  const handleClick = () => setShow(!show);
-
   const [userFormData, setUserFormData] = useState({
     username: '',
     password: '',
   });
+  const [showPassword, setShowPassword] = useState(false);
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [loginUser, { error }] = useMutation(LOGIN_USER);
+
+  const handlePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -40,8 +45,6 @@ function Login() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
-    // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -83,7 +86,13 @@ function Login() {
         py={{ base: 5, md: 10 }}
       >
         {/* show alert if server response is bad */}
-        <Heading as="h1" size="xl" textAlign="center" color="brand.500">
+        <Heading
+          as="h1"
+          size={{ base: 'xl', md: '2xl' }}
+          textAlign="center"
+          color="brand.500"
+          mb={5}
+        >
           Login
         </Heading>
         {showAlert && (
@@ -91,42 +100,63 @@ function Login() {
             Something went wrong with your signup!
           </Box>
         )}
-        <FormControl isRequired>
+        <FormControl isRequired mb={5}>
           <FormLabel htmlFor="username" color="brand.500">
             Username
           </FormLabel>
-          <Input
-            type="text"
-            placeholder="Username"
-            name="username"
-            onChange={handleInputChange}
-            value={userFormData.username}
-          />
-          <FormErrorMessage>Username is required!</FormErrorMessage>
+          <InputGroup>
+            <InputLeftElement
+              color="brand.500"
+              pointerEvents="none"
+              children={<BiUserCircle color="brand.500" />}
+            />
+            <Input
+              type="text"
+              placeholder="Username"
+              name="username"
+              onChange={handleInputChange}
+              value={userFormData.username}
+              size="md"
+            />
+          </InputGroup>
+          <FormErrorMessage>
+            <WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon>{' '}
+            Username is required!
+          </FormErrorMessage>
         </FormControl>
-        <FormControl isRequired mt={4}>
+        <FormControl isRequired my={5}>
           <FormLabel htmlFor="password" color="brand.500">
             Password
           </FormLabel>
           <InputGroup size="md">
+            <InputLeftElement
+              color="brand.500"
+              pointerEvents="none"
+              children={<MdPassword color="brand.500" />}
+            />
             <Input
-              type={show ? 'text' : 'password'}
+              type={showPassword ? 'text' : 'password'}
               id="password"
               placeholder="Password"
               name="password"
               onChange={handleInputChange}
               value={userFormData.password}
+              size="md"
             />
-            <InputRightElement width="4.5rem">
+            <InputRightElement>
               <Button
-                h="1.75rem"
                 size="sm"
-                onClick={handleClick}
-                bg="brand.600"
+                onClick={handlePasswordVisibility}
+                bg="transparent"
+                _hover={{ bg: 'transparent' }}
+                _focus={{ boxShadow: 'none' }}
                 color="brand.500"
-                _hover={{ bg: 'brand.500', color: 'brand.700' }}
               >
-                {show ? 'Hide' : 'Show'}
+                {showPassword ? (
+                  <MdVisibilityOff color="brand.500" size="20px" />
+                ) : (
+                  <MdVisibility color="brand.500" size="20px" />
+                )}
               </Button>
             </InputRightElement>
           </InputGroup>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Container,
   Box,
   Button,
   FormControl,
@@ -14,6 +13,7 @@ import {
   InputRightElement,
   InputLeftElement,
   Divider,
+  Container,
 } from '@chakra-ui/react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
@@ -24,14 +24,14 @@ import {
   MdOutlineDriveFileRenameOutline,
   MdPassword,
   MdOutlineAdminPanelSettings,
+  MdVisibility,
+  MdVisibilityOff,
 } from 'react-icons/md';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BiUserCircle } from 'react-icons/bi';
-
 import Auth from '../utils/auth';
 
 const SignUp = () => {
-  // set initial form state
   const [userFormData, setUserFormData] = useState({
     firstName: '',
     lastName: '',
@@ -40,15 +40,14 @@ const SignUp = () => {
     password: '',
     role: '',
   });
-  const [show, setShow] = React.useState(false);
-  const handleClick = () => setShow(!show);
-  // set state for form validation
+  const [showPassword, setShowPassword] = useState(false);
   const [validated] = useState(false);
-
-  // set state for alert
   const [showAlert, setShowAlert] = useState(false);
-
   const [addUser, { error }] = useMutation(ADD_USER);
+
+  const handlePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -57,8 +56,6 @@ const SignUp = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
-    // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -66,10 +63,7 @@ const SignUp = () => {
     }
 
     try {
-      console.log(userFormData);
-      const { data } = await addUser({
-        variables: { ...userFormData },
-      });
+      const { data } = await addUser({ variables: { ...userFormData } });
       Auth.login(data.addUser.token);
     } catch (error) {
       console.error(error);
@@ -87,31 +81,25 @@ const SignUp = () => {
   };
 
   return (
-    <Box
-      px={{ base: 3, md: 10 }}
-      mx={{ base: 3, md: 10 }}
-      py={5}
-      bg="brand.600"
-    >
+    <Box px={{ base: 2, md: 10 }} py={{ base: 5, md: 10 }} bg="brand.600">
       <Helmet>
         <title>Sign Up</title>
       </Helmet>
-      {/* This is needed for the validation functionality above */}
       <Box
         as="form"
         noValidate
         validated={validated.toString()} // convert validated state to a string
         onSubmit={handleFormSubmit}
-        py={{ base: 6, md: 10 }}
-        px={{ base: 3, md: 6 }}
         rounded="2xl"
         boxShadow="md"
         bg="brand.800"
+        textAlign="center"
+        px={{ base: 3, md: 10 }}
+        py={{ base: 5, md: 10 }}
       >
-        {/* show alert if server response is bad */}
         <Heading
           as="h1"
-          size={{ base: '2xl', md: '4xl' }}
+          size={{ base: 'xl', md: '2xl' }}
           textAlign="center"
           color="brand.500"
           mb={5}
@@ -232,7 +220,7 @@ const SignUp = () => {
               children={<MdPassword color="brand.500" />}
             />
             <Input
-              type={show ? 'text' : 'password'}
+              type={showPassword ? 'text' : 'password'}
               id="password"
               placeholder="Password"
               name="password"
@@ -240,16 +228,20 @@ const SignUp = () => {
               value={userFormData.password}
               size="md"
             />
-            <InputRightElement width="4.5rem">
+            <InputRightElement>
               <Button
-                h="1.75rem"
                 size="sm"
-                onClick={handleClick}
-                bg="brand.600"
+                onClick={handlePasswordVisibility}
+                bg="transparent"
+                _hover={{ bg: 'transparent' }}
+                _focus={{ boxShadow: 'none' }}
                 color="brand.500"
-                _hover={{ bg: 'brand.700', color: '800' }}
               >
-                {show ? 'Hide' : 'Show'}
+                {showPassword ? (
+                  <MdVisibilityOff color="brand.500" size="20px" />
+                ) : (
+                  <MdVisibility color="brand.500" size="20px" />
+                )}
               </Button>
             </InputRightElement>
           </InputGroup>
