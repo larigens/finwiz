@@ -1,7 +1,7 @@
 <h1 align='center'> FinWiz </h1>
 
 <p align='center'>
-    <img src='./client/public/images/logo.png' alt='logo' width='120px' height='120px' />
+    <img src='./client/src/assets/logo.png' alt='logo' width='120px' height='120px' />
   <br><br>
   <i> Factoring software designed to
     <br> simplify the management of accounts receivables and payables </i>
@@ -9,7 +9,7 @@
 </p>
 
 <p align='center'>
-  <a href='/'><strong> FinWiz Official Site </strong></a>
+  <a href='https://finwiz.herokuapp.com/'><strong> FinWiz Official Site </strong></a>
   <br>
 </p>
 
@@ -101,7 +101,7 @@ The following images shows the web application's appearance:
 Launch the application by entering the command below on your terminal:
 
 ```bash
-npm start
+npm run develop
 ```
 <!-- Explain more  -->
 
