@@ -4,7 +4,7 @@ import { CarrierMenu } from '../Carrier/CarrierMenu';
 import { BrokerMenu } from '../Broker/BrokerMenu';
 import { InvoiceMenu } from '../Invoice/InvoiceMenu';
 
-function Employee() {
+function EmployeeDashboard() {
   const [showCarrierSummary, setShowCarrierSummary] = useState(false);
   const [showInvoiceSummary, setShowInvoiceSummary] = useState(false);
   const [showInvoiceEntry, setShowInvoiceEntry] = useState(false);
@@ -44,4 +44,4 @@ function Employee() {
   );
 }
 
-export default Employee;
+export default EmployeeDashboard;

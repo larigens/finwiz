@@ -12,7 +12,7 @@ const resolvers = {
                 return invoice;
             } catch (err) {
                 console.log(err);
-                throw new Error('Failed to fetch invoice.');
+                throw new Error(`Error retrieving invoice: ${err.message}`);
             }
         },
         invoices: async () => {
@@ -23,7 +23,7 @@ const resolvers = {
                 return invoices;
             } catch (err) {
                 console.log(err);
-                throw new Error('Failed to fetch invoices.');
+                throw new Error(`Error retrieving invoices: ${err.message}`);
             }
         },
         invoiceByNumber: async (_, { invoiceNumber }) => {
@@ -35,7 +35,7 @@ const resolvers = {
                 return invoice;
             } catch (err) {
                 console.log(err);
-                throw new Error('Failed to fetch invoice.');
+                throw new Error(`Error retrieving invoice: ${err.message}`);
             }
         },
     },
@@ -68,7 +68,7 @@ const resolvers = {
                     return invoice;
                 } catch (err) {
                     console.log(err);
-                    throw new Error('Failed to create invoice.');
+                    throw new Error(`Error adding invoice: ${err.message}`);
                 }
             }
             throw new AuthenticationError('You need to be logged in!');
@@ -143,21 +143,21 @@ const resolvers = {
                     return updatedInvoice;
                 } catch (error) {
                     console.error(error);
-                    throw new Error('Failed to update invoice');
+                    throw new Error(`Error updating invoice: ${err.message}`);
                 }
             }
             throw new AuthenticationError('You need to be logged in!');
         },
-        removeInvoice: async (_, { invoiceId }) => {
-            // if (context.user) {
-            try {
-                return Invoice.findOneAndDelete({ _id: invoiceId });
-            } catch (err) {
-                console.log(err);
-                throw new Error('Failed to remove invoice.');
+        removeInvoice: async (_, { invoiceId }, context) => {
+            if (context.user) {
+                try {
+                    return Invoice.findOneAndDelete({ _id: invoiceId });
+                } catch (err) {
+                    console.log(err);
+                    throw new Error(`Error removing invoice: ${err.message}`);
+                }
             }
-            // }
-            // throw new AuthenticationError('You need to be logged in!');
+            throw new AuthenticationError('You need to be logged in!');
         },
     }
 }

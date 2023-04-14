@@ -18,7 +18,7 @@ import { AgingChart } from './Charts/AgingChart';
 import Doughnutchart from './Charts/Doughnutchart';
 
 import NewInvoice from './Invoice/NewInvoice';
-import Employee from './Employee/Employee';
+import EmployeeDashboard from './Employee/EmployeeDashboard';
 
 function Dashboard() {
   const { loading, data } = useQuery(GET_ME);
@@ -42,7 +42,7 @@ function Dashboard() {
     return <div>Loading...</div>;
   }
 
-  const isAuth = data.me.role === 'admin' || data.me.role === 'employee';
+  const isAuth = data.me.role === 'Admin' || data.me.role === 'Employee';
 
   return (
     <>
@@ -57,7 +57,7 @@ function Dashboard() {
             </Heading>
           </CardHeader>
           {isAuth ? (
-            <Employee />
+            <EmployeeDashboard />
           ) : (
             <Stack divider={<StackDivider />} spacing="4" p="4">
               <Box>

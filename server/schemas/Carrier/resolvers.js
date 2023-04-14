@@ -12,7 +12,7 @@ const resolvers = {
                 return carrier;
             } catch (err) {
                 console.log(err);
-                throw new Error('Failed to fetch carrier.');
+                throw new Error(`Error retrieving carrier: ${err.message}`);
             }
         },
         carriers: async () => {
@@ -23,7 +23,7 @@ const resolvers = {
                 return carriers;
             } catch (err) {
                 console.log(err);
-                throw new Error('Failed to fetch carriers.');
+                throw new Error(`Error retrieving carrier: ${err.message}`);
             }
         },
     },
@@ -38,7 +38,7 @@ const resolvers = {
                     return carrier;
                 } catch (err) {
                     console.log(err);
-                    throw new Error('Failed to create carrier.');
+                    throw new Error(`Error adding carrier: ${err.message}`);
                 }
             }
             // If user attempts to execute this mutation and isn't logged in, throw an error
@@ -59,7 +59,7 @@ const resolvers = {
                     return carrier;
                 } catch (err) {
                     console.log(err);
-                    throw new Error('Failed to update carrier.');
+                    throw new Error(`Error updating carrier: ${err.message}`);
                 }
             }
             throw new AuthenticationError('You need to be logged in!');
@@ -86,7 +86,7 @@ const resolvers = {
                     return result;
                 } catch (error) {
                     console.error(error);
-                    throw new Error('Failed to add broker');
+                    throw new Error(`Error adding carrier-broker relationship: ${err.message}`);
                 }
             }
             throw new AuthenticationError('You need to be logged in!');
@@ -97,7 +97,7 @@ const resolvers = {
                     return Carrier.findOneAndDelete({ _id: carrierId });
                 } catch (err) {
                     console.log(err);
-                    throw new Error('Failed to remove carrier.');
+                    throw new Error(`Error removing carrier: ${err.message}`);
                 }
             }
             throw new AuthenticationError('You need to be logged in!');

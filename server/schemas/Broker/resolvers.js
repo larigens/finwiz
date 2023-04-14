@@ -12,7 +12,7 @@ const resolvers = {
                 return broker;
             } catch (error) {
                 console.error(error);
-                throw new Error('Failed to fetch Broker.');
+                throw new Error(`Error retrieving broker: ${err.message}`);
             }
         },
         brokers: async () => {
@@ -23,7 +23,7 @@ const resolvers = {
                 return brokers;
             } catch (error) {
                 console.error(error);
-                throw new Error('Failed to fetch Brokers.');
+                throw new Error(`Error retrieving brokers: ${err.message}`);
             }
         },
     },
@@ -36,7 +36,7 @@ const resolvers = {
                     return broker;
                 } catch (error) {
                     console.error(error);
-                    throw new Error('Failed to create Broker.');
+                    throw new Error(`Error adding broker: ${err.message}`);
                 }
             }
             throw new AuthenticationError('You need to be logged in!');
@@ -57,7 +57,7 @@ const resolvers = {
                     return broker;
                 } catch (error) {
                     console.error(error);
-                    throw new Error('Failed to update Broker.');
+                    throw new Error(`Error updating broker: ${err.message}`);
                 }
             }
             throw new AuthenticationError('You need to be logged in!');
@@ -83,7 +83,7 @@ const resolvers = {
                     return result;
                 } catch (error) {
                     console.error(error);
-                    throw new Error('Failed to add carrier');
+                    throw new Error(`Error adding broker-carrier relationship: ${err.message}`);
                 }
             }
             throw new AuthenticationError('You need to be logged in!');
@@ -94,7 +94,7 @@ const resolvers = {
                     return Broker.findOneAndDelete({ _id: brokerId });
                 } catch (err) {
                     console.log(err);
-                    throw new Error('Failed to remove broker.');
+                    throw new Error(`Error removing broker: ${err.message}`);
                 }
             }
             throw new AuthenticationError('You need to be logged in!');

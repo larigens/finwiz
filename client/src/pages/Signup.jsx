@@ -179,6 +179,9 @@ const SignUp = () => {
               size="md"
             />
           </InputGroup>
+          <FormHelperText color="brand.600" size="sm" textAlign="start">
+            Username must be at least 6 characters long.
+          </FormHelperText>
           <FormErrorMessage>
             <WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon>{' '}
             Username is required!
@@ -245,7 +248,7 @@ const SignUp = () => {
               </Button>
             </InputRightElement>
           </InputGroup>
-          <FormHelperText color="brand.600" size="sm">
+          <FormHelperText color="brand.600" size="sm" textAlign="start">
             Must contain at least 1 digit, 1 lowercase letter, 1 uppercase
             letter, and 1 special character!
           </FormHelperText>

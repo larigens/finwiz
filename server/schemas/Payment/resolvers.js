@@ -1,5 +1,5 @@
 const { Invoice, Payment } = require('../../models');
-// const { AuthenticationError } = require('apollo-server-express');
+const { AuthenticationError } = require('apollo-server-express');
 
 // add context later
 const resolvers = {
@@ -25,23 +25,26 @@ const resolvers = {
         },
     },
     Mutation: {
-        addPayment: async (_, { checkNumber, paidAmount, payDate, rebate, rebateReason, shortPaidReason, invoice }) => {
-            try {
-                const payment = await Payment.create({ checkNumber, paidAmount, payDate, rebate, rebateReason, shortPaidReason, invoice });
+        addPayment: async (_, { checkNumber, paidAmount, payDate, rebate, rebateReason, shortPaidReason, invoice }, context) => {
+            if (context.user) {
+                try {
+                    const payment = await Payment.create({ checkNumber, paidAmount, payDate, rebate, rebateReason, shortPaidReason, invoice });
 
-                const updateInvoice = await Invoice.findOneAndUpdate(
-                    { _id: invoice },
-                    { $set: { payment: payment._id } },
-                    { new: true }
-                );
-                // Checks if the invoice exist.
-                if (!updateInvoice) {
-                    throw new Error('Invoice not found');
+                    const updateInvoice = await Invoice.findOneAndUpdate(
+                        { _id: invoice },
+                        { $set: { payment: payment._id } },
+                        { new: true }
+                    );
+                    // Checks if the invoice exist.
+                    if (!updateInvoice) {
+                        throw new Error('Invoice not found');
+                    }
+                    return payment;
+                } catch (err) {
+                    throw new Error(`Error adding payment: ${err.message}`);
                 }
-                return payment;
-            } catch (err) {
-                throw new Error(`Error adding payment: ${err.message}`);
             }
+            throw new AuthenticationError('You need to be logged in!');
         },
         updatePayment: async (_, { paymentId, checkNumber, paidAmount, payDate, rebate, rebateReason, shortPaidReason, invoice }) => {
             try {

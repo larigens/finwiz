@@ -10,7 +10,7 @@ const resolvers = {
                 return user;
             } catch (err) {
                 console.log(err);
-                throw new Error('Failed to fetch user.');
+                throw new Error(`Error retrieving user: ${err.message}`);
             }
         },
         users: async () => {
@@ -19,7 +19,7 @@ const resolvers = {
                 return users;
             } catch (err) {
                 console.log(err);
-                throw new Error('Failed to fetch users.');
+                throw new Error(`Error retrieving users: ${err.message}`);
             }
         },
         // By adding context to our query, we can retrieve the logged in user without specifically searching for them
@@ -40,7 +40,7 @@ const resolvers = {
                     return { token, user };
                 } catch (err) {
                     console.log(err);
-                    throw new Error('Failed to add user.');
+                    throw new Error(`Error adding user: ${err.message}`);
                 }
         },
         loginUser: async (_, { username, password }) => {
@@ -61,7 +61,7 @@ const resolvers = {
                 return { token, user };
             } catch (err) {
                 console.log(err);
-                throw new Error('Failed to login.');
+                throw new Error(`Error logging user: ${err.message}`);
             }
         },
         // Add context later
@@ -90,7 +90,7 @@ const resolvers = {
                 return updatedUser.employeeProperty;
             } catch (error) {
                 console.error(error);
-                throw new Error('Failed to add carrier');
+                throw new Error(`Error adding user-carrier relationship: ${err.message}`);
             }
         },
         updateUser: async (_, { userId, input }, context) => {
@@ -104,7 +104,7 @@ const resolvers = {
                     return user;
                 } catch (err) {
                     console.log(err);
-                    throw new Error('Failed to update user.');
+                    throw new Error(`Error updating user: ${err.message}`);
                 }
             }
             throw new AuthenticationError('Access denied!');
@@ -115,7 +115,7 @@ const resolvers = {
                     return User.findOneAndDelete({ _id: userId });
                 } catch (err) {
                     console.log(err);
-                    throw new Error('Failed to remove user.');
+                    throw new Error(`Error removing user: ${err.message}`);
                 }
             }
             throw new AuthenticationError('Access denied!');

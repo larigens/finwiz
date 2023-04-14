@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Flex, Image, Heading } from '@chakra-ui/react';
-import logo from '../assets/logo.png';
-import NavBar from './NavBar';
+import logo from '../../assets/logo.png';
 
-export default function Header() {
+export default function Header(props) {
   return (
     <header>
       <Flex
@@ -39,7 +38,7 @@ export default function Header() {
             </Heading>
           </RouterLink>
         </Flex>
-        <NavBar />
+        {props.children}
       </Flex>
     </header>
   );

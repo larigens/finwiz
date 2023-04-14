@@ -8,12 +8,12 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
-import Header from './components/Header';
+import Header from './components/Header/Header';
+import NavBar from './components/Header/NavBar/NavBar';
 import Footer from './components/Footer';
 import Login from './pages/Login';
 import Market from './pages/Market/Market';
-import Home from './pages/Home';
+import Home from './components/Main/Home';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Payment from './pages/Payment/Payment';
@@ -43,7 +43,9 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Header />
+        <Header>
+          <NavBar />
+        </Header>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/market" element={<Market />} />
