@@ -2,7 +2,6 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express'); // Used to create a GraphQL server and the ApolloServer class, which we will use to instantiate our server.
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
-
 const { typeDefs, resolvers } = require('./schemas'); // Imports the type definitions and resolvers for our GraphQL API.
 const db = require('./config/connection'); // Imports the database connection object.
 
@@ -21,7 +20,7 @@ app.use(express.json());
 // Supports the client side 
 // Adds middleware to the Express.js app that serves static files from the client/build directory if the server is running in a production environment.
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.use(express.static(path.join(__dirname, '../client/build/index.html')));
 }
 
 // // Route handler for the root URL path.

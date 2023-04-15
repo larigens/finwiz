@@ -8,8 +8,9 @@
     "prettier": "^2.8.7"
   },
   "scripts": {
-    "start": "concurrently \"cd client && npm run build\" \"cd server && npm run server\" ",
-    "server": "cd server nodemon server.js --ignore client",
+    "start": "npm install && npm run develop",
+    "server": "cd server && npm start",
+    "client": "cd client && npm start",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
