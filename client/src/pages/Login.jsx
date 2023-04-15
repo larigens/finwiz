@@ -112,7 +112,6 @@ function Login() {
             />
             <Input
               type="text"
-              placeholder="Username"
               name="username"
               onChange={handleInputChange}
               value={userFormData.username}
@@ -137,7 +136,6 @@ function Login() {
             <Input
               type={showPassword ? 'text' : 'password'}
               id="password"
-              placeholder="Password"
               name="password"
               onChange={handleInputChange}
               value={userFormData.password}

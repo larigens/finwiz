@@ -89,7 +89,7 @@ function Payment() {
             onChange={handleDateChange}
             dateFormat="MM/YY"
             showMonthYearPicker
-            className="form-control background-dark light"
+            className="background-dark light"
           />
         </FormControl>
         <FormControl isRequired mb={{ base: 2, md: 5 }}>

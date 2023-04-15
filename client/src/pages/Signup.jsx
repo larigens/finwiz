@@ -125,7 +125,6 @@ const SignUp = () => {
               type="text"
               id="firstName"
               name="firstName"
-              placeholder="First Name"
               value={userFormData.firstName}
               onChange={handleInputChange}
               size="md"
@@ -148,7 +147,6 @@ const SignUp = () => {
             />
             <Input
               type="text"
-              placeholder="Last Name"
               name="lastName"
               onChange={handleInputChange}
               value={userFormData.lastName}
@@ -172,7 +170,6 @@ const SignUp = () => {
             />
             <Input
               type="text"
-              placeholder="Username"
               name="username"
               onChange={handleInputChange}
               value={userFormData.username}
@@ -200,7 +197,6 @@ const SignUp = () => {
             <Input
               type="email"
               id="email"
-              placeholder="Email"
               name="email"
               onChange={handleInputChange}
               value={userFormData.email}
@@ -225,7 +221,6 @@ const SignUp = () => {
             <Input
               type={showPassword ? 'text' : 'password'}
               id="password"
-              placeholder="Password"
               name="password"
               onChange={handleInputChange}
               value={userFormData.password}
