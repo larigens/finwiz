@@ -65,7 +65,7 @@ export const Contact = () => {
       <Accordion allowToggle my={12} mx={3}>
         <AccordionItem>
           <AccordionButton
-            color="brand.800"
+            color="brand.600"
             _expanded={{ bg: 'brand.600', color: 'brand.400' }}
           >
             <Box as="span" flex="1" textAlign="left">
