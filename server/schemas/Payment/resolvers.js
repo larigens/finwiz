@@ -1,5 +1,5 @@
 const { Invoice, Payment } = require('../../models');
-const { AuthenticationError } = require('apollo-server-express');
+const { GraphQLError } = require('graphql');
 
 // add context later
 const resolvers = {
@@ -44,7 +44,7 @@ const resolvers = {
                     throw new Error(`Error adding payment: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
         updatePayment: async (_, { paymentId, checkNumber, paidAmount, payDate, rebate, rebateReason, shortPaidReason, invoice }) => {
             try {

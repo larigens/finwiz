@@ -1,5 +1,5 @@
 const { Invoice, Carrier, Broker, Payment } = require('../../models');
-const { AuthenticationError } = require('apollo-server-express');
+const { GraphQLError } = require('graphql');
 
 const resolvers = {
     Query: {
@@ -71,7 +71,7 @@ const resolvers = {
                     throw new Error(`Error adding invoice: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
         updateInvoice: async (_, { invoiceId, invoiceNumber, loadNumber, amount, paid, shortPaid, carrier, broker, payment }, context) => {
             if (context.user) {
@@ -146,7 +146,7 @@ const resolvers = {
                     throw new Error(`Error updating invoice: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
         removeInvoice: async (_, { invoiceId }, context) => {
             if (context.user) {
@@ -157,7 +157,7 @@ const resolvers = {
                     throw new Error(`Error removing invoice: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
     }
 }

@@ -1,5 +1,5 @@
 const { Carrier, Broker } = require('../../models');
-const { AuthenticationError } = require('apollo-server-express');
+const { GraphQLError } = require('graphql');
 
 const resolvers = {
     Query: {
@@ -42,7 +42,7 @@ const resolvers = {
                 }
             }
             // If user attempts to execute this mutation and isn't logged in, throw an error
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
         updateCarrier: async (_, { carrierId, input }, context) => {
             if (context.user) {
@@ -62,7 +62,7 @@ const resolvers = {
                     throw new Error(`Error updating carrier: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
         addCarrierBroker: async (_, { carrierId, brokerId }, context) => {
             if (context.user) {
@@ -89,7 +89,7 @@ const resolvers = {
                     throw new Error(`Error adding carrier-broker relationship: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
         removeCarrier: async (_, { carrierId }, context) => {
             if (context.user) {
@@ -100,7 +100,7 @@ const resolvers = {
                     throw new Error(`Error removing carrier: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
     },
 };

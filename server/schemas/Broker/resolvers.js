@@ -1,5 +1,5 @@
 const { Broker, Carrier } = require('../../models');
-const { AuthenticationError } = require('apollo-server-express');
+const { GraphQLError } = require('graphql');
 
 const resolvers = {
     Query: {
@@ -39,7 +39,7 @@ const resolvers = {
                     throw new Error(`Error adding broker: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
         updateBroker: async (_, { brokerId, input }, context) => {
             if (context.user) {
@@ -60,7 +60,7 @@ const resolvers = {
                     throw new Error(`Error updating broker: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
         addBrokerCarrier: async (_, { brokerId, carrierId }, context) => {
             if (context.user) {
@@ -86,7 +86,7 @@ const resolvers = {
                     throw new Error(`Error adding broker-carrier relationship: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
         removeBroker: async (_, { brokerId }, context) => {
             if (context.user) {
@@ -97,7 +97,7 @@ const resolvers = {
                     throw new Error(`Error removing broker: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
     },
 };

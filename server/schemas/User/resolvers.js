@@ -1,4 +1,4 @@
-const { AuthenticationError } = require('apollo-server-express');
+const { GraphQLError } = require('graphql');
 const { User, Carrier } = require('../../models');
 const { signToken } = require('../../utils/auth');
 
@@ -29,7 +29,7 @@ const resolvers = {
                 const user = User.findOne({ _id: context.user._id });
                 return user;
             }
-            throw new AuthenticationError('You need to be logged in!');
+            throw new GraphQLError('You need to be logged in!');
         },
     },
     Mutation: {
@@ -48,13 +48,13 @@ const resolvers = {
                 const user = await User.findOne({ username });
 
                 if (!user) {
-                    throw new AuthenticationError('Invalid username or password!');
+                    throw new GraphQLError('Invalid username or password!');
                 }
 
                 const correctPw = await user.validatePassword(password);
 
                 if (!correctPw) {
-                    throw new AuthenticationError('Invalid username or password!');
+                    throw new GraphQLError('Invalid username or password!');
                 }
 
                 const token = signToken(user);
@@ -107,7 +107,7 @@ const resolvers = {
                     throw new Error(`Error updating user: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('Access denied!');
+            throw new GraphQLError('Access denied!');
         },
         removeUser: async (_, { userId }, context) => {
             if (context.user && context.user.role === 'Admin') {
@@ -118,7 +118,7 @@ const resolvers = {
                     throw new Error(`Error removing user: ${err.message}`);
                 }
             }
-            throw new AuthenticationError('Access denied!');
+            throw new GraphQLError('Access denied!');
         },
     },
 };
