@@ -42,8 +42,6 @@
     "@graphql-tools/merge": "^8.4.0",
     "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
-    "mongodb": "^5.1.0",
-    "node": "^19.9.0",
-    "npm": "^9.6.4"
+    "mongodb": "^5.1.0"
   }
 }
