@@ -38,7 +38,7 @@ function Market() {
         >
           WizMarket
         </Heading>
-        <Flex justifyContent="space-between" alignItems="center" mb={4}>
+        <Flex justifyContent="space-between" alignItems="center" my={4} mb={8}>
           <FormControl id="search" mr={2} w={{ base: '100%', md: '50%' }}>
             <Flex>
               <Input
@@ -79,7 +79,10 @@ function Market() {
             </Button>
           </ButtonGroup>
         </Flex>
-        <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={6}>
+        <SimpleGrid
+          columns={{ base: 1, sm: 2, md: 2, lg: 3, xl: 4 }}
+          spacing={6}
+        >
           {products.map((product, index) => (
             <Card
               key={index}

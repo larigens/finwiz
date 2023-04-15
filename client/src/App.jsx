@@ -13,10 +13,10 @@ import NavBar from './components/Header/NavBar/NavBar';
 import Footer from './components/Footer';
 import Login from './pages/Login';
 import Market from './pages/Market/Market';
-import Home from './components/Main/Home';
+import Main from './components/Main/Main';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
-import Payment from './pages/Payment/Payment';
+import Payment from './pages/Market/Payment/Payment';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -47,7 +47,7 @@ export default function App() {
           <NavBar />
         </Header>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Main />} />
           <Route path="/market" element={<Market />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/signup" element={<Signup />} />

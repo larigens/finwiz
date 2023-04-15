@@ -102,8 +102,6 @@ header,
   color: var(--dark-shades) !important;
 }
 
-input::placeholder,
-textarea::placeholder,
 .dark-accent {
   color: var(--dark-accent) !important;
 }
@@ -124,6 +122,8 @@ textarea:focus,
   color: var(--main-brand) !important;
 }
 
+input::placeholder,
+textarea::placeholder,
 .light {
   color: var(--light) !important;
 }
@@ -181,11 +181,12 @@ li {
   letter-spacing: 1px;
 }
 
+textarea::placeholder,
 input::placeholder {
-  font-size: 16px;
+  font-size: 14px !important;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator{
+input[type='date']::-webkit-calendar-picker-indicator {
   filter: invert(1) hue-rotate(180deg);
 }
 
