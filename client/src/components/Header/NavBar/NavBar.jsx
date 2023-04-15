@@ -6,7 +6,7 @@ import Auth from '../../../utils/auth';
 import { LoggedOutNavBar } from './LoggedOutNavBar';
 import { LoggedInNavBar } from './LoggedInNavBar';
 
-function NavBar() {
+export const NavBar = () => {
   const [currentPage, setCurrentPage] = useState('Home');
   const { isOpen, onToggle } = useDisclosure();
 
@@ -92,6 +92,4 @@ function NavBar() {
       </Box>
     </Flex>
   );
-}
-
-export default NavBar;
+};

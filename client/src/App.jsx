@@ -8,15 +8,16 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import Header from './components/Header/Header';
-import NavBar from './components/Header/NavBar/NavBar';
-import Footer from './components/Footer';
-import Login from './pages/Login';
+import { Header } from './components/Header/Header';
+import { NavBar } from './components/Header/NavBar/NavBar';
+import { Footer } from './components/Footer';
+import { Login } from './pages/Login';
 import Market from './pages/Market/Market';
-import Main from './components/Main/Main';
-import Signup from './pages/Signup';
-import Dashboard from './pages/Dashboard';
+import { SignUp } from './pages/SignUp';
+import { Dashboard } from './pages/Dashboard';
 import Payment from './pages/Market/Payment/Payment';
+import { Home } from './pages/Home/Home';
+import { Box } from '@chakra-ui/react';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,16 +47,18 @@ export default function App() {
         <Header>
           <NavBar />
         </Header>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/market" element={<Market />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/payment" element={<Payment />} />
-        </Routes>
+        <Box bg="brand.600" mb={10}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/market" element={<Market />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/payment" element={<Payment />} />
+          </Routes>
+        </Box>
+        <Footer />
       </Router>
-      <Footer />
     </ApolloProvider>
   );
 }

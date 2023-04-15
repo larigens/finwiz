@@ -4,10 +4,9 @@ import { CarrierMenu } from '../Carrier/CarrierMenu';
 import { BrokerMenu } from '../Broker/BrokerMenu';
 import { InvoiceMenu } from '../Invoice/InvoiceMenu';
 
-function EmployeeDashboard() {
+function EmployeeDashboard({showInvoiceEntry, setShowInvoiceEntry}) {
   const [showCarrierSummary, setShowCarrierSummary] = useState(false);
   const [showInvoiceSummary, setShowInvoiceSummary] = useState(false);
-  const [showInvoiceEntry, setShowInvoiceEntry] = useState(false);
 
   const handleShowClick = (event, id) => {
     event.preventDefault();
@@ -22,7 +21,6 @@ function EmployeeDashboard() {
 
   return (
     <>
-      {/* <EmployeeSideBar /> */}
       <Stack divider={<StackDivider />} spacing="4" p="4">
         <CarrierMenu
           handleShowClick={handleShowClick}

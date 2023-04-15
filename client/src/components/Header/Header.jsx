@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Flex, Image, Heading } from '@chakra-ui/react';
 import logo from '../../assets/logo.png';
 
-export default function Header(props) {
+export const Header = (props) => {
   return (
     <header>
       <Flex
@@ -42,4 +42,4 @@ export default function Header(props) {
       </Flex>
     </header>
   );
-}
+};
