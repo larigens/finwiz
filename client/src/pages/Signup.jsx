@@ -1,4 +1,4 @@
-import { Box, Container } from '@chakra-ui/react';
+import { Box, Alert, AlertIcon } from '@chakra-ui/react';
 import { Helmet } from 'react-helmet-async';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
@@ -14,9 +14,10 @@ export const SignUp = () => {
       </Helmet>
       <Form formRequest={'SignUp'} formMutation={addUser} />
       {error && (
-        <Container mt={3} p={3} bg="red.500" color="white">
+        <Alert status="error" mt={5} rounded="2xl" boxShadow="md">
+          <AlertIcon />
           {error.message}
-        </Container>
+        </Alert>
       )}
     </Box>
   );

@@ -18,8 +18,10 @@ import {
 } from './FormInputs';
 import { FormControlReason, FormControlRole } from './FormSelects';
 import { FormControlMessage } from './FormTextareas';
+import { emailRegex } from '../../utils/validators';
+import { ModalComp } from '../../components/Modal/Modal';
 
-export const Form = ({ formRequest, formMutation, handleShowModal }) => {
+export const Form = ({ formRequest, formMutation }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -33,6 +35,15 @@ export const Form = ({ formRequest, formMutation, handleShowModal }) => {
   });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalBody, setModalBody] = useState('');
+
+  const handleShowModal = (title, body) => {
+    setModalTitle(title);
+    setModalBody(body);
+    setShowModal(true);
+  };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -62,8 +73,6 @@ export const Form = ({ formRequest, formMutation, handleShowModal }) => {
       }
     }
     if (formRequest === 'Contact') {
-      const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-
       if (!emailRegex.test(formData.email)) {
         handleShowModal('Error', 'Please enter a valid email address!');
         return;
@@ -89,110 +98,119 @@ export const Form = ({ formRequest, formMutation, handleShowModal }) => {
       }
     }
   };
+
   return (
-    <Box
-      as="form"
-      noValidate
-      validated={validated.toString()} // convert validated state to a string
-      onSubmit={handleFormSubmit}
-      rounded="2xl"
-      boxShadow="md"
-      bg="brand.800"
-      textAlign="center"
-      px={{ base: 3, md: 10 }}
-      py={{ base: 5, md: 10 }}
-    >
-      <Heading
-        as="h1"
-        size={{ base: 'xl', md: '2xl' }}
+    <>
+      <Box
+        as="form"
+        noValidate
+        validated={validated.toString()} // convert validated state to a string
+        onSubmit={handleFormSubmit}
+        rounded="2xl"
+        boxShadow="md"
+        bg="brand.800"
         textAlign="center"
-        color="brand.500"
-        mb={5}
+        px={{ base: 3, md: 10 }}
+        py={{ base: 5, md: 10 }}
       >
-        {formRequest === 'Login' && 'Login'}
-        {formRequest === 'SignUp' && 'SignUp'}
-      </Heading>
-      {showAlert && (
-        <Box mt={2} px={3} py={2} bg="red.50" color="red.500" rounded="md">
-          Something went wrong with your ${formRequest}!
-        </Box>
-      )}
-      {formRequest === 'SignUp' && (
-        <FormControlNames
-          formData={formData}
-          handleInputChange={handleInputChange}
-        />
-      )}
-      {formRequest === 'Contact' && (
-        <FormControlFullName
-          formData={formData}
-          handleInputChange={handleInputChange}
-        />
-      )}
-      {formRequest === 'SignUp' || formRequest === 'Contact' ? (
-        <FormControlEmail
-          formData={formData}
-          handleInputChange={handleInputChange}
-        />
-      ) : null}{' '}
-      {formRequest === 'Login' || formRequest === 'SignUp' ? (
-        <>
-          <FormControlUsername
-            formRequest={formRequest}
-            formData={formData}
-            handleInputChange={handleInputChange}
-          />
-          <FormControlPassword
-            formRequest={formRequest}
-            formData={formData}
-            handleInputChange={handleInputChange}
-          />
-        </>
-      ) : null}{' '}
-      {formRequest === 'SignUp' && (
-        <FormControlRole
-          formData={formData}
-          handleInputChange={handleInputChange}
-        />
-      )}
-      {formRequest === 'Contact' && (
-        <>
-          <FormControlReason
-            formData={formData}
-            handleInputChange={handleInputChange}
-          />
-          <FormControlMessage
-            formData={formData}
-            handleInputChange={handleInputChange}
-          />
-        </>
-      )}
-      <FormControl my={5} py={5}>
-        <Button
-          bg="brand.600"
+        <Heading
+          as="h1"
+          size={{ base: 'xl', md: '2xl' }}
+          textAlign="center"
           color="brand.500"
-          _hover={{ bg: 'brand.700', color: 'brand.500' }}
-          onClick={handleFormSubmit}
-          w={{ base: '100%', md: 'auto' }}
+          mb={5}
         >
-          Submit
-        </Button>
-      </FormControl>
-      <Divider orientation="horizontal" my={5} />
-      {formRequest === 'Login' && (
-        <Container className="text-center" mb={1} color="brand.600">
-          <Link to="/signup" color="brand.600" className="gradient-hv">
-            Don't have an account? Sign Up here
-          </Link>
-        </Container>
-      )}
-      {formRequest === 'SignUp' && (
-        <Container className="text-center" mb={3} color="brand.600">
-          <Link to="/login" color="brand.600" className="gradient-hv">
-            Already have an account? Login here
-          </Link>
-        </Container>
-      )}
-    </Box>
+          {formRequest === 'Login' && 'Login'}
+          {formRequest === 'SignUp' && 'SignUp'}
+        </Heading>
+        {showAlert && (
+          <Box my={4} px={3} py={2} bg="red.50" color="red.500" rounded="md">
+            Something went wrong with your {formRequest}!
+          </Box>
+        )}
+        {formRequest === 'SignUp' && (
+          <FormControlNames
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        )}
+        {formRequest === 'Contact' && (
+          <FormControlFullName
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        )}
+        {formRequest === 'SignUp' || formRequest === 'Contact' ? (
+          <FormControlEmail
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        ) : null}{' '}
+        {formRequest === 'Login' || formRequest === 'SignUp' ? (
+          <>
+            <FormControlUsername
+              formRequest={formRequest}
+              formData={formData}
+              handleInputChange={handleInputChange}
+            />
+            <FormControlPassword
+              formRequest={formRequest}
+              formData={formData}
+              handleInputChange={handleInputChange}
+            />
+          </>
+        ) : null}{' '}
+        {formRequest === 'SignUp' && (
+          <FormControlRole
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        )}
+        {formRequest === 'Contact' && (
+          <>
+            <FormControlReason
+              formData={formData}
+              handleInputChange={handleInputChange}
+            />
+            <FormControlMessage
+              formData={formData}
+              handleInputChange={handleInputChange}
+            />
+          </>
+        )}
+        <FormControl my={5} py={5}>
+          <Button
+            bg="brand.600"
+            color="brand.500"
+            _hover={{ bg: 'brand.700', color: 'brand.500' }}
+            onClick={handleFormSubmit}
+            w={{ base: '100%', md: 'auto' }}
+          >
+            Submit
+          </Button>
+        </FormControl>
+        <Divider orientation="horizontal" my={5} />
+        {formRequest === 'Login' && (
+          <Container className="text-center" mb={1} color="brand.600">
+            <Link to="/signup" color="brand.600" className="gradient-hv">
+              Don't have an account? Sign Up here
+            </Link>
+          </Container>
+        )}
+        {formRequest === 'SignUp' && (
+          <Container className="text-center" mb={3} color="brand.600">
+            <Link to="/login" color="brand.600" className="gradient-hv">
+              Already have an account? Login here
+            </Link>
+          </Container>
+        )}
+      </Box>
+      <ModalComp
+        showModal={showModal}
+        setShowModal={setShowModal}
+        modalTitle={modalTitle}
+        modalBody={modalBody}
+      />
+    </>
   );
 };
