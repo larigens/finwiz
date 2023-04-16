@@ -44,8 +44,6 @@
   "homepage": "https://github.com/larigens/finwiz#readme",
   "dependencies": {
     "@graphql-tools/merge": "^8.4.0",
-    "dotenv": "^16.0.3",
-    "graphql": "^16.6.0",
-    "mongodb": "^5.1.0"
+    "dotenv": "^16.0.3"
   }
 }

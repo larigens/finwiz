@@ -41,6 +41,7 @@
     "graphql-tag": "^2.12.6",
     "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.2.0",
     "mongoose": "^6.10.4"
   },
   "devDependencies": {
