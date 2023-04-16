@@ -8,9 +8,9 @@
     "npm": "9.6.4"
   },
   "scripts": {
-    "start": "nodemon server.js",
-    "server": "nodemon server.js --ignore client",
-    "watch": "nodemon"
+    "start": "node server.js",
+    "seed": "node seeds/seed.js",
+    "watch": "nodemon server.js"
   },
   "repository": {
     "type": "git",
