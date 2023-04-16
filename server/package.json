@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Financial Wizard",
   "main": "server.js",
+  "engines": {
+    "node": "19.9.0",
+    "npm": "9.6.4"
+  },
   "scripts": {
     "start": "nodemon server.js",
     "server": "nodemon server.js --ignore client",

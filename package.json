@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Financial Wizard",
   "main": "server/server.js",
+  "engines": {
+    "node": "19.9.0",
+    "npm": "9.6.4"
+  },
   "devDependencies": {
     "concurrently": "^5.1.0",
     "prettier": "^2.8.7"
