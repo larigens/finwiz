@@ -45,8 +45,8 @@ const startApolloServer = async (typeDefs, resolvers) => {
         context: authMiddleware,
       }),
     );
-    db.once('open', async () => {
-      await new Promise((resolve) => httpServer.listen({ port: PORT }, resolve));
+    db.once('open', () => {
+      new Promise((resolve) => httpServer.listen({ port: PORT }, resolve));
       console.log(`🚀 Server ready at http://localhost:${PORT}/graphql`);
     })
   } catch (error) {
