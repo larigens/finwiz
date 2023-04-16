@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import { Form } from '../components/Form/Form';
 
-export const SignUp = () => {
+export const Signup = () => {
   const [addUser, { error }] = useMutation(ADD_USER);
 
   return (
