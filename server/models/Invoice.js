@@ -57,7 +57,6 @@ const invoiceSchema = new Schema(
         payment: {
             type: Schema.Types.ObjectId,
             ref: 'Payment',
-            required: true,
         },
     }
 );

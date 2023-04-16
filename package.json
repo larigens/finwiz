@@ -8,15 +8,14 @@
     "npm": "9.6.4"
   },
   "devDependencies": {
-    "clinic": "^12.1.0",
     "concurrently": "^5.1.0",
     "prettier": "^2.8.7"
   },
   "scripts": {
-    "start": "concurrently \"cd client && npm run build\" \"cd server && npm run server\" ",
-    "server": "cd server && npm start",
+    "start": "npm install && npm run develop",
+    "server": "cd server && npm run server",
     "client": "cd client && npm start",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "develop": "concurrently \"cd server && npm start\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build",
     "lint": "cd client && npx eslint **/*.jsx",

@@ -44,7 +44,8 @@
     "mongoose": "^6.10.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "concurrently": "^5.1.0"
   },
   "bugs": {
     "url": "https://github.com/larigens/finwiz/issues"

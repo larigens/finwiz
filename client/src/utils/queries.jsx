@@ -42,30 +42,6 @@ export const GET_ALL_CARRIERS_BROKERS = gql`
   }
 `;
 
-export const GET_BROKER_BY_ID = gql`
-  query Broker($brokerId: ID!) {
-    broker(brokerId: $brokerId) {
-      _id
-      name
-      mcNumber
-      email
-      phoneNumber
-      creditScore
-      buy
-      invoices {
-        amount
-        loadNumber
-        invoiceNumber
-        invoiceDate
-        shortPaid
-        paid
-        dueDate
-        _id
-      }
-    }
-  }
-`;
-
 export const GET_ALL_CARRIERS = gql`
   query Carriers {
     carriers {
@@ -91,31 +67,6 @@ export const GET_ALL_CARRIERS = gql`
   }
 `;
 
-export const GET_CARRIER_BY_ID = gql`
-  query Carrier($carrierId: ID!) {
-    carrier(carrierId: $carrierId) {
-      _id
-      company
-      mcNumber
-      firstName
-      lastName
-      email
-      phoneNumber
-      fullName
-      invoices {
-        _id
-        invoiceNumber
-        loadNumber
-        amount
-        paid
-        shortPaid
-        invoiceDate
-        dueDate
-      }
-    }
-  }
-`;
-
 export const GET_ALL_INVOICES = gql`
   query Invoices {
     invoices {
@@ -137,44 +88,25 @@ export const GET_ALL_INVOICES = gql`
   }
 `;
 
-export const GET_INVOICE_BY_ID = gql`
-  query Invoices($invoiceId: ID!) {
-    invoice(invoiceId: $invoiceId) {
-      _id
-      amount
-      dueDate
-      invoiceDate
-      invoiceNumber
-      loadNumber
-      paid
-      shortPaid
-      carrier {
-        _id
-      }
-      broker {
-        _id
-      }
-    }
-  }
-`;
-
 export const GET_INVOICE_BY_NUMBER = gql`
-  query Query($invoiceNumber: Int!) {
-    invoiceByNumber(invoiceNumber: $invoiceNumber) {
+query InvoiceByNumber($invoiceNumber: Int!) {
+  invoiceByNumber(invoiceNumber: $invoiceNumber) {
+    _id
+    amount
+    broker {
       _id
-      invoiceNumber
-      loadNumber
-      amount
-      paid
-      shortPaid
-      invoiceDate
-      dueDate
-      carrier {
-        _id
-      }
-      broker {
-        _id
-      }
+      name
     }
+    carrier {
+      _id
+      company
+    }
+    dueDate
+    invoiceDate
+    invoiceNumber
+    loadNumber
+    paid
+    shortPaid
   }
+}
 `;

@@ -9,6 +9,7 @@ const resolvers = {
                     .select('-__v')
                     .populate('carrier')
                     .populate('broker')
+                    .populate('payment')
                 return invoice;
             } catch (err) {
                 console.log(err);
@@ -20,6 +21,7 @@ const resolvers = {
                 const invoices = await Invoice.find()
                     .populate('carrier')
                     .populate('broker')
+                    .populate('payment')
                 return invoices;
             } catch (err) {
                 console.log(err);
@@ -32,6 +34,7 @@ const resolvers = {
                     .select('-__v')
                     .populate('carrier')
                     .populate('broker')
+                    .populate('payment')
                 return invoice;
             } catch (err) {
                 console.log(err);

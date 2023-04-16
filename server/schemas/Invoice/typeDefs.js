@@ -12,7 +12,7 @@ const { gql } = require('graphql-tag');
     dueDate: String
     carrier: Carrier!
     broker: Broker!
-    payment: Payment!
+    payment: Payment
   }
 
   type Query {
