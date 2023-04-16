@@ -13,7 +13,7 @@ import { NavBar } from './components/Header/NavBar/NavBar';
 import { Footer } from './components/Footer';
 import { Login } from './pages/Login';
 import Market from './pages/Market/Market';
-import { SignUp } from './pages/SignUp';
+import { Signup } from './pages/Signup';
 import { Dashboard } from './pages/Dashboard';
 import Payment from './pages/Market/Payment/Payment';
 import { Home } from './pages/Home/Home';
@@ -52,7 +52,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/market" element={<Market />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/payment" element={<Payment />} />
           </Routes>
