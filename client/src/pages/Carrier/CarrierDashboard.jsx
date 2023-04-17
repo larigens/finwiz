@@ -9,8 +9,8 @@ import {
   Link,
   Collapse,
 } from '@chakra-ui/react';
-import { AgingChart } from '../Charts/AgingChart';
-import Doughnutchart from '../Charts/Doughnutchart';
+import { AgingChart } from '../../components/Charts/AgingChart';
+import Doughnutchart from '../../components/Charts/Doughnutchart';
 import NewInvoice from '../Invoice/NewInvoice';
 
 function CarrierDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {

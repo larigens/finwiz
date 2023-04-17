@@ -33,6 +33,8 @@ function SearchInvoice() {
       rounded="2xl"
       boxShadow="md"
       bg="brand.800"
+      borderWidth="1px"
+      borderColor="brand.700"
       textAlign="center"
       px={{ base: 3, md: 10 }}
       py={{ base: 5, md: 10 }}

@@ -15,8 +15,8 @@ import {
   FormControlUsername,
   FormControlEmail,
   FormControlPassword,
-} from './FormInputs';
-import { FormControlReason, FormControlRole } from './FormSelects';
+} from './Inputs/UserInputs';
+import { FormControlReason, FormControlRole } from './Selects/UserSelects';
 import { FormControlMessage } from './FormTextareas';
 import { emailRegex } from '../../utils/validators';
 import { ModalComp } from '../../components/Modal/Modal';

@@ -25,7 +25,7 @@ export const Header = (props) => {
             p={0}
             mr={4}
           />
-          <RouterLink to="/home">
+          <RouterLink to="/">
             <Heading
               as="h1"
               fontWeight="medium"

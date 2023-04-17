@@ -17,6 +17,7 @@ export const FormControlMessage = ({ formData, handleInputChange }) => {
         size="sm"
         onChange={handleInputChange}
         value={formData.message}
+        color="brand.500"
       />
       <FormErrorMessage>
         <WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon> Message is

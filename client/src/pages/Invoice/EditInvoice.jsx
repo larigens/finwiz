@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-  Select,
-  Container,
-} from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Container } from '@chakra-ui/react';
 import { useMutation } from '@apollo/client';
-import { getAllCarriesAndBroker } from '../../utils/helper';
 import { UPDATE_INVOICE } from '../../utils/mutations';
+import {
+  FormControlInvoiceDate,
+  FormControlInvoiceNumber,
+  FormControlLoadNumber,
+  FormControlAmount,
+} from '../../components/Form/Inputs/InvoiceInputs';
+import {
+  FormControlCarriers,
+  FormControlBrokers,
+  FormControlPaid,
+  FormControlShortPaid,
+} from '../../components/Form/Selects/InvoiceSelects';
 
 function EditInvoice({
   invoice,
@@ -22,9 +22,6 @@ function EditInvoice({
   isEditing,
   setIsEditing,
 }) {
-  const carriersAndBrokers = getAllCarriesAndBroker();
-  const carriers = carriersAndBrokers.carriers;
-  const brokers = carriersAndBrokers.brokers;
   const [editedInvoice, setEditedInvoice] = useState({});
   const [updateInvoice, { error }] = useMutation(UPDATE_INVOICE);
 
@@ -107,135 +104,40 @@ function EditInvoice({
           borderColor="brand.700"
           textAlign="center"
         >
-          <FormControl mb={2}>
-            <FormLabel>Invoice date</FormLabel>
-            <Input
-              type="text"
-              name="invoiceDate"
-              value={new Date(editedInvoice.invoiceDate).toLocaleDateString(
-                'en-US',
-              )}
-              isDisabled
-            />
-          </FormControl>
-          <FormControl mb={2}>
-            <FormLabel>Invoice Number</FormLabel>
-            <Input
-              type="number"
-              name="invoiceNumber"
-              value={editedInvoice.invoiceNumber || ''}
-              onChange={handleInputChange}
-            />
-          </FormControl>
-          <FormControl mb={2}>
-            <FormLabel>Load number</FormLabel>
-            <Input
-              type="text"
-              name="loadNumber"
-              value={editedInvoice.loadNumber || ''}
-              onChange={handleInputChange}
-            />
-          </FormControl>
-          <FormControl mb={2}>
-            <FormLabel>Amount</FormLabel>
-            <InputGroup>
-              <InputLeftAddon
-                children="$"
-                color="brand.500"
-                bg="transparent"
-                border="none"
-                size="lg"
-              />
-              <Input
-                type="number"
-                name="amount"
-                value={editedInvoice.amount || ''}
-                onChange={handleInputChange}
-              />
-            </InputGroup>
-          </FormControl>
-          <FormControl mb={2}>
-            <FormLabel>Carrier</FormLabel>
-            <Select
-              id="carrier"
-              onChange={handleInputChange}
-              name="carrier"
-              value={editedInvoice.carrier}
-              isRequired
-              cursor="pointer"
-              color="brand.500"
-              bg="brand.800"
-              borderWidth="1px"
-              borderColor="brand.700"
-            >
-              <option value={editedInvoice.carrier}>{carrierName}</option>
-              {carriers &&
-                carriers.map((singleCarrier) => (
-                  <option key={singleCarrier._id} value={singleCarrier._id}>
-                    {singleCarrier.company}
-                  </option>
-                ))}
-            </Select>
-          </FormControl>
-          <FormControl mb={2}>
-            <FormLabel>Broker</FormLabel>
-            <Select
-              id="broker"
-              onChange={handleInputChange}
-              name="broker"
-              value={editedInvoice.broker}
-              isRequired
-              cursor="pointer"
-              color="brand.500"
-              bg="brand.800"
-              borderWidth="1px"
-              borderColor="brand.700"
-            >
-              <option value={invoice.broker}>{brokerName}</option>
-              {brokers &&
-                brokers.map((singleBroker) => (
-                  <option key={singleBroker._id} value={singleBroker._id}>
-                    {singleBroker.name}
-                  </option>
-                ))}
-            </Select>
-          </FormControl>
-          <FormControl mb={2}>
-            <FormLabel>Paid</FormLabel>
-            <Select
-              id="paid"
-              onChange={handleInputChange}
-              name="paid"
-              value={editedInvoice.paid}
-              isRequired
-              cursor="pointer"
-              color="brand.500"
-              bg="brand.800"
-              borderWidth="1px"
-              borderColor="brand.700"
-            >
-              <option value="false"> No </option>
-              <option value="true"> Yes </option>
-            </Select>
-          </FormControl>
-          <FormControl mb={2}>
-            <FormLabel>Short-Paid</FormLabel>
-            <Select
-              id="shortPaid"
-              onChange={handleInputChange}
-              name="shortPaid"
-              value={editedInvoice.shortPaid}
-              isRequired
-              cursor="pointer"
-              color="brand.500"
-              bg="brand.800"
-              borderWidth="1px"
-              borderColor="brand.700"
-            >
-              <option value="false"> No </option>
-              <option value="true"> Yes </option>{' '}
-            </Select>
-          </FormControl>
+          <FormControlInvoiceDate formData={editedInvoice} />
+          <FormControlInvoiceNumber
+            formData={editedInvoice}
+            handleInputChange={handleInputChange}
+          />
+          <FormControlLoadNumber
+            formData={editedInvoice}
+            handleInputChange={handleInputChange}
+          />
+          <FormControlAmount
+            formData={editedInvoice}
+            handleInputChange={handleInputChange}
+          />
+
+          <FormControlCarriers
+            carrierName={carrierName}
+            formData={editedInvoice}
+            handleInputChange={handleInputChange}
+          />
+          <FormControlBrokers
+            brokerName={brokerName}
+            formData={editedInvoice}
+            handleInputChange={handleInputChange}
+          />
+          <FormControlPaid
+            brokerName={brokerName}
+            formData={editedInvoice}
+            handleInputChange={handleInputChange}
+          />
+          <FormControlShortPaid
+            brokerName={brokerName}
+            formData={editedInvoice}
+            handleInputChange={handleInputChange}
+          />
           <ButtonGroup mx={{ base: 2, md: 5 }} my={4}>
             <Button
               onClick={handleSaveClick}
@@ -262,9 +164,7 @@ function EditInvoice({
             </Container>
           )}
         </Box>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </>
   );
 }

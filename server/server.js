@@ -6,9 +6,9 @@ const cors = require('cors');
 const { json } = require('body-parser');
 
 const path = require('path');
-const { authMiddleware } = require('./server/utils/auth');
-const { typeDefs, resolvers } = require('./server/schemas'); // Imports the type definitions and resolvers for our GraphQL API.
-const db = require('./server/config/connection'); // Imports the database connection object.
+const { authMiddleware } = require('./utils/auth');
+const { typeDefs, resolvers } = require('./schemas'); // Imports the type definitions and resolvers for our GraphQL API.
+const db = require('./config/connection'); // Imports the database connection object.
 const express = require('express');
 
 const PORT = process.env.PORT || 3001;
@@ -26,29 +26,16 @@ const server = new ApolloServer({
 // Supports the client side 
 // Adds middleware to the Express.js app that serves static files from the client/build directory if the server is running in a production environment.
 if (process.env.NODE_ENV === 'production') {
-  // react router as static only returns actual files from the build folder (i.e. index.html) and will return 404's on any other url.
-
-  app.use(express.static(path.join(__dirname, './client/build/')));
-  // List of all the files that should be served as-is
-  let protected = ['main.js', 'main.css', 'favicon.ico']
+  app.use(express.static(path.join(__dirname, '../client/build/')));
 
   app.get("*", (req, res) => {
-
-    let path = req.params['0'].substring(1)
-
-    if (protected.includes(path)) {
-      // Return the actual file
-      res.sendFile(`${__dirname}/client/build/${path}`);
-    } else {
-      // Otherwise, redirect to /build/index.html
-      res.sendFile(`${__dirname}/client/build/index.html`);
-    }
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
   });
 }
 
 // Route handler for the root URL path.
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client/build/index.html'));
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 const startApolloServer = async (typeDefs, resolvers) => {
