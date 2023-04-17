@@ -64,10 +64,8 @@ export const Form = ({ formRequest, formMutation }) => {
         });
         if (formRequest === 'Login') {
           Auth.login(data.loginUser.token);
-          window.location.assign('/dashboard');
         } else if (formRequest === 'SignUp') {
           Auth.login(data.addUser.token);
-          window.location.assign('/dashboard');
         }
       } catch (err) {
         console.error(err);

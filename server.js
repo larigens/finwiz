@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
 
   app.use(express.static(path.join(__dirname, './client/build/')));
   // List of all the files that should be served as-is
-  let protected = ['transformed.js', 'main.css', 'favicon.ico']
+  let protected = ['main.js', 'main.css', 'favicon.ico']
 
   app.get("*", (req, res) => {
 
@@ -47,11 +47,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Route handler for the root URL path.
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
-
-
 
 const startApolloServer = async (typeDefs, resolvers) => {
   try {

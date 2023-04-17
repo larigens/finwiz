@@ -49,7 +49,7 @@ export default function App() {
         </Header>
         <Box bg="brand.600" mb={10}>
           <Routes>
-            <Route exact path="/" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="/market" element={<Market />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/signup" element={<Signup />} />
