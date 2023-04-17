@@ -6,9 +6,9 @@ const cors = require('cors');
 const { json } = require('body-parser');
 
 const path = require('path');
-const { authMiddleware } = require('./utils/auth');
-const { typeDefs, resolvers } = require('./schemas'); // Imports the type definitions and resolvers for our GraphQL API.
-const db = require('./config/connection'); // Imports the database connection object.
+const { authMiddleware } = require('./server/utils/auth');
+const { typeDefs, resolvers } = require('./server/schemas'); // Imports the type definitions and resolvers for our GraphQL API.
+const db = require('./server/config/connection'); // Imports the database connection object.
 const express = require('express');
 
 const PORT = process.env.PORT || 3001;
@@ -25,12 +25,27 @@ const server = new ApolloServer({
 
 // Supports the client side 
 // Adds middleware to the Express.js app that serves static files from the client/build directory if the server is running in a production environment.
-app.use(express.static(path.join(__dirname, '../client/build/')));
+// app.use(express.static(path.join(__dirname, '../client/build/')));
+app.use(express.static(__dirname + '/'));
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join('client', 'build', 'index.html'));
+  });
+}
 
 // Route handler for the root URL path.
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, './client/build/index.html'));
+// });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join('build', 'index.html'));
+  });
+}
 
 const startApolloServer = async (typeDefs, resolvers) => {
   try {

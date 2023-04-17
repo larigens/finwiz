@@ -2,7 +2,7 @@
   "name": "finwiz",
   "version": "1.0.0",
   "description": "Financial Wizard",
-  "main": "server/server.js",
+  "main": "server.js",
   "engines": {
     "node": "19.9.0",
     "npm": "9.6.4"
@@ -13,14 +13,13 @@
     "prettier": "^2.8.7"
   },
   "scripts": {
-    "start": "nodemon server/server.js",
+    "start": "nodemon server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build",
     "lint": "cd client && npx eslint **/*.jsx",
-    "prettier": "npx prettier --write 'client/src/**/*.jsx'",
-    "heroku-postbuild": "npm install"
+    "prettier": "npx prettier --write 'client/src/**/*.jsx'"
   },
   "repository": {
     "type": "git",
@@ -43,7 +42,20 @@
   },
   "homepage": "https://github.com/larigens/finwiz#readme",
   "dependencies": {
+    "@apollo/server": "^4.5.0",
     "@graphql-tools/merge": "^8.4.0",
-    "dotenv": "^16.0.3"
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "graphql": "^16.6.0",
+    "graphql-tag": "^2.12.6",
+    "http": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.2.0",
+    "mongoose": "^6.10.4",
+    "nodemon": "^2.0.22",
+    "concurrently": "^5.1.0"
   }
 }

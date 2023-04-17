@@ -38,7 +38,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint **/*.jsx"
+    "lint": "npx eslint **/*.jsx",
+    "postinstall": "npm run build"
   },
   "eslintConfig": {
     "extends": [

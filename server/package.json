@@ -8,9 +8,9 @@
     "npm": "9.6.4"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node ../server.js",
     "seed": "node seeds/seed.js",
-    "watch": "nodemon server.js"
+    "watch": "nodemon ../server.js"
   },
   "repository": {
     "type": "git",
@@ -41,7 +41,9 @@
     "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.2.0",
-    "mongoose": "^6.10.4"
+    "mongoose": "^6.10.4",
+    "nodemon": "^2.0.22",
+    "concurrently": "^5.1.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22",
