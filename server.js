@@ -26,19 +26,18 @@ const server = new ApolloServer({
 // Supports the client side 
 // Adds middleware to the Express.js app that serves static files from the client/build directory if the server is running in a production environment.
 // app.use(express.static(path.join(__dirname, '../client/build/')));
-app.use(express.static(__dirname + '/'));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'));
   app.get('*', (req, res) => {
-    res.sendFile(path.join('client', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, './client/build/index.html'));
   });
 }
 
 // Route handler for the root URL path.
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, './client/build/index.html'));
-// });
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
+});
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'));
