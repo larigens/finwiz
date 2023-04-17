@@ -82,17 +82,17 @@ Once you run this, npm will begin the installation process of all of the current
 
 ## Mock-Up
 
-The following images shows the web application's appearance:
+The following animations and images shows the web application's appearance and functionality:
 
 <div align='center'>
 
-<img src='./client/public/images/demo1.png' alt='App Screenshot' width='530px' height='280px' />
+<img src='./client/src/assets/homepage.gif' alt='App Screenshot' width='600px' height='300px' />
 
-<img src='./client/public/images/demo2.png' alt='App Screenshot' width='530px' height='280px' />
+<img src='./client/src/assets/market.png' alt='App Screenshot' width='600px' height='300px' />
 
-<img src='./client/public/images/demo3.png' alt='App Screenshot' width='530px' height='280px' />
+<img src='./client/src/assets/login.png' alt='App Screenshot' width='600px' height='300px' />
 
-<img src='./client/public/images/demo4.png' alt='App Screenshot' width='530px' height='280px' />
+<img src='./client/src/assets/signup.png' alt='App Screenshot' width='600px' height='300px' />
 
 </div>
 
@@ -103,7 +103,22 @@ Launch the application by entering the command below on your terminal:
 ```bash
 npm run develop
 ```
-<!-- Explain more  -->
+
+Or access it through our oficial website 🪄 [FinWiz](https://finwiz.herokuapp.com/)
+
+If you're an admin or employee, you have the authority to view comprehensive details on carriers, brokers, invoices, and payments. You can modify, erase, or settle invoices as well. 
+
+<img src='./client/src/assets/admin.png' alt='App Screenshot' width='540px' height='250px' />
+
+To learn how to navigate in the admin dashboard, you may refer to this tutorial for guidance: [Admin Dashboard Tutorial](https://drive.google.com/file/d/1kAi7HvwvxBxtbHvNISYAAhrYRFWasP3e/view)
+
+Conversely, as a carrier, you can keep track of your invoices, review broker profiles, include a new invoice for payment, check the status of your outstanding invoices, and even discover your preferred brokers – the ones you frequently work with!
+
+<img src='./client/src/assets/carrier.png' alt='App Screenshot' width='540px' height='250px' />
+
+To learn how to navigate in the admin dashboard, you may refer to this tutorial for guidance: [Carrier Dashboard Tutorial](https://drive.google.com/file/d/1AQLa_hHUBTgdcXXbr1z3Ekud_cGcC6vM/view)
+
+You can also access our market and purchase our office supplies that can assist you in maintaining your financial stability. We utilize Stripe to process payments, ensuring your safety and security while dealing with us.
 
 ## Questions
 

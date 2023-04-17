@@ -60,23 +60,6 @@ export const NavBar = () => {
               </Text>
             </RouterLink>
           </Box>
-          <Box m={2} mx={3}>
-            <RouterLink to="https://buy.stripe.com/test_14k2c48Hs8goais001">
-              <Text
-                fontSize="xl"
-                fontWeight="semibold"
-                bgGradient="linear(to-r, brand.500, brand.600)"
-                bgClip="text"
-                color={currentPage === 'Payment' ? 'brand.500' : 'transparent'}
-                _hover={{
-                  bgGradient: 'linear(to-r, brand.600, brand.500, brand.600)',
-                }}
-                onClick={() => setCurrentPage('Payment')}
-              >
-                Payment
-              </Text>
-            </RouterLink>
-          </Box>
           {Auth.loggedIn() ? (
             <LoggedInNavBar
               currentPage={currentPage}

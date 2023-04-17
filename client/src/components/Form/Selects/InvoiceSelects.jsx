@@ -3,6 +3,7 @@ import { getAllCarriesAndBroker } from '../../../utils/helper';
 
 export const FormControlCarriers = ({
   carrierName,
+  invoice,
   formData,
   handleInputChange,
 }) => {
@@ -26,7 +27,7 @@ export const FormControlCarriers = ({
       >
         {carrierName ? (
           <>
-            <option value={formData.carrier}>{carrierName}</option>
+            <option value={invoice.carrier}>{carrierName}</option>
             {carriers &&
               carriers.map((singleCarrier) => (
                 <option key={singleCarrier._id} value={singleCarrier._id}>
@@ -52,6 +53,7 @@ export const FormControlCarriers = ({
 
 export const FormControlBrokers = ({
   brokerName,
+  invoice,
   formData,
   handleInputChange,
 }) => {
@@ -75,7 +77,7 @@ export const FormControlBrokers = ({
       >
         {brokerName ? (
           <>
-            <option value={formData.broker}>{brokerName}</option>
+            <option value={invoice.broker}>{brokerName}</option>
             {brokers &&
               brokers.map((singleBroker) => (
                 <option key={singleBroker._id} value={singleBroker._id}>

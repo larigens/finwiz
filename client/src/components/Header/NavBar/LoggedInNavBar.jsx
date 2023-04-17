@@ -38,7 +38,7 @@ export const LoggedInNavBar = ({ currentPage, setCurrentPage }) => {
           borderRadius="2xl"
           fontSize="2xl"
           fontWeight="normal"
-          mb={4}
+          mb={1}
         />
       </Box>
     </>

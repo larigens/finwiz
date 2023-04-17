@@ -25,7 +25,7 @@ function ViewInvoice({ invoiceNumberData }) {
 
   if (loading) {
     return <div>Loading...</div>;
-  } else if (!loading && !data) {
+  } else if (!data.invoiceByNumber) {
     return <div>No invoice found!</div>;
   }
 

@@ -15,7 +15,6 @@ import { Login } from './pages/Login';
 import Market from './pages/Market/Market';
 import { Signup } from './pages/Signup';
 import { Dashboard } from './pages/Dashboard';
-import Payment from './pages/Market/Payment/Payment';
 import { Home } from './pages/Home/Home';
 import { Box } from '@chakra-ui/react';
 
@@ -54,7 +53,6 @@ export default function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/payment" element={<Payment />} />
           </Routes>
         </Box>
         <Footer />
