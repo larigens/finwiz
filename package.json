@@ -46,6 +46,7 @@
     "@graphql-tools/merge": "^8.4.0",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
+    "concurrently": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -56,6 +57,6 @@
     "mongodb": "^5.2.0",
     "mongoose": "^6.10.4",
     "nodemon": "^2.0.22",
-    "concurrently": "^5.1.0"
+    "react-router-dom": "^6.10.0"
   }
 }
