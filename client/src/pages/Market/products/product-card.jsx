@@ -12,6 +12,7 @@ import {
   HStack,
 } from '@chakra-ui/react';
 import { TfiShoppingCartFull } from 'react-icons/tfi';
+import { Link as RouterLink } from 'react-router-dom';
 
 function Product({ product }) {
   return (
@@ -39,18 +40,20 @@ function Product({ product }) {
       </CardBody>
       <Divider color="brand.500" />
       <CardFooter display="flex" flexDirection={{ base: 'column', md: 'row' }}>
-        <Button
-          variant="solid"
-          bg="brand.600"
-          color="brand.800"
-          _hover={{ bg: 'brand.700', color: 'brand.500' }}
-          mb={{ base: '4', md: '0' }}
-          mr={{ md: '4' }}
-          flexGrow={{ base: '1', md: '0' }}
-          width={{ base: '100%', md: 'auto' }}
-        >
-          Buy now
-        </Button>
+        <RouterLink to="https://buy.stripe.com/test_14k2c48Hs8goais001">
+          <Button
+            variant="solid"
+            bg="brand.600"
+            color="brand.800"
+            _hover={{ bg: 'brand.700', color: 'brand.500' }}
+            mb={{ base: '4', md: '0' }}
+            mr={{ md: '4' }}
+            flexGrow={{ base: '1', md: '0' }}
+            width={{ base: '100%', md: 'auto' }}
+          >
+            Buy now
+          </Button>
+        </RouterLink>
         <Button
           variant="ghost"
           color="brand.400"
@@ -93,3 +96,4 @@ function Product({ product }) {
 }
 
 export default Product;
+

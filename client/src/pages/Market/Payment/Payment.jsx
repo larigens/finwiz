@@ -122,7 +122,7 @@ function Payment() {
             bg="brand.600"
             color="brand.500"
             _hover={{ bg: 'brand.700', color: 'brand.500' }}
-            // onClick={handleFormSubmit}
+          // onClick={handleFormSubmit}
           >
             Submit
           </Button>
@@ -133,3 +133,4 @@ function Payment() {
 }
 
 export default Payment;
+
