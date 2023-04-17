@@ -110,10 +110,6 @@ header,
   color: var(--light-accent) !important;
 }
 
-input,
-input:focus,
-textarea,
-textarea:focus,
 .light-shades {
   color: var(--light-shades) !important;
 }
@@ -122,8 +118,6 @@ textarea:focus,
   color: var(--main-brand) !important;
 }
 
-input::placeholder,
-textarea::placeholder,
 .light {
   color: var(--light) !important;
 }

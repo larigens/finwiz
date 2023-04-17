@@ -40,6 +40,7 @@ export const FormControlNames = ({ formData, handleInputChange }) => {
             value={formData.firstName}
             onChange={handleInputChange}
             size="md"
+            color="brand.500"
           />
         </InputGroup>
         <FormErrorMessage>
@@ -63,6 +64,7 @@ export const FormControlNames = ({ formData, handleInputChange }) => {
             onChange={handleInputChange}
             value={formData.lastName}
             size="md"
+            color="brand.500"
           />
         </InputGroup>
         <FormErrorMessage>
@@ -87,6 +89,7 @@ export const FormControlFullName = ({ formData, handleInputChange }) => {
         value={formData.fullName}
         onChange={handleInputChange}
         size="md"
+        color="brand.500"
       />
       <FormErrorMessage>
         <WarningTwoIcon w={6} h={6} color="red.500"></WarningTwoIcon> Name is
@@ -118,6 +121,7 @@ export const FormControlUsername = ({
           onChange={handleInputChange}
           value={formData.username}
           size="md"
+          color="brand.500"
         />
       </InputGroup>
       {formRequest === 'SignUp' && (
@@ -152,6 +156,7 @@ export const FormControlEmail = ({ formData, handleInputChange }) => {
           onChange={handleInputChange}
           value={formData.email}
           size="md"
+          color="brand.500"
         />
       </InputGroup>
       <FormErrorMessage>
@@ -189,6 +194,7 @@ export const FormControlPassword = ({
           onChange={handleInputChange}
           value={formData.password}
           size="md"
+          color="brand.500"
         />
         <InputRightElement>
           <Button
