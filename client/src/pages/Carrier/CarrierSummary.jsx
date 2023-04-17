@@ -58,7 +58,7 @@ function CarrierSummary() {
               key={carrier._id}
               value={carrier._id}
               textAlign="center"
-              p={{ base: 2, md: 6, lg: 8 }}
+              p={{ base: 2, md: 4}}
               rounded="2xl"
               boxShadow="lg"
               bg="brand.800"
@@ -89,14 +89,14 @@ function CarrierSummary() {
                     </Text>
                   </Text>
                   <Flex flexDir="column">
-                    <Text mx={4} color="brand.500" fontSize="sm">
+                    <Text mx={4} color="brand.500" fontSize="lg">
                       {carrier.fullName}
                     </Text>
                     <Text
                       as="span"
                       color="brand.500"
                       fontWeight="semibold"
-                      fontSize="xs"
+                      fontSize="sm"
                     >
                       Owner
                     </Text>
