@@ -26,23 +26,11 @@ const server = new ApolloServer({
 // Supports the client side 
 // Adds middleware to the Express.js app that serves static files from the client/build directory if the server is running in a production environment.
 if (process.env.NODE_ENV === 'production') {
-  // react router as static only returns actual files from the build folder (i.e. index.html) and will return 404's on any other url.
-
   app.use(express.static(path.join(__dirname, './client/build/')));
-  // List of all the files that should be served as-is
-  let protected = ['main.js', 'main.css', 'favicon.ico']
 
   app.get("*", (req, res) => {
-
-    let path = req.params['0'].substring(1)
-
-    if (protected.includes(path)) {
-      // Return the actual file
-      res.sendFile(`${__dirname}/client/build/${path}`);
-    } else {
-      // Otherwise, redirect to /build/index.html
-      res.sendFile(`${__dirname}/client/build/index.html`);
-    }
+    // Otherwise, redirect to /build/index.html
+    res.sendFile(path.join(__dirname, './client/build/index.html'));
   });
 }
 
