@@ -19,8 +19,8 @@ export const FormControlCarriers = ({
         value={formData.carrier}
         isRequired
         cursor="pointer"
-        color='brand.800'
-        fontWeight='semibold'
+        color="brand.800"
+        fontWeight="semibold"
         bg="brand.600"
         className="no-border"
       >
@@ -69,7 +69,7 @@ export const FormControlBrokers = ({
         isRequired
         cursor="pointer"
         color="brand.800"
-        fontWeight='semibold'
+        fontWeight="semibold"
         bg="brand.600"
         className="no-border"
       >
@@ -111,7 +111,7 @@ export const FormControlPaid = ({ formData, handleInputChange }) => {
         isRequired
         cursor="pointer"
         color="brand.800"
-        fontWeight='semibold'
+        fontWeight="semibold"
         bg="brand.600"
         className="no-border"
       >
@@ -134,7 +134,7 @@ export const FormControlShortPaid = ({ formData, handleInputChange }) => {
         isRequired
         cursor="pointer"
         color="brand.800"
-        fontWeight='semibold'
+        fontWeight="semibold"
         bg="brand.600"
         className="no-border"
       >

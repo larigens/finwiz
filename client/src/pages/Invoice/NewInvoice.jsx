@@ -128,7 +128,7 @@ function NewInvoice() {
         </Container>
       </Box>
       {error && (
-        <Alert status="error" mt={5}>
+        <Alert status="error" mt={5} rounded="2xl" boxShadow="md">
           <AlertIcon />
           {error.message}
         </Alert>

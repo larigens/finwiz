@@ -89,24 +89,24 @@ export const GET_ALL_INVOICES = gql`
 `;
 
 export const GET_INVOICE_BY_NUMBER = gql`
-query InvoiceByNumber($invoiceNumber: Int!) {
-  invoiceByNumber(invoiceNumber: $invoiceNumber) {
-    _id
-    amount
-    broker {
+  query InvoiceByNumber($invoiceNumber: Int!) {
+    invoiceByNumber(invoiceNumber: $invoiceNumber) {
       _id
-      name
+      amount
+      broker {
+        _id
+        name
+      }
+      carrier {
+        _id
+        company
+      }
+      dueDate
+      invoiceDate
+      invoiceNumber
+      loadNumber
+      paid
+      shortPaid
     }
-    carrier {
-      _id
-      company
-    }
-    dueDate
-    invoiceDate
-    invoiceNumber
-    loadNumber
-    paid
-    shortPaid
   }
-}
 `;

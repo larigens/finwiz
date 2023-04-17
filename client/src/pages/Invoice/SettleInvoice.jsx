@@ -273,15 +273,15 @@ function SettleInvoice({ invoice }) {
         </Container>
       </Box>
       {error && (
-        <Alert status="error" mt={5}>
+        <Alert status="error" mt={5} rounded="2xl" boxShadow="md">
           <AlertIcon />
-          {error.message || 'An error occurred.'}
+          {error.message}
         </Alert>
       )}
       {ErrorInvoice && (
-        <Alert status="error" mt={5}>
+        <Alert status="error" mt={5} rounded="2xl" boxShadow="md">
           <AlertIcon />
-          {ErrorInvoice.message || 'An error occurred.'}
+          {ErrorInvoice.message}
         </Alert>
       )}
     </Box>

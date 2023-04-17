@@ -4,7 +4,14 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const data = {
-  labels: ['ABC Logistics', 'Bestway Freight', 'Transit Group', 'J&R Logistics', 'Xpress Transport', 'Others'],
+  labels: [
+    'ABC Logistics',
+    'Bestway Freight',
+    'Transit Group',
+    'J&R Logistics',
+    'Xpress Transport',
+    'Others',
+  ],
   datasets: [
     {
       label: '# of Votes',

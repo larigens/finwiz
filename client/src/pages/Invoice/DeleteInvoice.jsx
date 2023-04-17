@@ -76,7 +76,7 @@ export default function DeleteInvoice({
             </ModalContent>
           </Modal>
           {error && (
-            <Alert status="error" mt={2}>
+            <Alert status="error" mt={5} rounded="2xl" boxShadow="md">
               <AlertIcon />
               {error.message}
             </Alert>

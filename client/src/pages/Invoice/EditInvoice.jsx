@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, ButtonGroup, Container } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Alert, AlertIcon } from '@chakra-ui/react';
 import { useMutation } from '@apollo/client';
 import { UPDATE_INVOICE } from '../../utils/mutations';
 import {
@@ -159,9 +159,10 @@ function EditInvoice({
             </Button>
           </ButtonGroup>
           {error && (
-            <Container mt={3} p={3} bg="red.500" color="white">
+            <Alert status="error" mt={5} rounded="2xl" boxShadow="md">
+              <AlertIcon />
               {error.message}
-            </Container>
+            </Alert>
           )}
         </Box>
       ) : null}
