@@ -6,9 +6,9 @@ const cors = require('cors');
 const { json } = require('body-parser');
 
 const path = require('path');
-const { authMiddleware } = require('./server/utils/auth');
-const { typeDefs, resolvers } = require('./server/schemas'); // Imports the type definitions and resolvers for our GraphQL API.
-const db = require('./server/config/connection'); // Imports the database connection object.
+const { authMiddleware } = require('./utils/auth');
+const { typeDefs, resolvers } = require('./schemas'); // Imports the type definitions and resolvers for our GraphQL API.
+const db = require('./config/connection'); // Imports the database connection object.
 const express = require('express');
 
 const PORT = process.env.PORT || 3001;
@@ -29,7 +29,6 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, './client/build/')));
 
   app.get("*", (req, res) => {
-    // Otherwise, redirect to /build/index.html
     res.sendFile(path.join(__dirname, './client/build/index.html'));
   });
 }
