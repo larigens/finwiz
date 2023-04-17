@@ -6,9 +6,9 @@ const cors = require('cors');
 const { json } = require('body-parser');
 
 const path = require('path');
-const { authMiddleware } = require('./utils/auth');
-const { typeDefs, resolvers } = require('./schemas'); // Imports the type definitions and resolvers for our GraphQL API.
-const db = require('./config/connection'); // Imports the database connection object.
+const { authMiddleware } = require('./server/utils/auth');
+const { typeDefs, resolvers } = require('./server/schemas'); // Imports the type definitions and resolvers for our GraphQL API.
+const db = require('./server/config/connection'); // Imports the database connection object.
 const express = require('express');
 
 const PORT = process.env.PORT || 3001;
@@ -25,14 +25,16 @@ const server = new ApolloServer({
 
 // Supports the client side 
 // Adds middleware to the Express.js app that serves static files from the client/build directory if the server is running in a production environment.
+// app.use(express.static(path.join(__dirname, '../client/build/')));
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build/index.html')));
+  app.use(express.static(path.join(__dirname, './client/build/')));
 }
 
 // // Route handler for the root URL path.
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
+
 
 const startApolloServer = async (typeDefs, resolvers) => {
   try {
@@ -45,8 +47,8 @@ const startApolloServer = async (typeDefs, resolvers) => {
         context: authMiddleware,
       }),
     );
-    db.once('open', async () => {
-      await new Promise((resolve) => httpServer.listen({ port: PORT }, resolve));
+    db.once('open', () => {
+      new Promise((resolve) => httpServer.listen({ port: PORT }, resolve));
       console.log(`🚀 Server ready at http://localhost:${PORT}/graphql`);
     })
   } catch (error) {

@@ -7,11 +7,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
-import {
-  GET_INVOICE_BY_NUMBER,
-  GET_BROKER_BY_ID,
-  GET_CARRIER_BY_ID,
-} from '../../utils/queries';
+import { GET_INVOICE_BY_NUMBER } from '../../utils/queries';
 import EditInvoice from './EditInvoice';
 import DeleteInvoice from './DeleteInvoice';
 import SettleInvoice from './SettleInvoice';
@@ -23,37 +19,20 @@ function ViewInvoice({ invoiceNumberData }) {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { loading, data: invoiceData } = useQuery(GET_INVOICE_BY_NUMBER, {
+  const { loading, data } = useQuery(GET_INVOICE_BY_NUMBER, {
     variables: { invoiceNumber: invoiceNumberData },
   });
 
-  const { loading: carrierLoading, data: carrierData } = useQuery(
-    GET_CARRIER_BY_ID,
-    {
-      skip: !invoiceData?.invoiceByNumber?.carrier._id,
-      variables: { carrierId: invoiceData?.invoiceByNumber?.carrier?._id },
-    },
-  );
-
-  const { loading: brokerLoading, data: brokerData } = useQuery(
-    GET_BROKER_BY_ID,
-    {
-      skip: !invoiceData?.invoiceByNumber?.broker._id,
-      variables: { brokerId: invoiceData?.invoiceByNumber?.broker?._id },
-    },
-  );
-
-  if (loading || brokerLoading || carrierLoading) {
+  if (loading) {
     return <div>Loading...</div>;
-  }
-
-  if (!invoiceData?.invoiceByNumber) {
+  } else if (!loading && !data) {
     return <div>No invoice found!</div>;
   }
 
-  const invoice = invoiceData.invoiceByNumber;
-  const carrierName = carrierData?.carrier?.company || 'N/A';
-  const brokerName = brokerData?.broker?.name || 'N/A';
+  const invoice = data?.invoiceByNumber;
+  const carrierName = invoice?.carrier?.company || 'N/A';
+  const brokerName = invoice?.broker?.name || 'N/A';
+  console.log(data);
 
   const handleClick = (event, id) => {
     event.preventDefault();

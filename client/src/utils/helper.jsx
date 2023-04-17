@@ -21,4 +21,3 @@ export const getAllInvoices = () => {
   const invoices = data?.invoices || [];
   return invoices;
 };
-

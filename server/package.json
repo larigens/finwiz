@@ -8,10 +8,9 @@
     "npm": "9.6.4"
   },
   "scripts": {
-    "start": "nodemon server.js",
-    "server": "nodemon server.js --ignore client",
-    "watch": "nodemon",
-    "seed": "node seeders/seed.js"
+    "start": "node ../server.js",
+    "seed": "node seeds/seed.js",
+    "watch": "nodemon ../server.js"
   },
   "repository": {
     "type": "git",
@@ -41,10 +40,14 @@
     "graphql-tag": "^2.12.6",
     "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.10.4"
+    "mongodb": "^5.2.0",
+    "mongoose": "^6.10.4",
+    "nodemon": "^2.0.22",
+    "concurrently": "^5.1.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "concurrently": "^5.1.0"
   },
   "bugs": {
     "url": "https://github.com/larigens/finwiz/issues"

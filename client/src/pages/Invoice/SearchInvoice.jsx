@@ -70,9 +70,7 @@ function SearchInvoice() {
         <Box my={4}>
           <ViewInvoice invoiceNumberData={invoiceNumberData} />
         </Box>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </Box>
   );
 }

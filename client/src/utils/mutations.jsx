@@ -69,20 +69,36 @@ export const ADD_INVOICE = gql`
 `;
 
 export const ADD_PAYMENT = gql`
-mutation AddPayment($checkNumber: String!, $paidAmount: Int!, $invoice: ID!, $payDate: String, $rebate: Boolean, $rebateReason: String, $shortPaidReason: String) {
-  addPayment(checkNumber: $checkNumber, paidAmount: $paidAmount, invoice: $invoice, payDate: $payDate, rebate: $rebate, rebateReason: $rebateReason, shortPaidReason: $shortPaidReason) {
-    _id
-    checkNumber
-    paidAmount
-    rebate
-    rebateReason
-    shortPaidReason
-    invoice {
+  mutation AddPayment(
+    $checkNumber: String!
+    $paidAmount: Int!
+    $invoice: ID!
+    $payDate: String
+    $rebate: Boolean
+    $rebateReason: String
+    $shortPaidReason: String
+  ) {
+    addPayment(
+      checkNumber: $checkNumber
+      paidAmount: $paidAmount
+      invoice: $invoice
+      payDate: $payDate
+      rebate: $rebate
+      rebateReason: $rebateReason
+      shortPaidReason: $shortPaidReason
+    ) {
       _id
+      checkNumber
+      paidAmount
+      rebate
+      rebateReason
+      shortPaidReason
+      invoice {
+        _id
+      }
+      payDate
     }
-    payDate
   }
-}
 `;
 
 export const UPDATE_INVOICE = gql`
