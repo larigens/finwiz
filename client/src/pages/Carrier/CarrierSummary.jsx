@@ -51,14 +51,14 @@ function CarrierSummary() {
 
   return (
     <>
-      <SimpleGrid columns={{ base: 1, sm: 2, md: 3 }} spacing={6}>
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 2, xl: 4 }} spacing={6}>
         {carriers &&
           carriers.map((carrier) => (
             <Card
               key={carrier._id}
               value={carrier._id}
               textAlign="center"
-              p={{ base: 3, md: 8 }}
+              p={{ base: 2, md: 6, lg: 8 }}
               rounded="2xl"
               boxShadow="lg"
               bg="brand.800"
@@ -66,37 +66,37 @@ function CarrierSummary() {
             >
               <CardBody textAlign="center">
                 <Stack
-                  spacing={{ base: 6, md: 12 }}
+                  spacing={{ base: 2, lg: 4 }}
                   alignItems="center"
-                  justifyContent="space-between"
-                  direction={['column', 'row']}
+                  justifyContent="center"
+                  direction="column"
                 >
-                  <Heading size="lg" color="brand.600">
+                  <Heading
+                    size={{ base: 'md', md: 'lg', lg: 'xl' }}
+                    color="brand.600"
+                  >
                     {carrier.company}
                   </Heading>
                   <Text
                     mx={4}
-                    fontSize="lg"
+                    fontSize="sm"
                     color="brand.600"
                     fontWeight="semibold"
                   >
                     MC Number:{' '}
                     <Text as="span" color="brand.500">
-                      {' '}
                       {carrier.mcNumber}
                     </Text>
                   </Text>
-                </Stack>
-                <Stack spacing={4} mt={{ base: 4, md: 8 }}>
                   <Flex flexDir="column">
-                    <Text mx={4} color="brand.500" fontSize="lg">
+                    <Text mx={4} color="brand.500" fontSize="sm">
                       {carrier.fullName}
                     </Text>
                     <Text
                       as="span"
                       color="brand.500"
                       fontWeight="semibold"
-                      fontSize="md"
+                      fontSize="xs"
                     >
                       Owner
                     </Text>
@@ -106,16 +106,18 @@ function CarrierSummary() {
               <Divider color="brand.500" />
               <CardFooter
                 display="flex"
-                flexDirection={{ base: 'column', md: 'row' }}
+                flexDirection={{ base: 'column' }}
+                justifyContent={{ base: 'center' }}
+                alignItems={{ base: 'center' }}
+                p={{ base: 2, md: 4 }}
               >
                 <Button
                   variant="solid"
                   bg="brand.600"
                   color="brand.800"
                   _hover={{ bg: 'brand.700', color: 'brand.500' }}
-                  mb={{ base: '4', md: '0' }}
-                  mr={{ md: '4' }}
-                  flexGrow={{ base: '1', md: '0' }}
+                  my={{ base: '2' }}
+                  mr={{ md: '2' }}
                   width={{ base: '100%', md: 'auto' }}
                   onClick={() => handleOpen(carrier, 'contactInfo')}
                 >
@@ -125,12 +127,12 @@ function CarrierSummary() {
                   variant="ghost"
                   color="brand.400"
                   _hover={{ bg: 'brand.700', color: 'brand.500' }}
-                  flexGrow={{ base: '1', md: '1' }}
+                  flexGrow={1}
                   display="flex"
-                  justifyContent={{ base: 'center', md: 'flex-end' }}
+                  justifyContent={{ base: 'center' }}
                   alignItems="center"
                   width={{ base: '100%', md: 'auto' }}
-                  mt={{ base: '4', md: '0' }}
+                  mt={{ base: '2' }}
                   onClick={() => handleOpen(carrier, 'carrierInvoices')}
                 >
                   <HStack justifyContent="center" align="center">
@@ -139,33 +141,9 @@ function CarrierSummary() {
                       color="brand.500"
                       w={4}
                       h={4}
-                      mr={1}
-                      display={{ base: 'none', lg: 'inline-block' }}
                     />
-                    <Text
-                      display={{ base: 'none', lg: 'inline-block' }}
-                      whiteSpace="nowrap"
-                      mr={1}
-                    >
+                    <Text whiteSpace="nowrap" mr={1} fontSize="sm">
                       Check Invoices
-                    </Text>
-                    <Icon
-                      as={FaFileInvoiceDollar}
-                      color="brand.500"
-                      w={4}
-                      h={4}
-                      display={{
-                        base: 'inline-block',
-                        md: 'inline-block',
-                        lg: 'none',
-                      }}
-                    />
-                    <Text
-                      display={{ base: 'inline-block', lg: 'none' }}
-                      whiteSpace="nowrap"
-                      mr={1}
-                    >
-                      Invoices
                     </Text>
                   </HStack>
                 </Button>
