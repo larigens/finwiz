@@ -38,10 +38,10 @@ if (process.env.NODE_ENV === 'production') {
 
     if (protected.includes(path)) {
       // Return the actual file
-      res.sendFile(`${__dirname}/build/${path}`);
+      res.sendFile(`${__dirname}/client/build/${path}`);
     } else {
       // Otherwise, redirect to /build/index.html
-      res.sendFile(`${__dirname}/build/index.html`);
+      res.sendFile(`${__dirname}/client/build/index.html`);
     }
   });
 }
