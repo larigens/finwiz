@@ -61,7 +61,7 @@ export const NavBar = () => {
             </RouterLink>
           </Box>
           <Box m={2} mx={3}>
-            <RouterLink to="/payment">
+            <RouterLink to="https://buy.stripe.com/test_14k2c48Hs8goais001">
               <Text
                 fontSize="xl"
                 fontWeight="semibold"
