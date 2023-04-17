@@ -28,7 +28,9 @@
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "stripe": "^12.1.1",
+    "wrap-ansi": "^8.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
