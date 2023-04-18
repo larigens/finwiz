@@ -107,18 +107,9 @@ function CarrierDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
         </Box>
       </Box>
       <Box>
-        <Link
-          as={RouterLink}
-          to="/payment "
-          color="brand.500"
-          _hover={{
-            color: 'brand.600',
-          }}
-        >
-          <Heading size="md" textTransform="uppercase">
-            Payment
-          </Heading>
-        </Link>
+        <Heading size="md" textTransform="uppercase">
+          Invoices
+        </Heading>
       </Box>
       <Box>
         <Link
