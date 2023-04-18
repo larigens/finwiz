@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import {
   Heading,
   Stack,
@@ -48,17 +47,15 @@ function CarrierDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
           <Heading size="md" textTransform="uppercase">
             Brokers
           </Heading>
+          <Text pt="2" fontSize="sm">
+            View a summary of all brokers.
+          </Text>
         </Link>
-        <Text pt="2" fontSize="sm">
-          View a summary of all brokers.
-        </Text>
-        <Box my={3} mx={{ base: 1, md: 10 }} px={{ base: 4, md: 10 }}>
-          <Collapse in={showBrokers}>
-            <Box mx="auto" my="auto" align="center">
-              <BrokerSummary />
-            </Box>
-          </Collapse>
-        </Box>
+        <Collapse in={showBrokers}>
+          <Box mx={4} px={5} my={5} align="center">
+            <BrokerSummary />
+          </Box>
+        </Collapse>
       </Box>
       <Box>
         <Link
@@ -71,11 +68,11 @@ function CarrierDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
           <Heading size="md" textTransform="uppercase">
             Overview
           </Heading>
+          <Text pt="2" fontSize="sm">
+            Check out the overview of your favorite brokers.
+          </Text>
         </Link>
-        <Text pt="2" fontSize="sm">
-          Check out the overview of your favorite brokers.
-        </Text>
-        <Box mt={1} mx={{ base: 1, md: 10 }} px={{ base: 4, md: 10 }}>
+        <Box mx={4} px={5} my={5}>
           <Collapse in={showOverview}>
             <Box mx="auto" style={{ height: '400px' }} align="center">
               <Doughnutchart />
@@ -94,11 +91,11 @@ function CarrierDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
           <Heading size="md" textTransform="uppercase">
             Analysis
           </Heading>
+          <Text pt="2" fontSize="sm">
+            See a detailed analysis of all your invoices.
+          </Text>
         </Link>
-        <Text pt="2" fontSize="sm">
-          See a detailed analysis of all your invoices.
-        </Text>
-        <Box mt={1} mx={{ base: 1, md: 10 }} px={{ base: 4, md: 10 }}>
+        <Box mx={4} px={5} my={5}>
           <Collapse in={showAnalysis}>
             <Box mx="auto" style={{ height: '400px' }}>
               <AgingChart />
@@ -122,10 +119,10 @@ function CarrierDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
           <Heading size="md" textTransform="uppercase">
             Invoice Entry
           </Heading>
+          <Text pt="2" fontSize="sm">
+            Add a new invoice to your list.
+          </Text>
         </Link>
-        <Text pt="2" fontSize="sm">
-          Add a new invoice to your list.
-        </Text>
         <Collapse in={showInvoiceEntry}>
           <Box mx={4} px={5} my={5}>
             <NewInvoice />
