@@ -17,8 +17,8 @@ import {
   FormControlPassword,
 } from './Inputs/UserInputs';
 import { FormControlReason, FormControlRole } from './Selects/UserSelects';
-import { FormControlMessage } from './FormTextareas';
-import { emailRegex } from '../../utils/validators';
+import { FormControlMessage } from './Textareas.jsx/UserTextareas';
+import { emailRegex } from '../../utils/helper';
 import { ModalComp } from '../../components/Modal/Modal';
 
 export const Form = ({ formRequest, formMutation }) => {
