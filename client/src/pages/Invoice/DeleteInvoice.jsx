@@ -30,6 +30,7 @@ export default function DeleteInvoice({
       await removeInvoice();
       onClose();
       setDeleteInvoice(false);
+      window.location.reload();
     } catch (err) {
       console.error(err);
     }
