@@ -12,13 +12,19 @@ import {
 import { AgingChart } from '../../components/Charts/AgingChart';
 import Doughnutchart from '../../components/Charts/Doughnutchart';
 import NewInvoice from '../Invoice/NewInvoice';
+import BrokerSummary from '../Broker/BrokerSummary';
 
 function CarrierDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
   const [showAnalysis, setShowAnalysis] = useState(false);
-  const [showSummary, setShowSummary] = useState(false);
+  const [showOverview, setShowOverview] = useState(false);
+  const [showBrokers, setShowBrokers] = useState(false);
 
-  const handleSummaryClick = () => {
-    setShowSummary(!showSummary);
+  const handleBrokerSummaryClick = () => {
+    setShowBrokers(!showBrokers);
+  };
+
+  const handleOverviewClick = () => {
+    setShowOverview(!showOverview);
   };
 
   const handleAnalysisClick = () => {
@@ -32,22 +38,37 @@ function CarrierDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
   return (
     <Stack divider={<StackDivider />} spacing="4" p="4">
       <Box>
-        <Heading size="xs" textTransform="uppercase">
-          Summary
-        </Heading>
-        <Text pt="2" fontSize="sm">
-          View a summary of all your invoices over the last month.
-        </Text>
-      </Box>
-      <Box>
         <Link
-          onClick={handleSummaryClick}
+          onClick={handleBrokerSummaryClick}
           color="brand.500"
           _hover={{
             color: 'brand.600',
           }}
         >
-          <Heading size="xs" textTransform="uppercase">
+          <Heading size="md" textTransform="uppercase">
+            Brokers
+          </Heading>
+        </Link>
+        <Text pt="2" fontSize="sm">
+          View a summary of all brokers.
+        </Text>
+        <Box my={3} mx={{ base: 1, md: 10 }} px={{ base: 4, md: 10 }}>
+          <Collapse in={showBrokers}>
+            <Box mx="auto" my="auto" align="center">
+              <BrokerSummary />
+            </Box>
+          </Collapse>
+        </Box>
+      </Box>
+      <Box>
+        <Link
+          onClick={handleOverviewClick}
+          color="brand.500"
+          _hover={{
+            color: 'brand.600',
+          }}
+        >
+          <Heading size="md" textTransform="uppercase">
             Overview
           </Heading>
         </Link>
@@ -55,7 +76,7 @@ function CarrierDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
           Check out the overview of your favorite brokers.
         </Text>
         <Box mt={1} mx={{ base: 1, md: 10 }} px={{ base: 4, md: 10 }}>
-          <Collapse in={showSummary}>
+          <Collapse in={showOverview}>
             <Box mx="auto" style={{ height: '400px' }} align="center">
               <Doughnutchart />
             </Box>
@@ -70,7 +91,7 @@ function CarrierDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
             color: 'brand.600',
           }}
         >
-          <Heading size="xs" textTransform="uppercase">
+          <Heading size="md" textTransform="uppercase">
             Analysis
           </Heading>
         </Link>
@@ -94,7 +115,7 @@ function CarrierDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
             color: 'brand.600',
           }}
         >
-          <Heading size="xs" textTransform="uppercase">
+          <Heading size="md" textTransform="uppercase">
             Payment
           </Heading>
         </Link>
@@ -107,7 +128,7 @@ function CarrierDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
             color: 'brand.600',
           }}
         >
-          <Heading size="xs" textTransform="uppercase">
+          <Heading size="md" textTransform="uppercase">
             Invoice Entry
           </Heading>
         </Link>
