@@ -7,6 +7,7 @@ import { InvoiceMenu } from '../Invoice/InvoiceMenu';
 function EmployeeDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
   const [showCarrierSummary, setShowCarrierSummary] = useState(false);
   const [showInvoiceSummary, setShowInvoiceSummary] = useState(false);
+  const [showBrokerSummary, setShowBrokerSummary] = useState(false);
 
   const handleShowClick = (event, id) => {
     event.preventDefault();
@@ -16,6 +17,8 @@ function EmployeeDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
       setShowInvoiceSummary(!showInvoiceSummary);
     } else if (id === 'invoiceEntry') {
       setShowInvoiceEntry(!showInvoiceEntry);
+    } else if (id === 'brokerSummary') {
+      setShowBrokerSummary(!showBrokerSummary);
     }
   };
 
@@ -26,7 +29,10 @@ function EmployeeDashboard({ showInvoiceEntry, setShowInvoiceEntry }) {
           handleShowClick={handleShowClick}
           showCarrierSummary={showCarrierSummary}
         />
-        <BrokerMenu />
+        <BrokerMenu
+          handleShowClick={handleShowClick}
+          showBrokerSummary={showBrokerSummary}
+        />
         <InvoiceMenu
           handleShowClick={handleShowClick}
           showInvoiceSummary={showInvoiceSummary}

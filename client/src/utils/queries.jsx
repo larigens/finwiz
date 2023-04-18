@@ -67,6 +67,33 @@ export const GET_ALL_CARRIERS = gql`
   }
 `;
 
+export const GET_ALL_BROKERS = gql`
+  query Brokers {
+    brokers {
+      _id
+      name
+      mcNumber
+      email
+      phoneNumber
+      creditScore
+      buy
+      invoices {
+        _id
+        invoiceNumber
+        loadNumber
+        amount
+        paid
+        shortPaid
+        invoiceDate
+        dueDate
+        carrier {
+          _id
+        }
+      }
+    }
+  }
+`;
+
 export const GET_ALL_INVOICES = gql`
   query Invoices {
     invoices {
